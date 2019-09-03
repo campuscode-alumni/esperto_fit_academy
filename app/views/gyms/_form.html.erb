@@ -1,0 +1,15 @@
+<%= form_for @gym do |f| %>
+<%= f.label :name, 'Nome' %>
+<%= f.text_area :name %>
+<%= f.label :cod, 'Código' %>
+<%= f.number_field :cod %>
+<%= f.label :adress, 'Endereço' %>
+<%= f.text_area :adress %>
+<%= f.label :open_hour, 'Horário de abertura' %>
+<%= f.text_area :open_hour %>
+<%= f.label :close_hour, 'Horário de fechamento' %>
+<%= f.text_area :close_hour %>
+<%= f.label :working_days, 'Dias de funcionamento' %>
+<%= f.text_area :working_days %>
+<%= f.submit 'Enviar'%>
+<% end %>
