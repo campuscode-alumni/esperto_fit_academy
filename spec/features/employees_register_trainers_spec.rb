@@ -25,6 +25,27 @@ feature "employees register trainers" do
     expect(page).to have_content("123")
     
   end
+  scenario 'all fields must fill in' do
+    employeer = create(:employee, email: "email@email.com", password: "123456")
+
+    visit root_path
+    
+    click_on "Entrar"
+
+    fill_in "Email", with: "email@email.com"
+    fill_in "Senha", with: "123456"
+    click_on "Entrar"
+
+    click_on "Cadastrar professor"
+
+    fill_in "Nome", with: ""
+    fill_in "CPF", with: "123"
+    click_on "Cadastrar"
+
+    #expect(current_path).to eq(new_trainer_path)
+    expect(page).to have_content 'Todos os campos devem ser preenchidos'
+
+  end
 
 
 

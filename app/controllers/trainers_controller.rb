@@ -5,9 +5,14 @@ class TrainersController < ApplicationController
 
   def create
     @trainer = Trainer.new(set_trainer)
-    @trainer.save
-    flash[:message] = 'Professor cadastrado com sucesso'
-    redirect_to @trainer
+    if @trainer.save
+      flash[:message] = 'Professor cadastrado com sucesso'
+      redirect_to @trainer
+    else
+      flash.now[:message] = @treiner.errors.full_messages
+      render :new
+    end
+    
   end
 
 

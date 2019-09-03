@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      employees: Funcionarios
+      gym: Academias
+      trainers: Professores
+    attributes:
+      employees:
+        name: Nome
+      
