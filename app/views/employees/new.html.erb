@@ -1,0 +1,13 @@
+<p>Preencha para cadastrar um usuário</p>
+<%= form_for @employee do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name  %>
+  <%= f.label :status %>
+  <%= f.text_field :status  %>
+  <%= f.label :gym, 'Unidade' %>
+  <%= f.text_field :gym  %>
+  <%= f.label :email, 'Email específico' %>
+  <%= f.text_field :email  %>
+  <%= f.submit 'Cadastrar' %>
+<% end %>
+<%= flash[:alert] %>
