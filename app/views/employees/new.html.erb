@@ -11,3 +11,5 @@
   <%= f.submit 'Cadastrar' %>
 <% end %>
 <%= flash[:alert] %>
+
+<%= @employee.errors.full_messages %>

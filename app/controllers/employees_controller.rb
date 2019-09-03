@@ -9,7 +9,7 @@ class EmployeesController < ApplicationController
       flash[:success] = 'Funcionario cadastrado com sucesso!'
       redirect_to @employee
     else
-      flash.now[:alert] = 'Voce deve preencher todos os campos!'
+      flash.now[:alert] = 'Funcionario não cadastrado'
       render :new
     end
   end
