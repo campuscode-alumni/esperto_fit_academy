@@ -1,0 +1,13 @@
+<%= flash[:message] %>
+<%= form_for @trainer do |f|%>
+  <%= f.label :name, 'Nome'%>
+  <%= f.text_field :name %>
+  <%= f.label :cpf, 'CPF'%>
+  <%= f.text_field :cpf %>
+<%#= collection_select(:user, :id, @users, :id, :name) %>
+  <%= f.label :status, 'Status' %>
+  <%= f.select(:status, [['Disponível', "available"],['Indisponível', 'unavailable']]) %>
+  
+  
+  <%= f.submit 'Editar'%>
+<% end %>

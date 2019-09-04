@@ -1,10 +1,16 @@
 pt-BR:
   activerecord:
     models:
-      employees: Funcionarios
+      employee: Funcionarios
       gym: Academias
-      trainers: Professores
+      trainer: Professores
     attributes:
-      employees:
+      employee:
         name: Nome
+      trainer:
+        name: Nome
+        cpf: CPF
+        status: 
+          available: Disponível
+          unavailable: Indisponível
       
