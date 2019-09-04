@@ -1,7 +1,10 @@
 <h3><%= @gym.name %></h3>
 <p><%=  @gym.cod %></p>
-<p><%= @gym.adress %></p>
+<p><%= @gym.address %></p>
 <p><%= @gym.open_hour  %></p>
 <p><%= @gym.close_hour  %></p>
 <p><%= @gym.working_days  %></p>
+<% @gym.gallery.each do |image| %>
+  <%= image_tag image %>
+<% end %>
 <%= link_to 'Voltar', root_path %>
