@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :employees, only: %i[new create show]
+  resources :employees, only: %i[new create show index edit update]
+
+  get 'employee/service', to: 'employees#service_area'
 end
