@@ -8,6 +8,8 @@
   <%= f.text_field :gym  %>
   <%= f.label :email, 'Email específico' %>
   <%= f.text_field :email  %>
+  <%= f.label :password, 'Senha' %>
+  <%= f.password_field :password  %>
   <%= f.submit 'Cadastrar' %>
 <% end %>
 <%= flash[:alert] %>
