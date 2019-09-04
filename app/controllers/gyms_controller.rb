@@ -1,8 +1,7 @@
 class GymsController < ApplicationController
+  before_action :authenticate_employee!
   before_action :find_gym, only: %i[show]
 
-  def index
-  end
 
   def show; end
 

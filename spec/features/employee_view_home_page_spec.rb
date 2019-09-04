@@ -2,15 +2,22 @@ require 'rails_helper'
 
 feature 'employee view home page' do
   scenario 'sucessfully' do
+    employee = create(:employee)
+    login_as(employee, scope: :employee)
+
     visit root_path
 
     expect(page).to have_css('h1', text: 'Esperto Fit')
   end
 
   scenario 'and register a new gym' do
+    employee = create(:employee)
+    login_as(employee, scope: :employee)
+
     visit root_path
 
     click_on 'Cadastrar Academia'
+    save_page
 
     fill_in 'Nome', with: 'Academia Paulista'
     fill_in 'Código', with: '001'
@@ -30,8 +37,10 @@ feature 'employee view home page' do
     expect(page).not_to have_link('Criar Academia')
   end
 
-  scenario 'and fields must be unique' do 
+  scenario 'and fields must be unique' do
+    employee = create(:employee)
     gym = create(:gym, name: "Academia Paulista", cod: "001")
+    login_as(employee, scope: :employee) 
 
     visit root_path
     
@@ -50,8 +59,10 @@ feature 'employee view home page' do
     expect(page).not_to have_css('h3', text: 'Academia Paulista')
   end
 
-  scenario 'and fields must be fill' do 
+  scenario 'and fields must be fill' do
+    employee = create(:employee)  
     gym = build(:gym, name: "", cod: "")
+    login_as(employee, scope: :employee)
 
     visit root_path
     

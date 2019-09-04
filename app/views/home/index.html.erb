@@ -1,2 +1,6 @@
 <h1>Esperto Fit</h1>
-<%= link_to 'Cadastrar Academia', new_gym_path %>
+
+
+<% if employee_signed_in? %>
+  <%= link_to 'Cadastrar Academia', new_gym_path %>
+<% end %>
