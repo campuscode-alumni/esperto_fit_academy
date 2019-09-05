@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/trainers', to: 'trainers#management'
 
   resources :employees, only: %i[new create show]
+  resources :plans, only: %i[new create show]
 end

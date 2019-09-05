@@ -1,0 +1,76 @@
+require 'rails_helper'
+
+feature 'Admin register plans' do
+  scenario 'successfully' do
+    # arrange
+    admin = create(:employee, admin: true)
+    
+    visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: admin.email
+    fill_in 'Senha', with: admin.password 
+    click_on 'Entrar'
+    click_on 'Cadastrar planos'
+    fill_in 'Nome', with: 'Premium'
+    fill_in 'Permanência mínima', with: 3
+    click_on 'Cadastrar'
+
+    # assert
+    expect(page).to have_content('Nome: Premium')
+    expect(page).to have_content('Permanência mínima: 3 meses')
+    expect(page).to have_link('Voltar')
+  end
+
+  scenario 'and can`t be empty' do
+    # arrange
+    admin = create(:employee, admin: true)
+    
+    visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: admin.email
+    fill_in 'Senha', with: admin.password 
+    click_on 'Entrar'
+    click_on 'Cadastrar planos'
+    click_on 'Cadastrar'
+
+    # assert
+    expect(page).to have_content('Não foi possível cadastrar o plano')
+    expect(page).to have_content('Todos os campos devem ser preenchidos')
+  end
+
+  scenario 'and the name must be unique' do
+    # arrange
+    admin = create(:employee, admin: true)
+    create(:plan)
+    
+    visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: admin.email
+    fill_in 'Senha', with: admin.password 
+    click_on 'Entrar'
+    click_on 'Cadastrar planos'
+    fill_in 'Nome', with: 'Premium'
+    fill_in 'Permanência mínima', with: 3 
+    click_on 'Cadastrar'
+
+    # assert
+    expect(page).to have_content('Não foi possível cadastrar o plano')
+    expect(page).to have_content('O nome deve ser único')
+  end
+
+  scenario 'and must be an admin to click the button' do
+    # arrange
+    user = create(:employee, admin: false)
+    
+    #act
+    visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password 
+    click_on 'Entrar'
+
+    #assert
+    expect(page).not_to have_content('Cadastrar planos')
+  end
+  
+end
