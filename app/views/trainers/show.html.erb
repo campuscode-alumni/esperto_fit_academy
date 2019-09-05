@@ -1,0 +1,6 @@
+<%= flash[:message]%>
+
+<h1><%= @trainer.name %></h1>
+<p><%= @trainer.cpf %></p>
+<p><%=  @trainer.translate_status%></p>
+<%= link_to "Editar", edit_trainer_path(@trainer)%>

@@ -1,0 +1,10 @@
+
+<%= form_for @trainer do |f|%>
+  <%= f.label :name, 'Nome'%>
+  <%= f.text_field :name %>
+  <%= f.label :cpf, 'CPF'%>
+  <%= f.text_field :cpf %>
+  <%= f.label :email, 'Email' %>
+  <%= f.text_field :email %>
+  <%= f.submit 'Cadastrar'%>
+<% end %>

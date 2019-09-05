@@ -1,0 +1,7 @@
+<h1>Lista de Professores</h1>
+
+<% @trainers.each do |trainer| %>
+  <%= link_to trainer.name, trainer %>
+  <%= trainer.translate_status %>
+  <br>
+<%end%>

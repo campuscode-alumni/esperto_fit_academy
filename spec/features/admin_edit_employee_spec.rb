@@ -9,8 +9,7 @@ feature 'Admin edit employee' do
     # act
     login_as employee 
     visit root_path
-    click_on 'Area de Funcionarios'
-    click_on 'Lista de Usuários'
+    click_on 'Lista de Funcionários'
     click_on 'Roberto da Silva'
     click_on 'Editar'
     fill_in 'Nome', with: 'Roperto'
@@ -47,7 +46,6 @@ feature 'Admin edit employee' do
     # act
     login_as user
     visit root_path
-    click_on 'Area de Funcionarios'
 
     # asssert
     expect(page).not_to have_content('Lista de Usuários')
@@ -85,8 +83,7 @@ feature 'Admin edit employee' do
     # act
     login_as employee 
     visit root_path
-    click_on 'Area de Funcionarios'
-    click_on 'Lista de Usuários'
+    click_on 'Lista de Funcionários'
     click_on 'Roberto da Silva'
     click_on 'Editar'
     fill_in 'Nome', with: ''

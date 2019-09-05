@@ -12,7 +12,6 @@ feature 'Admin register another employee' do
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
 
-    click_on 'Area de Funcionarios'
     click_on 'Cadastrar novo funcionário'
     fill_in 'Nome', with: 'Alan'
     fill_in 'Unidade', with: '01'
@@ -40,12 +39,11 @@ feature 'Admin register another employee' do
     fill_in 'Email', with: 'batata@espertofit.com.br'
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
-    click_on 'Area de Funcionarios'
     click_on 'Cadastrar novo funcionário'
     click_on 'Enviar'
 
     # assert
-    expect(page).to have_content('Name deve ser preenchido!')
+    expect(page).to have_content('Nome deve ser preenchido!')
     
     expect(page).to have_content('Preencha para cadastrar um usuário')
   end
@@ -61,7 +59,6 @@ feature 'Admin register another employee' do
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
     
-    click_on 'Area de Funcionarios'
     click_on 'Cadastrar novo funcionário'
     fill_in 'Nome', with: 'Alan'
     fill_in 'Unidade', with: '01'
@@ -113,7 +110,7 @@ feature 'Admin register another employee' do
         fill_in 'Senha', with: '123456'
         click_on 'Entrar'
         
-        click_on 'Area de Funcionarios'
+  
         click_on 'Cadastrar novo funcionário'
         fill_in 'Nome', with: 'Alan'
         fill_in 'Unidade', with: '01'
