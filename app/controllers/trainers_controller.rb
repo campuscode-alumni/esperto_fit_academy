@@ -12,7 +12,7 @@ before_action :params_find, only: %i[ show edit update]
       flash[:message] = 'Professor cadastrado com sucesso'
       redirect_to @trainer
     else
-      flash.now[:message] = @trainer.errors.full_messages
+      flash.now[:message] = @trainer.errors.full_messages.first
       render :new
     end
     
