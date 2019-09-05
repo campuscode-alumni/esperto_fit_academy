@@ -72,5 +72,28 @@ feature 'Admin register plans' do
     #assert
     expect(page).not_to have_content('Cadastrar planos')
   end
+
+  scenario 'and must be unable to access the register plan route' do
+    #act
+    visit new_plan_path
+
+    #assert
+    expect(current_path).to eq new_employee_session_path
+  end
   
+  scenario 'and user must be unable to access the register plan route' do
+    # arrange
+    user = create(:employee, admin: false)
+    
+    #act
+    visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password 
+    click_on 'Entrar'
+    visit new_plan_path
+
+    #assert
+    expect(current_path).to eq root_path
+  end
 end
