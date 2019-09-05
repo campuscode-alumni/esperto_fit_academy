@@ -12,6 +12,7 @@ feature 'Admin register another employee' do
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
 
+    click_on 'Area de Funcionarios'
     click_on 'Cadastrar novo funcionário'
     fill_in 'Nome', with: 'Alan'
     fill_in 'Unidade', with: '01'
@@ -39,7 +40,8 @@ feature 'Admin register another employee' do
     fill_in 'Email', with: 'batata@espertofit.com.br'
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
-    click_on ('Cadastrar novo funcionário')
+    click_on 'Area de Funcionarios'
+    click_on 'Cadastrar novo funcionário'
     click_on 'Enviar'
 
     # assert
@@ -59,7 +61,8 @@ feature 'Admin register another employee' do
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
     
-    click_on ('Cadastrar novo funcionário')
+    click_on 'Area de Funcionarios'
+    click_on 'Cadastrar novo funcionário'
     fill_in 'Nome', with: 'Alan'
     fill_in 'Unidade', with: '01'
     fill_in 'Email específico', with: 'batata@espertofit.com.br'
@@ -110,7 +113,8 @@ feature 'Admin register another employee' do
         fill_in 'Senha', with: '123456'
         click_on 'Entrar'
         
-        click_on ('Cadastrar novo funcionário')
+        click_on 'Area de Funcionarios'
+        click_on 'Cadastrar novo funcionário'
         fill_in 'Nome', with: 'Alan'
         fill_in 'Unidade', with: '01'
         fill_in 'Email específico', with: 'ciro@gmail.com'

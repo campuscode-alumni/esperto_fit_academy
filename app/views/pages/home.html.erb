@@ -1,7 +1,4 @@
 <% if employee_signed_in? %>
   <%= link_to 'Area de Funcionarios', employee_service_path %>
-  <% if current_employee.admin %>
-    <%= link_to 'Cadastrar novo funcionário', new_employee_path %>
-  <% end %>
 <% end %>
 <%= link_to 'Entrar', employee_session_path %>

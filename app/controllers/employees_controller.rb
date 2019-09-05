@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_employee! 
-  before_action :verify_admin, only: %i[new create]
+  before_action :verify_admin, only: %i[new create edit update index]
 
   def index
     @employees = Employee.all
