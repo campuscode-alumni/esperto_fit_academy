@@ -1,4 +1,5 @@
 class Trainer < ApplicationRecord
+  has_many :activities
   
   enum status: {available: 0, unavailable: 10 }
 

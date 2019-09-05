@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :gyms, only: %i[show new create]
   resources :trainers, only: %i[create new show edit update] 
   resources :employees, only: %i[new create show]
+  resources :activities, only: %i[show new create]
   get 'trainers', to: 'trainers#management'
 
 end
