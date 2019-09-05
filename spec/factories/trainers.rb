@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :trainer do
     email {"treinadora_amanda@espertofit.com"}
-    password { "456734"}
+    name {'Thiago'}
+    cpf {'123'}
+    status {:available}
   end
 end

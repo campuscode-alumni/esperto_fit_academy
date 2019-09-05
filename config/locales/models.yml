@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      employee: Funcionarios
+      gym: Academias
+      trainer: Professores
+    attributes:
+      employee:
+        name: Nome
+      trainer:
+        name: Nome
+        cpf: CPF
+        status: 
+          available: Disponível
+          unavailable: Indisponível
+      

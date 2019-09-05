@@ -43,7 +43,7 @@ feature 'Admin register another employee' do
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Name deve ser preenchido!')
+    expect(page).to have_content('Nome deve ser preenchido!')
     
     expect(page).to have_content('Preencha para cadastrar um usuário')
   end
