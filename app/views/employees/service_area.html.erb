@@ -1,0 +1,4 @@
+<% if current_employee.admin? %>
+  <%= link_to 'Lista de Usuários', employees_path %>
+  <%= link_to 'Cadastrar novo funcionário', new_employee_path %>
+<% end %>

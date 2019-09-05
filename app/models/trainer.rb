@@ -1,4 +1,5 @@
 class Trainer < ApplicationRecord
+  
   enum status: {available: 0, unavailable: 10 }
 
   validates :name, :cpf , presence:true

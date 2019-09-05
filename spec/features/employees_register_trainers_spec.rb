@@ -17,6 +17,7 @@ feature "employees register trainers" do
 
     fill_in "Nome", with: "Karina"
     fill_in "CPF", with: "123"
+    fill_in "Email", with: "karina@espertofit.com.br"
     click_on "Cadastrar"
 
     expect(current_path).to eq(trainer_path(Trainer.last.id))

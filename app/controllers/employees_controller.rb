@@ -1,6 +1,10 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_employee! 
-  before_action :verify_admin, only: %i[new create]
+  before_action :verify_admin, only: %i[new create edit update index]
+
+  def index
+    @employees = Employee.all
+  end
 
   def new
     @employee = Employee.new
@@ -19,6 +23,25 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
+  end
+
+  def edit
+    @employee = Employee.find(params[:id])
+  end
+
+  def update
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      flash[:success] = 'Funcionario alterado com sucesso!'
+      redirect_to @employee
+    else
+      flash.now[:alert] = 'Funcionario não alterado'
+      render :edit
+    end
+  end
+
+  def service_area
+
   end
 
   private
