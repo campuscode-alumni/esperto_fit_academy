@@ -3,4 +3,11 @@
 <h1><%= @trainer.name %></h1>
 <p><%= @trainer.cpf %></p>
 <p><%=  @trainer.translate_status%></p>
+<p>Academias</p>
+  
+
+<% @gym_trainer.each do |gym|  %>
+  
+  <%= "#{gym.id}"%>
+<% end %>
 <%= link_to "Editar", edit_trainer_path(@trainer)%>

@@ -9,19 +9,28 @@ before_action :params_find, only: %i[ show edit update]
 
   def create
     @trainer = Trainer.new(set_trainer)
+    
     if @trainer.save
-      flash[:message] = 'Professor cadastrado com sucesso'
+      flash[:message] = 'Professor cadastrado com sucesso' 
+      if !current_employee.admin
+        @gym = Gym.where()
+        
+        @gym_trainer = GymTrainer.create(trainer: @trainer, gym: current_employee.gym)
+        
+      end
       redirect_to @trainer
     else
       flash.now[:message] = @trainer.errors.full_messages.first
       render :new
     end
     
+    
   end
 
 
   def show
-
+    @gym_trainer = GymTrainer.where(trainer_id: @trainer.id)
+    
   end
 
   def edit
