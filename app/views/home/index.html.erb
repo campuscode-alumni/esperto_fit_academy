@@ -1,10 +1,13 @@
-<%= link_to 'Entrar' , new_employee_session_path %>
+
 <% if employee_signed_in? %>
+  <%= link_to 'Sair', destroy_employee_session_path, method: :delete  %>
   <%= link_to 'Cadastrar professor' , new_trainer_path%>
   <%= link_to 'Gerenciar Professores', trainers_path %>
-
+  <%# byebug%>
   <% if current_employee.admin %>
     <%= link_to 'Cadastrar novo funcionário', new_employee_path %>
   <% end %>
+<% else %>
+  <%= link_to 'Entrar' , new_employee_session_path%> 
 <%end%>
 <%#= link_to 'Entrar', employee_session_path %>

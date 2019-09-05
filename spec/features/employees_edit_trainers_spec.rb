@@ -77,4 +77,11 @@ feature 'Employees edit trainers ' do
     expect(page).to have_content 'CPF já está em uso'
 
   end
+
+  scenario 'employee must be autenticated to edit trainers' do
+    trainer = create(:trainer, cpf: "123")
+    visit edit_trainer_path(trainer)
+
+    expect(current_path).to eq(new_employee_session_path)
+  end
 end

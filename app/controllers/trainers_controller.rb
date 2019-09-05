@@ -1,6 +1,7 @@
 class TrainersController < ApplicationController 
-
+before_action :authenticate_employee!, only: %i[ new create edit update show]
 before_action :params_find, only: %i[ show edit update]
+
 
   def new
     @trainer = Trainer.new

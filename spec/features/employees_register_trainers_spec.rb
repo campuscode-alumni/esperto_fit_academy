@@ -70,6 +70,13 @@ feature "employees register trainers" do
 
   end
 
+  scenario 'employee must be autenticated to create new trainers' do
+    visit new_trainer_path
+
+    expect(current_path).to eq(new_employee_session_path)
+  end
+
+  
   
 
 
