@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 2019_09_04_181902) do
   create_table "employees", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "gym"
+    t.integer "status", default: 1
+    t.boolean "admin", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

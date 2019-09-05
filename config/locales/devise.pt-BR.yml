@@ -1,0 +1,4 @@
+pt-BR:
+  devise:
+    failure:
+      account_inactive: "Você esta INATIVO"

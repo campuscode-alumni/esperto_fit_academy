@@ -1,6 +1,12 @@
 <h1>Esperto Fit</h1>
 
 
+
 <% if employee_signed_in? %>
   <%= link_to 'Cadastrar Academia', new_gym_path %>
+  <% if current_employee.admin? %>
+    <%= link_to 'Cadastrar novo funcionário', new_employee_path %>
+  <% end %>
 <% end %>
+
+<%= link_to 'Entrar', employee_session_path %>
