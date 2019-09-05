@@ -2,14 +2,14 @@ require 'rails_helper'
 
 feature 'Employees edit trainers ' do
   scenario 'Successfully' do
-    employeer = create(:employee, email: "email@email.com", password: "123456")
+    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456")
     trainer = create(:trainer, name: "Thiago", status: 0)
 
     visit root_path
     
     click_on "Entrar"
 
-    fill_in "Email", with: "email@email.com"
+    fill_in "Email", with: "email@espertofit.com.br"
     fill_in "Senha", with: "123456"
     click_on "Entrar"
 
@@ -30,13 +30,13 @@ feature 'Employees edit trainers ' do
   end
 
   scenario 'all fields must fill in, in edit' do
-    employeer = create(:employee, email: "email@email.com", password: "123456")
+    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456")
     trainer = create(:trainer)
     visit root_path
     
     click_on "Entrar"
 
-    fill_in "Email", with: "email@email.com"
+    fill_in "Email", with: "email@espertofit.com.br"
     fill_in "Senha", with: "123456"
     click_on "Entrar"
 
@@ -54,14 +54,14 @@ feature 'Employees edit trainers ' do
 
   end
   scenario 'field cpf must be unique , in edit' do
-    employeer = create(:employee, email: "email@email.com", password: "123456")
+    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456")
     trainer = create(:trainer, cpf: "123")
     other_trainer = create(:trainer, name: "Kah", cpf: "1234")
     visit root_path
     
     click_on "Entrar"
 
-    fill_in "Email", with: "email@email.com"
+    fill_in "Email", with: "email@espertofit.com.br"
     fill_in "Senha", with: "123456"
     click_on "Entrar"
 

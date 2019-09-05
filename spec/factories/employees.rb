@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :employee do
-    email {'teste@teste.com'}
+    name {'Alan'}
+    status {'active'}
+    gym {'01'}
+    email {'batata@espertofit.com.br'}
     password {'123456'}
-    gym {'Primeira'}
   end
 end

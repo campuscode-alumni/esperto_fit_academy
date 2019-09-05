@@ -16,6 +16,7 @@ pt-BR:
       timeout: "Sua sessão expirou, por favor, efetue login novamente para continuar."
       unauthenticated: "Para continuar, efetue login ou registre-se."
       unconfirmed: "Antes de continuar, confirme a sua conta."
+      account_inactive: 'Você esta INATIVO '
     mailer:
       confirmation_instructions:
         subject: "Instruções de confirmação"
