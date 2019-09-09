@@ -1,14 +1,14 @@
 FactoryBot.define do
   factory :activity do
-    name { "MyString" }
-    status { 1 }
-    price { 1.5 }
-    duration { 1 }
-    capacity { 1 }
-    difficulty { "MyString" }
-    equipments { "MyString" }
-    rules { "MyText" }
-    gym { nil }
-    trainer { nil }
+    name { "Zumba" }
+    status { 0 }
+    price { 45.35 }
+    duration { 35 }
+    capacity { 56 }
+    difficulty { "Fácil" }
+    equipments { "Nenhum" }
+    rules { "Respeitar todos os membros presentes" }
+    gym 
+    trainer 
   end
 end
