@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   resources :gyms, only: %i[show new create]
   resources :trainers, only: %i[create new show edit update] 
-  resources :employees, only: %i[new create show index edit update]
+  resources :plans, only: %i[new create show]
+  resources :employees, only: %i[new create show index edit update] do
+    get 'change_status', on: :member
+  end
 
   get 'trainers', to: 'trainers#management'
-  get 'employee/service', to: 'employees#service_area'
-
-  resources :employees, only: %i[new create show]
-  resources :plans, only: %i[new create show]
+  get 'unactives', to: 'employees#unactives', as: 'employees_unactives'
 end

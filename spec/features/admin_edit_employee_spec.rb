@@ -31,14 +31,6 @@ feature 'Admin edit employee' do
     expect(page).not_to have_content('Area de Funcionarios')
   end
 
-  scenario 'and visitors cannot enter to the employee area path' do
-    # act
-    visit employee_service_path
-
-    # asssert
-    expect(current_path).to eq new_employee_session_path
-  end
-
   scenario 'and only admins can see the link to user list' do
     # arrange
     user = create(:employee, admin: false)

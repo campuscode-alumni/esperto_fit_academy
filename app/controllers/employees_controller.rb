@@ -1,9 +1,9 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_employee! 
-  before_action :verify_admin, only: %i[new create edit update index]
+  before_action :verify_admin, only: %i[new create edit update index change_status unactives]
 
   def index
-    @employees = Employee.all
+    @employees = Employee.where(status: 'active')
   end
 
   def new
@@ -40,8 +40,20 @@ class EmployeesController < ApplicationController
     end
   end
 
-  def service_area
+  def change_status
+    @employee = Employee.find(params[:id])
+    if @employee.status == 'active'
+      @employee.unactive!
+      flash[:success] = 'Funcionario inativado com sucesso!'
+    else
+      @employee.active!
+      flash[:success] = 'Funcionario ativado com sucesso!'
+    end
+    redirect_to @employee
+  end
 
+  def unactives
+    @employees = Employee.where(status: 'unactive')
   end
 
   private
