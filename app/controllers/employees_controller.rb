@@ -23,6 +23,7 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
+    redirect_to root_path unless current_employee == @employee || current_employee.admin?
   end
 
   def edit
