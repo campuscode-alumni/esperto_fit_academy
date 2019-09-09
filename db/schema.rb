@@ -77,6 +77,13 @@ ActiveRecord::Schema.define(version: 2019_09_05_195655) do
     t.string "address"
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.integer "minimum_permanence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "trainers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
