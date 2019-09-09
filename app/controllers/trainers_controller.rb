@@ -1,6 +1,6 @@
 class TrainersController < ApplicationController 
 before_action :authenticate_employee!, only: %i[ new create edit update show]
-before_action :params_find, only: %i[ show edit update]
+before_action :params_find, only: %i[ show edit update add_units]
 
 
   def new
@@ -15,7 +15,7 @@ before_action :params_find, only: %i[ show edit update]
       if !current_employee.admin
         @gym = Gym.where()
         
-        @gym_trainer = GymTrainer.create(trainer: @trainer, gym: current_employee.gym)
+        @gym_trainer = GymTrainer.create!(trainer: @trainer, gym: current_employee.gym)
         
       end
       redirect_to @trainer
@@ -38,7 +38,6 @@ before_action :params_find, only: %i[ show edit update]
   end
 
   def update
-    
     if @trainer.update(set_trainer)
       flash[:message] = "Alterações realizadas com sucesso"
       redirect_to @trainer
@@ -51,6 +50,13 @@ before_action :params_find, only: %i[ show edit update]
   def management
     @trainers = Trainer.all
   end
+
+  def add_units
+    @gyms = Gym.all
+    @gym_trainer = GymTrainer.new()
+  end
+
+
 
   private 
 

@@ -1,0 +1,7 @@
+<%= form_for @trainer, url: trainer_gym_trainers_path(@trainer), method: :post do |f| %>
+
+  <%= f.collection_check_boxes :gym_ids, @gyms, :id , :id %>
+  <%= f.submit 'Adicionar'%>
+
+<% end %>
+ 

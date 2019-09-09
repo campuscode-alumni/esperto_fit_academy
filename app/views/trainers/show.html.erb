@@ -2,12 +2,13 @@
 
 <h1><%= @trainer.name %></h1>
 <p><%= @trainer.cpf %></p>
-<p><%=  @trainer.translate_status%></p>
-<p>Academias</p>
-  
+<p><%= @trainer.translate_status%></p>
 
-<% @gym_trainer.each do |gym|  %>
-  
-  <%= "#{gym.id}"%>
+<p>Academias</p>
+<% @gym_trainer.each do |gym|  %>  
+<p>Unidade: <%= "#{gym.id}"%></p>
 <% end %>
+
+
 <%= link_to "Editar", edit_trainer_path(@trainer)%>
+<%= link_to "Adicionar mais unidades", add_units_trainer_path(@trainer.id) %>

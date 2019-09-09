@@ -3,7 +3,9 @@ require 'rails_helper'
 feature 'Admin register another employee' do
   scenario 'successfully' do
     # arrange
-    employee = create(:employee, admin: true)
+    gym = create(:gym)
+    employee = create(:employee, admin: true, gym:gym)
+
 
     # act
     visit root_path
@@ -31,7 +33,8 @@ feature 'Admin register another employee' do
 
   scenario 'and must fill in all the fields' do
     # arrange
-    employee = create(:employee, admin: true)
+    gym = create(:gym)
+    employee = create(:employee, admin: true, gym:gym)
 
     # act
     visit root_path
@@ -50,7 +53,8 @@ feature 'Admin register another employee' do
 
   scenario 'and email must be unique' do
     # arrange
-    employee = create(:employee, admin: true)
+    gym = create(:gym)
+    employee = create(:employee, admin: true, gym:gym)
 
     # act
     visit root_path
@@ -79,7 +83,8 @@ feature 'Admin register another employee' do
 
   scenario 'and the employee must be an admin to register another employee' do
     # arrange
-    employee = create(:employee, admin: false)
+    gym = create(:gym)
+    employee = create(:employee, admin: false, gym:gym)
 
     # act
     visit root_path
@@ -101,7 +106,8 @@ feature 'Admin register another employee' do
 
   scenario 'and the email must be from the EspertoFit domain' do
         # arrange
-        employee = create(:employee, admin: true)
+        gym = create(:gym)
+        employee = create(:employee, admin: true, gym:gym)
 
         # act
         visit root_path
@@ -124,7 +130,8 @@ feature 'Admin register another employee' do
 
   scenario 'and status must be active' do
     # arrange
-    employee = create(:employee, admin: true, status: :unactive)
+    gym = create(:gym)
+    employee = create(:employee, admin: true, status: :unactive, gym:gym)
 
     # act
     visit root_path

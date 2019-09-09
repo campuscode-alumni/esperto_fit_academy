@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature "employees register trainers" do
   scenario "successfully" do
-    
-    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456")
+    gym = create(:gym)
+    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456", gym:gym)
 
     visit root_path
     
@@ -28,7 +28,8 @@ feature "employees register trainers" do
     
   end
   scenario 'all fields must fill in' do
-    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456")
+    gym = create(:gym)
+    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456", gym:gym)
 
     visit root_path
     
@@ -49,7 +50,8 @@ feature "employees register trainers" do
 
   end
   scenario 'field cpf must be unique' do
-    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456")
+    gym = create(:gym)
+    employeer = create(:employee, email: "email@espertofit.com.br", password: "123456", gym:gym)
     trainer = create(:trainer)
     visit root_path
     
