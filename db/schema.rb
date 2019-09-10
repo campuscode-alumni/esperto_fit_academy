@@ -97,6 +97,14 @@ ActiveRecord::Schema.define(version: 2019_09_10_181101) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.integer "value"
+    t.integer "plan_id"
+    t.integer "gym_id"
+    t.index ["gym_id"], name: "index_prices_on_gym_id"
+    t.index ["plan_id"], name: "index_prices_on_plan_id"
+  end
+
   create_table "trainers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
