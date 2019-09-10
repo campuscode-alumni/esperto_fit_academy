@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_184024) do
+ActiveRecord::Schema.define(version: 2019_09_10_165212) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 2019_09_05_184024) do
     t.integer "minimum_permanence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.integer "value"
+    t.integer "plan_id"
+    t.integer "gym_id"
+    t.index ["gym_id"], name: "index_prices_on_gym_id"
+    t.index ["plan_id"], name: "index_prices_on_plan_id"
   end
 
   create_table "trainers", force: :cascade do |t|

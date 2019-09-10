@@ -28,4 +28,5 @@ feature 'Employee access his profile page' do
     expect(current_path).to eq root_path 
 
   end
+  
 end

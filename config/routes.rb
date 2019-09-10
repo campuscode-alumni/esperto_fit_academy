@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :gyms, only: %i[show new create]
   resources :trainers, only: %i[create new show edit update] 
   resources :plans, only: %i[new create show]
+  resources :prices, only: %i[new create]
   resources :employees, only: %i[new create show index edit update] do
     get 'change_status', on: :member
   end
