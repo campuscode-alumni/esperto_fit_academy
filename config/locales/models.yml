@@ -2,15 +2,40 @@ pt-BR:
   activerecord:
     models:
       employee: Funcionarios
-      gym: Academias
+      gym: Academia
       trainer: Professores
+      activity: Aula
     attributes:
       employee:
         name: Nome
+      gym:
+        name: Nome
+        cod: Código
+        address: Endereço
+        open_hour: Horário de abertura
+        close_hour: Horário de fechamento
+        working_days: Dias de funcionamento
+        gallery: Galeria
+      activity:
+        name: Nome
+        status: Status
+        price: Preço
+        duration: Horário de duração
+        capacity: Capacidade máxima
+        difficulty: Dificuldade
+        equipments: Equipamentos
+        rules: Conjunto de regras
+        trainer_id: Professor
+        gym_id: Academia
       trainer:
         name: Nome
         cpf: CPF
         status: 
           available: Disponível
           unavailable: Indisponível
-      
+  enum:
+    activity:
+      status:
+        active: Ativa
+        on_hold: Em pausa
+        suspended: Suspensa

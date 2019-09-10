@@ -33,6 +33,23 @@ ActiveRecord::Schema.define(version: 2019_09_10_165212) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.integer "status", default: 0
+    t.float "price"
+    t.integer "duration"
+    t.integer "capacity"
+    t.string "difficulty"
+    t.string "equipments"
+    t.text "rules"
+    t.integer "gym_id"
+    t.integer "trainer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_activities_on_gym_id"
+    t.index ["trainer_id"], name: "index_activities_on_trainer_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

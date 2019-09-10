@@ -17,7 +17,6 @@ feature 'employee view home page' do
     visit root_path
 
     click_on 'Cadastrar Academia'
-    save_page
 
     fill_in 'Nome', with: 'Academia Paulista'
     fill_in 'Código', with: '001'

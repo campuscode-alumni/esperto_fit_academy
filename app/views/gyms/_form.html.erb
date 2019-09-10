@@ -1,3 +1,13 @@
+<% if @gym.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @gym.errors.full_messages.each do |message| %>
+      <li> <%= message %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @gym do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
