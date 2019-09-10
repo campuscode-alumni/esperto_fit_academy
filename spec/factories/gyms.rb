@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :gym do
-    sequence(:name) { |n| "Academia #{n}"}
+    sequence(:name) { |n| "Academia 0#{n}"}
     sequence(:cod) { |n| "00#{n}"}
     address {"Av Paulista 111"}
     open_hour {"09:00"}

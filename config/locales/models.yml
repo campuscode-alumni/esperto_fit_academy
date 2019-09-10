@@ -5,6 +5,7 @@ pt-BR:
       gym: Academia
       trainer: Professores
       activity: Aula
+      client: Matrícula
     attributes:
       employee:
         name: Nome
@@ -33,9 +34,21 @@ pt-BR:
         status: 
           available: Disponível
           unavailable: Indisponível
+      client:
+        name: Nome completo
+        cpf: CPF
+        email: E-mail
+        gym_id: Academia
+        plan_id: Plano
+
   enum:
     activity:
       status:
         active: Ativa
         on_hold: Em pausa
         suspended: Suspensa
+    clients:
+      status:
+        active: Ativa
+        banished: Banido
+        inactive: Inativa

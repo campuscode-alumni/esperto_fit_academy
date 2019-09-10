@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :employees, only: %i[new create show index edit update] do
     get 'change_status', on: :member
   end
+  resources :clients, only: %i[show new create edit update]
 
   get 'trainers', to: 'trainers#management'
   get 'unactives', to: 'employees#unactives', as: 'employees_unactives'

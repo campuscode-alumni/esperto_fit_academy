@@ -82,4 +82,10 @@ feature 'Employee register class ' do
 
     expect(page).to have_content('Nome já está em uso')
   end
+
+  scenario "can`t access throught path" do
+    visit new_activity_path
+
+    expect(current_path).to eq new_employee_session_path
+  end 
 end

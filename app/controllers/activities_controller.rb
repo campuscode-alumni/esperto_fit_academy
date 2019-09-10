@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-
+  before_action :authenticate_employee!, only: %i[new create]
   before_action :find_all, only: %i[create]
 
   def show
