@@ -15,4 +15,10 @@ Rails.application.routes.draw do
 
   get 'trainers', to: 'trainers#management'
   get 'unactives', to: 'employees#unactives', as: 'employees_unactives'
+
+  namespace :api do
+    namespace :v1 do
+      resources :gyms, only: %i[index]
+    end
+  end
 end
