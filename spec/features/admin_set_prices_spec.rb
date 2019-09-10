@@ -5,13 +5,13 @@ feature 'Admin set prices' do
     # arrange
     admin = create(:employee, admin: true)
     plan = create(:plan)
-    gym = create(:gym)
+    gym = create(:gym, name: 'Academia X')
 
     # act
     login_as admin
     visit root_path
     click_on 'Cadastrar Preços'
-    select 'Academia 1', from: 'Unidades'
+    select 'Academia X', from: 'Unidades'
     select 'Premium', from: 'Planos'
     fill_in 'Valor', with: '9999'
     click_on 'Cadastrar'
