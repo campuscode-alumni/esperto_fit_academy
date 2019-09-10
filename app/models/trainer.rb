@@ -11,4 +11,14 @@ class Trainer < ApplicationRecord
     I18n.t "activerecord.attributes.trainer.status.#{status}"
 
   end 
+
+  def gym?(gym)
+    gyms.include?(gym)
+    
+  end
+
+  def gym_trainer(gym)
+    gym_trainers.find_by(gym: gym) 
+  end
+
 end

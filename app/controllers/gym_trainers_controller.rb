@@ -1,23 +1,17 @@
 class GymTrainersController < ApplicationController 
-  
 
   def create 
-   
-
-    @trainer = Trainer.find(params[:trainer_id]) 
-    #@gym_trainer = GymTrainer.create(params.require(:gym_trainer).permit(:trainer_id, :gym_id))
- 
-    
-    
-
-    #@trainer = @gym_trainer.trainer_id
-
-
-
-    p = params.require(:trainer).permit(gym_ids: [])
-
-    p[:gym_ids].each { |obj| GymTrainer.create(gym_id: obj, trainer:@trainer)}
-    
-    redirect_to @trainer
+    @gym_trainer = GymTrainer.new(gym_id: params[:gym_id], trainer_id: params[:trainer_id])
+    @gym_trainer.save
+    redirect_to add_units_trainer_path(params[:trainer_id])
   end
+
+  def destroy
+  
+    @gym_trainer = GymTrainer.find(params[:id])
+    @gym_trainer.destroy
+  
+    redirect_to add_units_trainer_path(@gym_trainer.trainer_id)
+  end
+  
 end

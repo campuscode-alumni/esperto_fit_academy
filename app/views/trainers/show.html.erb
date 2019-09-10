@@ -5,8 +5,8 @@
 <p><%= @trainer.translate_status%></p>
 
 <p>Academias</p>
-<% @gym_trainer.each do |gym|  %>  
-<p>Unidade: <%= "#{gym.id}"%></p>
+<% @trainer.gym_trainers.each do |gym_trainer|  %>  
+<p>Unidade: <%= "#{gym_trainer.gym.id}"%></p>
 <% end %>
 
 

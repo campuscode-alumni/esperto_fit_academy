@@ -29,7 +29,7 @@ before_action :params_find, only: %i[ show edit update add_units]
 
 
   def show
-    @gym_trainer = GymTrainer.where(trainer_id: @trainer.id)
+    
     
   end
 
@@ -54,6 +54,7 @@ before_action :params_find, only: %i[ show edit update add_units]
   def add_units
     @gyms = Gym.all
     @gym_trainer = GymTrainer.new()
+    
   end
 
 
