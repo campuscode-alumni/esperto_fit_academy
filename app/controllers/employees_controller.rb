@@ -1,6 +1,10 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_employee! 
-  before_action :verify_admin, only: %i[new create]
+  before_action :verify_admin, only: %i[new create edit update index change_status unactives]
+
+  def index
+    @employees = Employee.where(status: 'active')
+  end
 
   def new
     @employee = Employee.new
@@ -19,6 +23,38 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
+    redirect_to root_path unless current_employee == @employee || current_employee.admin?
+  end
+
+  def edit
+    @employee = Employee.find(params[:id])
+  end
+
+  def update
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      flash[:success] = 'Funcionario alterado com sucesso!'
+      redirect_to @employee
+    else
+      flash.now[:alert] = 'Funcionario não alterado'
+      render :edit
+    end
+  end
+
+  def change_status
+    @employee = Employee.find(params[:id])
+    if @employee.status == 'active'
+      @employee.unactive!
+      flash[:success] = 'Funcionario inativado com sucesso!'
+    else
+      @employee.active!
+      flash[:success] = 'Funcionario ativado com sucesso!'
+    end
+    redirect_to @employee
+  end
+
+  def unactives
+    @employees = Employee.where(status: 'unactive')
   end
 
   private

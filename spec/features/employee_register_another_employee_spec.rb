@@ -19,7 +19,7 @@ feature 'Admin register another employee' do
     fill_in 'Unidade', with: '01'
     fill_in 'Email específico', with: 'alan.h@espertofit.com.br'
     fill_in 'Senha', with: '123456'
-    click_on 'Cadastrar'
+    click_on 'Enviar'
 
     # assert
     expect(page).to have_content('Nome: Alan')
@@ -42,8 +42,8 @@ feature 'Admin register another employee' do
     fill_in 'Email', with: 'batata@espertofit.com.br'
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
-    click_on ('Cadastrar novo funcionário')
-    click_on 'Cadastrar'
+    click_on 'Cadastrar novo funcionário'
+    click_on 'Enviar'
 
     # assert
     expect(page).to have_content('Nome deve ser preenchido!')
@@ -63,11 +63,11 @@ feature 'Admin register another employee' do
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
     
-    click_on ('Cadastrar novo funcionário')
+    click_on 'Cadastrar novo funcionário'
     fill_in 'Nome', with: 'Alan'
     fill_in 'Unidade', with: '01'
     fill_in 'Email específico', with: 'batata@espertofit.com.br'
-    click_on 'Cadastrar'
+    click_on 'Enviar'
 
     # assert
     expect(page).to have_content('Email deve ser unico!')
@@ -116,12 +116,13 @@ feature 'Admin register another employee' do
         fill_in 'Senha', with: '123456'
         click_on 'Entrar'
         
-        click_on ('Cadastrar novo funcionário')
+  
+        click_on 'Cadastrar novo funcionário'
         fill_in 'Nome', with: 'Alan'
         fill_in 'Unidade', with: '01'
         fill_in 'Email específico', with: 'ciro@gmail.com'
         fill_in 'Senha', with: '123456'
-        click_on 'Cadastrar'
+        click_on 'Enviar'
     
         # assert
         expect(page).to have_content('Preencha para cadastrar um usuário')

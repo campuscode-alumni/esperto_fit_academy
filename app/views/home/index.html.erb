@@ -1,13 +1,23 @@
+<h1>Esperto Fit</h1>
 
 <% if employee_signed_in? %>
   <%= link_to 'Sair', destroy_employee_session_path, method: :delete  %>
+  <%= link_to 'Cadastrar Academia', new_gym_path %>
   <%= link_to 'Cadastrar professor' , new_trainer_path%>
   <%= link_to 'Gerenciar Professores', trainers_path %>
-  <%# byebug%>
+  <%= link_to 'Cadastrar Aula', new_activity_path %>
+  <%= link_to 'Meu Perfil', employee_path(current_employee)%>
+
   <% if current_employee.admin %>
     <%= link_to 'Cadastrar novo funcionário', new_employee_path %>
+    <%= link_to 'Cadastrar planos', new_plan_path %>
+    <%= link_to 'Cadastrar Preços', new_price_path %>
+    <%= link_to 'Lista de Funcionários', employees_path %>
+    <%= link_to 'Lista de Funcionários Inativos', employees_unactives_path %>
   <% end %>
 <% else %>
   <%= link_to 'Entrar' , new_employee_session_path%> 
 <%end%>
-<%#= link_to 'Entrar', employee_session_path %>
+    
+<%= link_to 'Matrícule-se', new_client_path %>
+

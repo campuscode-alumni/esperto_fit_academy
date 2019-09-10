@@ -58,8 +58,9 @@ feature 'Employees edit trainers ' do
   scenario 'field cpf must be unique , in edit' do
     gym = create(:gym)
     employeer = create(:employee, email: "email@espertofit.com.br", password: "123456", gym:gym)
-    trainer = create(:trainer, cpf: "123")
-    other_trainer = create(:trainer, name: "Kah", cpf: "1234")
+    trainer = create(:trainer, cpf: "123", email: "trainer@espertofit.com.br")
+    other_trainer = create(:trainer, name: "Kah", cpf: "1234", email: "ka@espertofit.com.br")
+    
     visit root_path
     
     click_on "Entrar"

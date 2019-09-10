@@ -10,7 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_193200) do
+ActiveRecord::Schema.define(version: 2019_09_10_181101) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.integer "status", default: 0
+    t.float "price"
+    t.integer "duration"
+    t.integer "capacity"
+    t.string "difficulty"
+    t.string "equipments"
+    t.text "rules"
+    t.integer "gym_id"
+    t.integer "trainer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_activities_on_gym_id"
+    t.index ["trainer_id"], name: "index_activities_on_trainer_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "status", default: 0
+    t.integer "gym_id"
+    t.integer "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "cpf"
+    t.index ["gym_id"], name: "index_clients_on_gym_id"
+    t.index ["plan_id"], name: "index_clients_on_plan_id"
+  end
 
   create_table "employees", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -41,6 +92,27 @@ ActiveRecord::Schema.define(version: 2019_09_05_193200) do
   create_table "gyms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "cod"
+    t.string "open_hour"
+    t.string "close_hour"
+    t.string "working_days"
+    t.string "address"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.integer "minimum_permanence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.integer "value"
+    t.integer "plan_id"
+    t.integer "gym_id"
+    t.index ["gym_id"], name: "index_prices_on_gym_id"
+    t.index ["plan_id"], name: "index_prices_on_plan_id"
   end
 
   create_table "trainers", force: :cascade do |t|
@@ -49,6 +121,7 @@ ActiveRecord::Schema.define(version: 2019_09_05_193200) do
     t.string "name"
     t.integer "cpf"
     t.integer "status", default: 0
+    t.string "email"
   end
 
 end

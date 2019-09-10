@@ -62,7 +62,7 @@ before_action :params_find, only: %i[ show edit update add_units]
   private 
 
   def set_trainer
-    params.require(:trainer).permit(:name ,:cpf, :status)
+    params.require(:trainer).permit(:name ,:cpf, :email, :status)
   end
 
   def params_find

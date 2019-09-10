@@ -1,4 +1,5 @@
 <%= flash[:success] %>
+<%= link_to 'Editar', edit_employee_path(@employee) %>
 
 <%= "Nome: #{@employee.name}" %>
 <%= "Unidade: #{@employee.gym.id}" %>

@@ -4,5 +4,6 @@ FactoryBot.define do
     status {'active'}
     email {'batata@espertofit.com.br'}
     password {'123456'}
+    gym
   end
 end

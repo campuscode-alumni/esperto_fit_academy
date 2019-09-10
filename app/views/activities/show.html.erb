@@ -1,0 +1,10 @@
+<h3><%= @activity.name %></h3>
+<p><%= number_to_currency(@activity.price) %></p>
+<p><%= @activity.duration %></p>
+<p><%= @activity.capacity %></p>
+<p><%= @activity.difficulty %></p>
+<p><%= @activity.equipments %></p>
+<p><%= @activity.rules %></p>
+<p><%= @activity.trainer.name %></p>
+<p><%= @activity.gym.name %></p>
+<%= link_to 'Voltar', root_path %>

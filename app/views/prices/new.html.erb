@@ -1,0 +1,13 @@
+<p>Preencha para cadastrar um preço</p>
+<%= form_for @price do |f| %>
+  <%= f.label :gym_id, 'Unidades' %>
+  <%= f.collection_select(:gym_id, @gyms, :id, :name) %>
+  <%= f.label :plan_id, 'Planos' %>
+  <%= f.collection_select(:plan_id, @plans, :id, :name) %>
+  <%= f.label :value, 'Valor' %>
+  <%= f.number_field :value  %>
+  <%= f.submit 'Cadastrar' %>
+<% end %>
+
+
+<%= @price.errors.full_messages if @price.errors.any? %>

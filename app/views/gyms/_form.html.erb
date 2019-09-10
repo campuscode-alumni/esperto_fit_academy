@@ -1,0 +1,27 @@
+<% if @gym.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @gym.errors.full_messages.each do |message| %>
+      <li> <%= message %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @gym do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :cod %>
+<%= f.number_field :cod %>
+<%= f.label :address %>
+<%= f.text_field :address %>
+<%= f.label :open_hour %>
+<%= f.text_field :open_hour %>
+<%= f.label :close_hour %>
+<%= f.text_field :close_hour %>
+<%= f.label :working_days %>
+<%= f.text_area :working_days %>
+<%= f.label :gallery %>
+<%= f.file_field :gallery, multiple: true %>
+<%= f.submit %>
+<% end %>
