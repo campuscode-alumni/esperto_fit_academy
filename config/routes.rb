@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   resources :employees, only: %i[new create show index edit update] do
     get 'change_status', on: :member
   end
-  resources :clients, only: %i[show new create edit update]
+  resources :clients, only: %i[show new create edit update index] do
+    get 'ban', on: :member
+  end
 
   resources :gym_trainers, only: %i[destroy]
   

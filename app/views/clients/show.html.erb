@@ -5,5 +5,8 @@
 <p><%= @client.email%></p>
 <p><%= @client.gym.name %></p>
 <p><%= @client.plan.name %></p>
+<p>Status: <%= @client.status %></p>
 
 <%= link_to 'Editar', edit_client_path %>
+<%= link_to 'Voltar', clients_path %>
+<%= link_to('BANIR ALUNO', ban_client_path) unless @client.banished? %>
