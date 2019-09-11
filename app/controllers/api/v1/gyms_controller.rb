@@ -1,11 +1,8 @@
 class Api::V1::GymsController < Api::V1::ApiController
   def show
-    if @gym.accepted? || @gym.employee == current_employee || (employee_signed_in? && current_employee.admin)
-      @employee = current_employee
-      @lists = Gym.where(employee: current_employee)
-      @gym_list = Gym.new
-    else
-      redirect_to root_path
-    end
+    @gym = Gym.find(params[:id])
+    render json: @gym, status: 200
+  rescue ActiveRecord::RecordNotFound
+    render json: { message: 'Academia não encontrada'}, status: 404
   end
 end
