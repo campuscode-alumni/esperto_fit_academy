@@ -16,14 +16,14 @@ feature 'Admin register another employee' do
 
     click_on 'Cadastrar novo funcionário'
     fill_in 'Nome', with: 'Alan'
-    fill_in 'Unidade', with: '01'
+    select gym.name, from: 'Unidade'
     fill_in 'Email específico', with: 'alan.h@espertofit.com.br'
     fill_in 'Senha', with: '123456'
     click_on 'Enviar'
 
     # assert
     expect(page).to have_content('Nome: Alan')
-    expect(page).to have_content('Unidade: 1')
+    expect(page).to have_content(gym.name)
     expect(page).to have_content('Status: active')
     expect(page).to have_content('Email específico: alan.h@espertofit.com.br')
     expect(page).to have_content('Admin: false')
@@ -65,7 +65,7 @@ feature 'Admin register another employee' do
     
     click_on 'Cadastrar novo funcionário'
     fill_in 'Nome', with: 'Alan'
-    fill_in 'Unidade', with: '01'
+    select gym.name, from: 'Unidade'
     fill_in 'Email específico', with: 'batata@espertofit.com.br'
     click_on 'Enviar'
 
@@ -119,7 +119,7 @@ feature 'Admin register another employee' do
   
         click_on 'Cadastrar novo funcionário'
         fill_in 'Nome', with: 'Alan'
-        fill_in 'Unidade', with: '01'
+        select gym.name, from: 'Unidade'
         fill_in 'Email específico', with: 'ciro@gmail.com'
         fill_in 'Senha', with: '123456'
         click_on 'Enviar'
