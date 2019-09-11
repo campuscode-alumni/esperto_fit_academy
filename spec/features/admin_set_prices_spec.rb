@@ -5,7 +5,7 @@ feature 'Admin set prices' do
     # arrange
     admin = create(:employee, admin: true)
     plan = create(:plan)
-    gym = create(:gym)
+    gym = create(:gym, name: 'Academia X')
 
     # act
     login_as admin

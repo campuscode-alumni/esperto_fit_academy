@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2019_09_10_181101) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.integer "gym"
     t.integer "status", default: 1
     t.boolean "admin", default: false
     t.string "email", default: "", null: false
@@ -75,8 +74,19 @@ ActiveRecord::Schema.define(version: 2019_09_10_181101) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "gym_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
+    t.index ["gym_id"], name: "index_employees_on_gym_id"
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
+  create_table "gym_trainers", force: :cascade do |t|
+    t.integer "trainer_id"
+    t.integer "gym_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_gym_trainers_on_gym_id"
+    t.index ["trainer_id"], name: "index_gym_trainers_on_trainer_id"
   end
 
   create_table "gyms", force: :cascade do |t|

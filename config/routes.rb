@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :employees
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
+
+  resources :trainers, only: %i[create new show edit update] do
+    get 'add_units', on: :member
+  end
+
+  devise_for :employees
 
   resources :gyms, only: %i[show new create]
   resources :trainers, only: %i[create new show edit update] 
@@ -13,12 +17,22 @@ Rails.application.routes.draw do
   end
   resources :clients, only: %i[show new create edit update]
 
+  resources :gym_trainers, only: %i[destroy]
+  
+  resources :employees, only: %i[new create show]
+  resources :gyms, only: %i[] do
+    resources :trainers, only: %i[] do 
+      resources :gym_trainers, only: %i[create]
+      # delete 'banana', to: 'gym_trainers#destroy'
+    end
+  end
   get 'trainers', to: 'trainers#management'
   get 'unactives', to: 'employees#unactives', as: 'employees_unactives'
 
   namespace :api do
     namespace :v1 do
-      resources :gyms, only: %i[index]
+      resources :gyms, only: %i[index show]
     end
   end
+  
 end
