@@ -4,8 +4,8 @@
   <%= f.text_field :name  %>
   <%= f.label :status %>
   <%= f.text_field :status  %>
-  <%= f.label :gym, 'Unidade' %>
-  <%= f.text_field :gym  %>
+  <%= f.label :gym_id, 'Unidade' %>
+  <%= f.collection_select(:gym_id, Gym.all, :id, :name) %>
   <%= f.label :email, 'Email específico' %>
   <%= f.text_field :email  %>
   <%= f.label :password, 'Senha' %>

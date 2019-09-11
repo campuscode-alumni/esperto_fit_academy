@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Admin edit employee' do
   scenario 'successfully' do
     # arrange
+    gym = create(:gym)
     employee = create(:employee, admin: true)
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br')
 
@@ -13,13 +14,13 @@ feature 'Admin edit employee' do
     click_on 'Roberto da Silva'
     click_on 'Editar'
     fill_in 'Nome', with: 'Roperto'
-    fill_in 'Unidade', with: '99'
+    select gym.name, from: 'Unidade'
     fill_in 'Senha', with: 'ousada'
     click_on 'Enviar'
 
     expect(current_path).to eq(employee_path(user))
     expect(page).to have_css('h1', text: 'Roperto')
-    expect(page).to have_css('p', text: '99')
+    expect(page).to have_css('p', text: gym.name)
     expect(page).to have_css('p', text: 'active')
   end
 
@@ -79,7 +80,6 @@ feature 'Admin edit employee' do
     click_on 'Roberto da Silva'
     click_on 'Editar'
     fill_in 'Nome', with: ''
-    fill_in 'Unidade', with: ''
     fill_in 'Senha', with: 'ousada'
     click_on 'Enviar'
 
