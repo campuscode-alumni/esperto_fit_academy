@@ -11,7 +11,7 @@ feature 'Admin set prices' do
     login_as admin
     visit root_path
     click_on 'Cadastrar Preços'
-    select 'Academia X', from: 'Unidades'
+    select gym.name, from: 'Unidades'
     select 'Premium', from: 'Planos'
     fill_in 'Valor', with: '9999'
     click_on 'Cadastrar'

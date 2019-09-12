@@ -2,13 +2,15 @@ require 'rails_helper'
 
 feature 'clients register on gym ' do
   scenario 'successfully' do
+    employee = create(:employee)
     gym = create(:gym)
     other_gym = create(:gym)
     plan = create(:plan)
     other_plan = create(:plan, name: 'Basic')
+    
+    login_as employee
 
     visit root_path
-    
     click_on 'Matrícule-se'
 
     fill_in 'Nome', with: 'Vinícius'
@@ -28,10 +30,13 @@ feature 'clients register on gym ' do
   end
 
   scenario 'and edit his register' do
+    employee = create(:employee)
     gym = create(:gym)
     other_gym = create(:gym)
     plan = create(:plan)
     other_plan = create(:plan, name: 'Basic')
+
+    login_as employee
 
     visit root_path
     
@@ -59,11 +64,14 @@ feature 'clients register on gym ' do
   end
 
   scenario 'and cpf must be unique' do 
+    employee = create(:employee)
     gym = create(:gym)
     other_gym = create(:gym)
     plan = create(:plan)
     other_plan = create(:plan, name: 'Basic')
     client = create(:client, cpf: '385.093.321-08', gym: gym, plan: plan)
+
+    login_as employee
 
     visit root_path
     
@@ -80,10 +88,13 @@ feature 'clients register on gym ' do
   end
 
   scenario 'and must fill all fields' do 
+    employee = create(:employee)
     gym = create(:gym)
     other_gym = create(:gym)
     plan = create(:plan)
     other_plan = create(:plan, name: 'Basic')
+
+    login_as employee
 
     visit root_path
     
