@@ -10,20 +10,20 @@ describe 'api show all gyms' do
 
     get api_v1_gyms_path
 
-    json_gyms = JSON.parse(response.body, symbolizes_names: true)
+    json_gyms = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq 200
-    expect(json_gyms[0]['name']).to include gym.name
-    expect(json_gyms[1]['name']).to include another_gym.name
+    expect(json_gyms[0][:name]).to eq gym.name
+    expect(json_gyms[1][:name]).to eq another_gym.name
   end
   it 'fails' do
     
 
     get api_v1_gyms_path
 
-    json_gyms = JSON.parse(response.body, symbolizes_names: true)
+    json_gyms = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq 404
-    expect(json_gyms["messages"]).to eq 'Nenhuma unidade cadastrada'
+    expect(json_gyms[:messages]).to eq 'Nenhuma unidade cadastrada'
   end
 end

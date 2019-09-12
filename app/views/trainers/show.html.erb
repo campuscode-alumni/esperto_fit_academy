@@ -11,4 +11,6 @@
 
 
 <%= link_to "Editar", edit_trainer_path(@trainer)%>
-<%= link_to "Adicionar mais unidades", add_units_trainer_path(@trainer.id) %>
+<% if current_employee.admin? %>
+  <%= link_to "Adicionar mais unidades", add_units_trainer_path(@trainer.id) %>
+<% end %>

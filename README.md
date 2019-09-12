@@ -22,3 +22,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+API's endpoints
+
+Obter todas as academias: /api/v1/gyms
+
+Obter detalhes de uma academia: /api/v1/gyms/:id (Vamos criar 3 academias )
+
+Cadastrar clientes: /api/v1/clients 
+
