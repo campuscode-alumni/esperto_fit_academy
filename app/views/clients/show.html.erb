@@ -10,3 +10,4 @@
 <%= link_to 'Editar', edit_client_path %>
 <%= link_to 'Voltar', clients_path %>
 <%= link_to('BANIR ALUNO', ban_client_path) unless @client.banished? %>
+<%= link_to('SUSPENDER ALUNO', suspend_client_path) unless @client.banished? || @client.suspended? %>
