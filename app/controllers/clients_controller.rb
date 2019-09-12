@@ -1,6 +1,11 @@
 class ClientsController < ApplicationController
+  before_action :authenticate_employee!
   before_action :find_all, only: %i[create update]
-  before_action :find_id, only: %i[show edit update]
+  before_action :find_id, only: %i[show edit update ]
+  
+  def index
+    @clients = Client.all 
+  end
 
   def new
     @client = Client.new
@@ -30,6 +35,16 @@ class ClientsController < ApplicationController
       find_all
       render :edit
     end
+  end
+
+  def ban
+    @client = Client.find(params[:id])
+    @client.banished!
+    flash[:notice] = 'CPF banido com sucesso!'
+    redirect_to @client
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Não existe esse aluno!'
+    redirect_to clients_path
   end
 
   private
