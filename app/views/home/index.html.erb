@@ -7,6 +7,7 @@
   <p><%= link_to 'Cadastrar Aula', new_activity_path %></p>
   <p><%= link_to 'Meu Perfil', employee_path(current_employee)%></p>
   <p><%= link_to 'Lista de alunos', clients_path %></p>
+  <p><%= link_to 'Lista de Academias', gyms_path %></p>
 
   <% if current_employee.admin %>
     <p><%= link_to 'Cadastrar novo funcionário', new_employee_path %></p>

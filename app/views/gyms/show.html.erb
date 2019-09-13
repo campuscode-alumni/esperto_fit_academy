@@ -7,4 +7,9 @@
 <% @gym.gallery.each do |image| %>
   <%= image_tag image %>
 <% end %>
+
+<% if employee_signed_in? && current_employee.gym == @gym %>
+  <%= link_to 'Editar', edit_gym_path %>
+<% end %>
+
 <%= link_to 'Voltar', root_path %>

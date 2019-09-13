@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :employees
 
-  resources :gyms, only: %i[show new create]
+  resources :gyms, only: %i[index show new create edit update destroy]
   resources :trainers, only: %i[create new show edit update] 
   resources :activities, only: %i[show new create]
   resources :plans, only: %i[new create show]
