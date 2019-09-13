@@ -12,13 +12,9 @@ feature 'employee manages gym' do
     visit root_path
 
     click_on 'Lista de Academias'
-
     click_on 'Academia Oscar Freire'
-
     click_on 'Editar'
-
     fill_in 'Endereço', with: 'Rua Oscar Freire, 1439'
-
     click_on 'Atualizar Academia'
     
     expect(page).to have_content('Academia atualizada com sucesso!')
@@ -43,9 +39,7 @@ feature 'employee manages gym' do
     login_as (employee)
 
     visit root_path
-
     click_on 'Lista de Academias'
-
     click_on 'Academia Madalena'
 
     expect(page).not_to have_link('Editar')
@@ -60,15 +54,10 @@ feature 'employee manages gym' do
     login_as (employee)
 
     visit root_path
-
     click_on 'Lista de Academias'
-
     click_on 'Academia Oscar Freire'
-
     click_on 'Editar'
-
     fill_in 'Endereço', with: ''
-
     click_on 'Atualizar Academia'
     
     expect(page).not_to have_content('Academia atualizada com sucesso!')
@@ -84,15 +73,10 @@ feature 'employee manages gym' do
     login_as (employee)
 
     visit root_path
-
     click_on 'Lista de Academias'
-
     click_on 'Academia Oscar Freire'
-
     click_on 'Editar'
-
     fill_in 'Nome', with: 'Academia Paulista'
-
     click_on 'Atualizar Academia'
     
     expect(page).not_to have_content('Academia atualizada com sucesso!')
@@ -110,13 +94,9 @@ feature 'employee manages gym' do
     visit root_path
 
     click_on 'Lista de Academias'
-
     click_on 'Academia Oscar Freire'
-
     click_on 'Editar'
-
     fill_in 'Endereço', with: 'Rua Oscar Freire, 1439'
-
     click_on 'Atualizar Academia'
     
     expect(page).to have_content('Academia atualizada com sucesso!')

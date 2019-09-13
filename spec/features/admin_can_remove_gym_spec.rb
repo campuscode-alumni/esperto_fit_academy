@@ -10,11 +10,8 @@ feature 'admin can remove gym' do
     login_as (employee)
 
     visit root_path
-
     click_on 'Lista de Academias'
-
     click_on 'Academia Oscar Freire'
-
     click_on 'Remover'
     
     expect(page).to have_content('Academia removida com sucesso!')
@@ -29,9 +26,7 @@ feature 'admin can remove gym' do
     login_as (employee)
 
     visit root_path
-
     click_on 'Lista de Academias'
-
     click_on 'Academia Oscar Freire'
     
     expect(page).not_to have_link('Remover')
