@@ -1,6 +1,7 @@
 class GymsController < ApplicationController
   before_action :authenticate_employee!
-  before_action :find_gym, only: %i[show edit update]
+  before_action :authorize_admin, only: [:destroy]
+  before_action :find_gym, only: %i[show edit update destroy]
 
   def index
     @gyms = Gym.all
@@ -34,6 +35,12 @@ class GymsController < ApplicationController
     end
   end
 
+  def destroy
+    @gym.destroy
+    flash[:notice] = 'Academia removida com sucesso!'
+    redirect_to root_path
+  end
+
   private
 
   def gym_params
@@ -44,4 +51,7 @@ class GymsController < ApplicationController
     @gym = Gym.find(params[:id])
   end
 
+  def authorize_admin
+    redirect_to root_path unless current_employee.admin
+  end
 end

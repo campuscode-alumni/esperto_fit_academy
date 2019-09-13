@@ -98,4 +98,29 @@ feature 'employee manages gym' do
     expect(page).not_to have_content('Academia atualizada com sucesso!')
     expect(page).to have_content('Nome já está em uso')
   end
+
+  scenario 'and admin also can edit' do
+    paulista = create(:gym, name: 'Academia Paulista')
+    madalena = create(:gym, name: 'Academia Madalena')
+    consolação  = create(:gym, name: 'Academia Consolação')
+    oscar_freire = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, admin: true)
+    login_as (employee)
+
+    visit root_path
+
+    click_on 'Lista de Academias'
+
+    click_on 'Academia Oscar Freire'
+
+    click_on 'Editar'
+
+    fill_in 'Endereço', with: 'Rua Oscar Freire, 1439'
+
+    click_on 'Atualizar Academia'
+    
+    expect(page).to have_content('Academia atualizada com sucesso!')
+    expect(page).to have_css('h3', text: 'Academia Oscar Freire')
+    expect(page).to have_css('p', text: 'Rua Oscar Freire, 1439')
+  end
 end

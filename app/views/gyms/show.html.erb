@@ -8,8 +8,12 @@
   <%= image_tag image %>
 <% end %>
 
-<% if employee_signed_in? && current_employee.gym == @gym %>
+<% if employee_signed_in? && current_employee.gym == @gym  || current_employee.admin?%>
   <%= link_to 'Editar', edit_gym_path %>
+<% end %>
+
+<% if current_employee.admin? %>
+  <%= link_to 'Remover', @gym, method: :delete %>
 <% end %>
 
 <%= link_to 'Voltar', root_path %>
