@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :authenticate_employee! 
+  before_action :authenticate_employee!
   before_action :verify_admin, only: %i[new create edit update index change_status unactives]
 
   def index
@@ -9,9 +9,10 @@ class EmployeesController < ApplicationController
   def new
     @employee = Employee.new
   end
-  
+
   def create
     @employee = Employee.new(employee_params)
+  
     if @employee.save
       flash[:success] = 'Funcionario cadastrado com sucesso!'
       redirect_to @employee
