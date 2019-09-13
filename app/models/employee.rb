@@ -14,12 +14,18 @@ class Employee < ApplicationRecord
   validate :corporative_email_constraint
 
   def active_for_authentication?
-    super && active? 
+    super && active?
   end
-  
+
   def inactive_message
     active_for_authentication? ? super : :account_inactive
   end
+
+  def translate_status
+    I18n.t "activerecord.attributes.employee.status.#{status}"
+  end
+
+
 
   private
 
@@ -27,4 +33,6 @@ class Employee < ApplicationRecord
     corporative_email = /\A([^@\s]+)@espertofit\.com\.br\z/i
     errors.add(:email, "deve ser corporativo!") unless email =~ corporative_email
   end
+
+
 end

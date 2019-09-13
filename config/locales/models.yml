@@ -9,6 +9,12 @@ pt-BR:
     attributes:
       employee:
         name: Nome
+        status:
+          unactive: Inativo
+          active: Ativo
+        admin:
+          true: Sim
+          false: Nao
       gym:
         name: Nome
         cod: Código
@@ -31,7 +37,7 @@ pt-BR:
       trainer:
         name: Nome
         cpf: CPF
-        status: 
+        status:
           available: Disponível
           unavailable: Indisponível
       client:
