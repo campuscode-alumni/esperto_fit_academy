@@ -8,7 +8,7 @@ feature 'Admin edit employee' do
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br')
 
     # act
-    login_as employee 
+    login_as employee
     visit root_path
     click_on 'Lista de Funcionários'
     click_on 'Roberto da Silva'
@@ -21,7 +21,7 @@ feature 'Admin edit employee' do
     expect(current_path).to eq(employee_path(user))
     expect(page).to have_css('h1', text: 'Roperto')
     expect(page).to have_css('p', text: gym.name)
-    expect(page).to have_css('p', text: 'active')
+    expect(page).to have_css('p', text: 'Ativo')
   end
 
   scenario 'and only employees can see the link to the employee area' do
@@ -74,7 +74,7 @@ feature 'Admin edit employee' do
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br')
 
     # act
-    login_as employee 
+    login_as employee
     visit root_path
     click_on 'Lista de Funcionários'
     click_on 'Roberto da Silva'
