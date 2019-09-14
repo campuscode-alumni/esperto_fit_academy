@@ -3,5 +3,5 @@
 <%= "Nome: #{@plan.name}" %>
 <%= "Permanência mínima: #{@plan.minimum_permanence} meses" %>
 
-
+<%= link_to 'Editar', edit_plan_path(@plan) %>
 <%= link_to 'Voltar', root_path %>

@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   before_action :authenticate_employee! 
-  before_action :verify_admin, only: %i[new create show] 
+  before_action :verify_admin, only: %i[new create show management] 
 
   def new 
     @plan = Plan.new 
@@ -19,6 +19,26 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+  end
+
+  def management
+    @plans = Plan.all
+  end
+
+  def edit
+    @plan = Plan.find(params[:id])
+  end
+
+  def update
+    @plan = Plan.find(params[:id])
+    if @plan.update(plan_params)
+      flash[:message] = "Alterações realizadas com sucesso"
+      redirect_to @plan
+    else
+      flash.now[:message] = @plan.errors.full_messages
+      render :edit
+    end
+     
   end
 
 

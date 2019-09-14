@@ -1,12 +1,11 @@
-<p>Preencha para cadastrar um plano</p>
+<%= flash[:alert] %>
+<%= @plan.errors.full_messages %>
+
 <%= form_for @plan do |f| %>
   <%= f.label :name, 'Nome' %>
   <%= f.text_field :name  %>
   <%= f.label :minimum_permanence, 'Permanencia mínima:' %>
   <%= f.number_field :minimum_permanence  %>
   
-  <%= f.submit 'Cadastrar' %>
+  <%= f.submit 'Salvar' %>
 <% end %>
-<%= flash[:alert] %>
-
-<%= @plan.errors.full_messages %>
