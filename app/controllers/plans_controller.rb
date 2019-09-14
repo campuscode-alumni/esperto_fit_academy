@@ -32,7 +32,7 @@ class PlansController < ApplicationController
   def update
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
-      flash[:message] = "Alterações realizadas com sucesso"
+      flash[:success] = "Alterações realizadas com sucesso"
       redirect_to @plan
     else
       flash.now[:message] = @plan.errors.full_messages

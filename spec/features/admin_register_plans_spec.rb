@@ -10,7 +10,7 @@ feature 'Admin register plans' do
     fill_in 'Email', with: admin.email
     fill_in 'Senha', with: admin.password 
     click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastrar Planos'
     fill_in 'Nome', with: 'Premium'
     fill_in 'Permanência mínima', with: 3
     click_on 'Cadastrar'
@@ -30,7 +30,7 @@ feature 'Admin register plans' do
     fill_in 'Email', with: admin.email
     fill_in 'Senha', with: admin.password 
     click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastrar Planos'
     click_on 'Cadastrar'
 
     # assert
@@ -48,7 +48,7 @@ feature 'Admin register plans' do
     fill_in 'Email', with: admin.email
     fill_in 'Senha', with: admin.password 
     click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastrar Planos'
     fill_in 'Nome', with: 'Premium'
     fill_in 'Permanência mínima', with: 3 
     click_on 'Cadastrar'
