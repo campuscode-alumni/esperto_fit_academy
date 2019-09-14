@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
   before_action :authenticate_employee! 
-  before_action :verify_admin, only: %i[new create show management] 
+  before_action :verify_admin, only: %i[new create show edit update management] 
+  before_action :find_id, only: %i[show edit update]
 
   def new 
     @plan = Plan.new 
@@ -18,7 +19,7 @@ class PlansController < ApplicationController
   end
 
   def show
-    @plan = Plan.find(params[:id])
+    
   end
 
   def management
@@ -26,11 +27,11 @@ class PlansController < ApplicationController
   end
 
   def edit
-    @plan = Plan.find(params[:id])
+    
   end
 
   def update
-    @plan = Plan.find(params[:id])
+    
     if @plan.update(plan_params)
       flash[:success] = "Alterações realizadas com sucesso"
       redirect_to @plan
@@ -51,4 +52,9 @@ class PlansController < ApplicationController
   def verify_admin
     redirect_to root_path unless current_employee.admin?
   end
+
+  def find_id
+    @plan = Plan.find(params[:id])
+  end
+
 end
