@@ -109,4 +109,36 @@ feature 'clients register on gym ' do
 
     expect(page).to have_content('CPF não pode ficar em branco')
   end
+
+  scenario 'and edit his register rigth' do
+    employee = create(:employee)
+    gym = create(:gym)
+    other_gym = create(:gym)
+    plan = create(:plan)
+    other_plan = create(:plan, name: 'Basic')
+
+    login_as employee
+
+    visit root_path
+    
+    click_on 'Matrícule-se'
+
+    fill_in 'Nome', with: 'Vinícius'
+    fill_in 'CPF', with: '385.093.321-08'
+    fill_in 'E-mail', with: 'vini@gmail.com'
+    select plan.name, from: 'Plano'
+    select other_gym.name, from: 'Academia'
+
+    click_on 'Criar Matrícula'
+    click_on 'Editar'
+
+    fill_in 'Nome', with: ''
+
+    click_on 'Atualizar Matrícula'
+
+
+    expect(page).to have_content('Nome completo não pode ficar em branco')
+  end
+
+
 end
