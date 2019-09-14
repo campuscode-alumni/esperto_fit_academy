@@ -62,7 +62,7 @@ feature 'Admin edit plans' do
         expect(current_path).to eq(root_path)   
     end
 
-    scenario 'only admin see manegement plans button' do
+    scenario 'and only admin see manegement plans button' do
        # arrange
        employee = create(:employee, admin: false)
 

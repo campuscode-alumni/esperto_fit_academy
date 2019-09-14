@@ -1,9 +1,10 @@
 <%= "Editando plano: #{@plan.name}" %>
 
-<%= flash[:alert] %>
+
 <% @plan.errors.full_messages.each do |message| %>
       <li> <%= message %>
 <%end%>
+<br>
 
 
 <%= form_for @plan do |f| %>

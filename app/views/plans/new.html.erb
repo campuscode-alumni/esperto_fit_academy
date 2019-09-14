@@ -1,4 +1,11 @@
-<p>Preencha para cadastrar um plano</p>
+<h1>Cadastro de Planos</h1>
+
+<% @plan.errors.full_messages.each do |message| %>
+      <li> <%= message %>
+<%end%>
+<br>
+
+<p>Preencha para cadastrar um plano:</p>
 <%= form_for @plan do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name  %>
@@ -7,6 +14,4 @@
   
   <%= f.submit 'Cadastrar' %>
 <% end %>
-<%= flash[:alert] %>
 
-<%= @plan.errors.full_messages %>

@@ -13,13 +13,12 @@ class PlansController < ApplicationController
       flash[:notice] = 'Plano cadastrado com sucesso!'
       redirect_to @plan 
     else
-      flash[:alert] = 'Não foi possível cadastrar o plano'
+      flash.now[:alert] = 'Não foi possível cadastrar o plano'
       render :new
     end
   end
 
-  def show
-    
+  def show 
   end
 
   def management
@@ -27,11 +26,9 @@ class PlansController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
-    
     if @plan.update(plan_params)
       flash[:success] = "Alterações realizadas com sucesso"
       redirect_to @plan
@@ -41,8 +38,6 @@ class PlansController < ApplicationController
     end
      
   end
-
-
 
   private
   def plan_params
