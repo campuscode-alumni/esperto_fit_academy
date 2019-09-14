@@ -9,11 +9,11 @@ feature 'Admin change employee status' do
     # act
     login_as admin
     visit root_path
-    click_on 'Lista de Funcionários'
+    click_on 'Listas'
+    click_on 'Lista de Funcionários Ativos'
     click_on 'Roberto da Silva'
     click_on 'Editar'
     click_on 'Alterar status'
-
 
     expect(current_path).to eq(employee_path(user))
     expect(page).to have_css('h1', text: 'Roberto da Silva')
@@ -70,14 +70,15 @@ feature 'Admin change employee status' do
   scenario 'and can list all the activate employees' do
     # arrange
     admin = create(:employee, admin: true)
-    user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'active')
+    create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'active')
     create(:employee, name: 'Pedro da Silva', email: 'inativo@espertofit.com.br', status: 'unactive')
     create(:employee, name: 'John da Silva', email: 'john_silva@espertofit.com.br', status: 'active')
 
     # act
     login_as admin
     visit root_path
-    click_on 'Lista de Funcionários'
+    click_on 'Listas'
+    click_on 'Lista de Funcionários Ativos'
 
     expect(page).to have_css('li', text: 'Roberto da Silva')
     expect(page).not_to have_css('li', text: 'Pedro da Silva')

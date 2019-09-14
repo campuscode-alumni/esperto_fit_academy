@@ -1,1 +1,35 @@
 @import "bootstrap";
+
+body{
+  background-color: #5B6974;
+}
+
+a{
+  color: white;
+}
+
+.navbar-brand{
+  height: 80px;
+}
+
+nav .navbar-nav li a{
+  color: white !important;
+}
+nav .navbar-nav li a:hover{
+  color: #343A40 !important;
+}
+.nav-link:hover{
+  background-color: #F9A103;
+  border-radius: 15px;
+}
+
+.dropdown-menu{
+  background-color: #343A40;
+}
+.dropdown-item{
+  color: white;
+  background-color: #343A40;
+}
+.dropdown-item:hover{
+  background-color: #F9A103;
+}

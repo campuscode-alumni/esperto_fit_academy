@@ -10,10 +10,11 @@
   </head>
 
   <body>
-    <h1><%= link_to 'Esperto Fit', root_path %></h1>
+    <%= render 'layouts/navbar' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
