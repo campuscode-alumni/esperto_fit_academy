@@ -53,7 +53,7 @@ feature 'Admin change employee status' do
   scenario 'and can list all the unactivate employees' do
     # arrange
     admin = create(:employee, admin: true)
-    user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'unactive')
+    create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'unactive')
     create(:employee, name: 'Pedro da Silva', email: 'inativo@espertofit.com.br', status: 'unactive')
     create(:employee, name: 'John da Silva', email: 'john_silva@espertofit.com.br', status: 'active')
 

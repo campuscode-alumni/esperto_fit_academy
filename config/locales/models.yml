@@ -6,12 +6,14 @@ pt-BR:
       trainer: Professores
       activity: Aula
       client: Matrícula
+      price: Preços
     attributes:
       employee:
         name: Nome
-        status:
-          unactive: Inativo
-          active: Ativo
+        status: Status
+        gym_id: Unidade
+        email: Email específico
+        password: Senha
         admin:
           true: Sim
           false: Nao
@@ -46,6 +48,14 @@ pt-BR:
         email: E-mail
         gym_id: Academia
         plan_id: Plano
+      plan:
+        name: Nome
+        minimum_permanence: Permanência mínima
+      price:
+        gym_id: Unidades
+        plan_id: Planos
+        value: Valor
+
 
   enum:
     activity:
@@ -53,6 +63,10 @@ pt-BR:
         active: Ativa
         on_hold: Em pausa
         suspended: Suspensa
+    employee:
+      status:
+        unactive: Inativo
+        active: Ativo
     clients:
       status:
         active: Ativa

@@ -19,12 +19,10 @@ Employee.create(name:'funcionario', status: 'active', gym:gym, email:'funcionari
 
 plan = Plan.create(name: 'Premium', minimum_permanence: 60)
 
-trainer = Trainer.create(name: 'Professor', cpf: 32467821, status: 0, email:'professor@email.com')
+trainer = Trainer.create(name: 'Professor', cpf: 32467821, status: 0, email: 'professor@email.com')
 
-classe = Activity.create(name:'Zumba',price: 50.00, duration: 60, difficulty: 'Medio', equipments:'Nenhum', rules: 'Ser gentil', gym:gym,trainer:trainer, status: 0 )
+Activity.create(name:'Zumba',price: 50.00, duration: 60, difficulty: 'Medio', equipments:'Nenhum', rules: 'Ser gentil', gym:gym,trainer:trainer, status: 0 )
 Activity.create(name:'Zumba',price: 50.00, duration: 60, difficulty: 'Medio', equipments:'Nenhum', rules: 'Ser gentil', gym:gym,trainer:trainer, status: 9 )
 
-
-
-client = Client.create(name: 'Bob', email: 'bob@email.com', cpf: '23445656778', gym_id: gym.id, plan_id: plan.id, status: 0)
+Client.create(name: 'Bob', email: 'bob@email.com', cpf: '23445656778', gym_id: gym.id, plan_id: plan.id, status: 0)
 Client.create(name: 'Bob', email: 'bob@email.com', cpf: '478564543', gym_id: gym.id, plan_id: plan.id, status: 9)

@@ -41,7 +41,7 @@ feature 'Admin register another employee' do
 
     # assert
     expect(page).to have_content('Nome deve ser preenchido!')
-    expect(page).to have_content('Preencha para cadastrar um usuário')
+    expect(page).to have_content('Cadastro de Funcionário')
   end
 
   scenario 'and email must be unique' do
@@ -61,7 +61,7 @@ feature 'Admin register another employee' do
 
     # assert
     expect(page).to have_content('Email deve ser unico!')
-    expect(page).to have_content('Preencha para cadastrar um usuário')
+    expect(page).to have_content('Cadastro de Funcionário')
   end
 
   scenario 'and employee must be logged on' do
@@ -108,8 +108,8 @@ feature 'Admin register another employee' do
     click_on 'Enviar'
 
     # assert
-    expect(page).to have_content('Preencha para cadastrar um usuário')
-    expect(page).to have_content('Email deve ser corporativo!')
+    expect(page).to have_content('Cadastro de Funcionário')
+    expect(page).to have_content('Email específico deve ser corporativo!')
   end
 
   scenario 'and status must be active' do

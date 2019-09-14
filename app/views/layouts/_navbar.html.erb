@@ -7,10 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if employee_signed_in? %>
-        <li class="nav-link">
-          <%= "Você esta logado como: #{current_employee.name}" %>
-        </li>
-        <li class="nav-item active dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Cadastros
           </a>
@@ -28,7 +25,7 @@
         </li>
 
         <% if current_employee.admin? %>
-          <li class="nav-item active dropdown">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Listas
             </a>
@@ -39,12 +36,12 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item active">
-            <p><%= link_to 'Lista de Alunos', clients_path, class: "nav-link" %></p> 
+          <li class="nav-item">
+            <%= link_to 'Lista de Alunos', clients_path, class: "nav-link" %>
           </li>
         <% end %>
 
-        <li class="nav-item active dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Gerenciar
           </a>
@@ -52,15 +49,17 @@
             <%= link_to 'Gerenciar Professores', trainers_path, class:"dropdown-item" %>
           </div>
         </li>
-
-        <li class="nav-item active">
-          <%= link_to 'Meu Perfil', employee_path(current_employee), class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to 'Meu Perfil', employee_path(current_employee), class: "nav-link"  %>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to 'Sair', destroy_employee_session_path, method: :delete, class: "nav-link"  %>
         </li>
+        <li class="nav-link">
+          <%= current_employee.name %>
+        </li>
       <% else %>
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to 'Entrar', new_employee_session_path, class: "nav-link"  %>
         </li>
 
