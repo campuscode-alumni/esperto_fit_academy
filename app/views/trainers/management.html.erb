@@ -1,7 +1,9 @@
 <h1>Lista de Professores</h1>
 
 <% @trainers.each do |trainer| %>
-  <%= link_to trainer.name, trainer %>
-  <%= trainer.translate_status %>
-  <br>
+  <div style="display:inline-block; width:300px; height:200px; text-align:center">
+    <h2><%= link_to trainer.name, trainer %></h2>
+    <p>CPF: <%= trainer.cpf %></p>
+    <p>Status: <%= trainer.translate_status %></p>
+  </div>
 <%end%>

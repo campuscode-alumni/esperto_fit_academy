@@ -1,16 +1,22 @@
+
+<center>
 <%= flash[:message]%>
-
+<div style="font-size:25px">
 <h1><%= @trainer.name %></h1>
-<p><%= @trainer.cpf %></p>
-<p><%= @trainer.translate_status%></p>
+<p><b>CPF:</b> <%= @trainer.cpf %></p>
 
-<p>Academias</p>
-<% @trainer.gym_trainers.each do |gym_trainer|  %>  
-<p>Unidade: <%= "#{gym_trainer.gym.id}"%></p>
+<p><b> Status: </b><%= @trainer.translate_status%></p>
+
+<p><b>Academias que faz parte</b></p>
+<% @trainer.gym_trainers.each do |gym_trainer|  %>
+<p>* <%= "#{gym_trainer.gym.name}"%></p>
 <% end %>
 
 
-<%= link_to "Editar", edit_trainer_path(@trainer)%>
+<p><%= link_to "Editar", edit_trainer_path(@trainer)%></p>
 <% if current_employee.admin? %>
   <%= link_to "Adicionar mais unidades", add_units_trainer_path(@trainer.id) %>
 <% end %>
+<p><%= link_to "Voltar", trainers_path%></p>
+</div>
+</center>
