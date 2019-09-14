@@ -1,11 +1,12 @@
 pt-BR:
   activerecord:
     models:
-      employee: Funcionarios
+      employee: Funcionários
       gym: Academia
       trainer: Professores
       activity: Aula
       client: Matrícula
+      plan: Plano
     attributes:
       employee:
         name: Nome
@@ -46,6 +47,9 @@ pt-BR:
         email: E-mail
         gym_id: Academia
         plan_id: Plano
+      plan:
+        name: Nome
+        minimum_permanence: Permanência mínima
 
   enum:
     activity:

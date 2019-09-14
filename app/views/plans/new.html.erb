@@ -1,8 +1,8 @@
 <p>Preencha para cadastrar um plano</p>
 <%= form_for @plan do |f| %>
-  <%= f.label :name, 'Nome' %>
+  <%= f.label :name %>
   <%= f.text_field :name  %>
-  <%= f.label :minimum_permanence, 'Permanência mínima:' %>
+  <%= f.label :minimum_permanence %>
   <%= f.number_field :minimum_permanence  %>
   
   <%= f.submit 'Cadastrar' %>

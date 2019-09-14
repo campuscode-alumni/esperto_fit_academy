@@ -14,7 +14,7 @@ feature 'Admin edit plans' do
         click_on 'Editar'
 
         fill_in 'Nome', with: 'Básico'
-        fill_in 'Permanencia mínima', with: '90'
+        fill_in 'Permanência mínima', with: '90'
         click_on 'Salvar'
 
         expect(current_path).to eq plan_path(plan_basic)
@@ -37,10 +37,10 @@ feature 'Admin edit plans' do
         click_on 'Editar'
 
         fill_in 'Nome', with: ''
-        fill_in 'Permanencia mínima', with: '90'
+        fill_in 'Permanência mínima', with: '90'
         click_on 'Salvar'
 
-        expect(page).to have_content('Name Todos os campos devem ser preenchidos')
+        expect(page).to have_content('Nome Todos os campos devem ser preenchidos')
         expect(page).not_to have_content('Alterações realizadas com sucesso')    
     end
 
