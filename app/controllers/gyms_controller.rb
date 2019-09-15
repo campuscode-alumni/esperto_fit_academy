@@ -1,7 +1,8 @@
 class GymsController < ApplicationController
   before_action :authenticate_employee!
-  before_action :authorize_admin, only: [:destroy]
   before_action :find_gym, only: %i[show edit update destroy]
+  before_action :authorize_employee, only: [:update]
+  before_action :authorize_admin, only: [:destroy]
 
   def index
     @gyms = Gym.all
@@ -16,8 +17,7 @@ class GymsController < ApplicationController
   def create
     @gym = Gym.new(gym_params)
     if @gym.save
-      redirect_to @gym
-      flash[:notice] = 'Academia cadastrada'
+      redirect_to @gym, notice: t(:successfully_creating, scope: [:notice, :gym])
     else
       render :new
     end
@@ -27,18 +27,16 @@ class GymsController < ApplicationController
 
   def update
     if @gym.update(gym_params)
-      flash[:notice] = 'Academia atualizada com sucesso!'
-      redirect_to @gym
+      redirect_to @gym, notice: t(:successfully_editing, scope: [:notice, :gym])
     else
-      flash.now[:notice] = 'Aconteceu um erro'
+      flash.now[:notice] = t(:fails_editing, scope: [:notice, :gym])
       render :edit
     end
   end
 
   def destroy
     @gym.destroy
-    flash[:notice] = 'Academia removida com sucesso!'
-    redirect_to root_path
+    redirect_to root_path, notice: t(:successfully_destroying, scope: [:notice, :gym])
   end
 
   private
@@ -52,6 +50,10 @@ class GymsController < ApplicationController
   end
 
   def authorize_admin
-    redirect_to root_path unless current_employee.admin
+    redirect_to root_path unless current_employee.admin?
+  end
+
+  def authorize_employee
+    redirect_to root_path unless current_employee.gym?(@gym) || current_employee.admin?
   end
 end

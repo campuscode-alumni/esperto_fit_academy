@@ -3,10 +3,10 @@
 <% @gyms.each do |gym| %>
   <h3> <%= link_to gym.name, gym %> </h3>
   <ul>
-    <li> <%= gym.address %> </li>
-    <li> <%= gym.open_hour %> </li>
-    <li> <%= gym.close_hour %> </li>
-    <li> <%= gym.working_days %> </li>
+    <li> Endereço: <%= gym.address %> </li>
+    <li> Horário de abertura: <%= gym.open_hour %> </li>
+    <li> Horário de fechamento: <%= gym.close_hour %> </li>
+    <li> Dias de funcionamento: <%= gym.working_days %> </li>
   </ul>
 <% end %>
 

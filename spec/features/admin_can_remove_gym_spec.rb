@@ -16,19 +16,4 @@ feature 'admin can remove gym' do
     
     expect(page).to have_content('Academia removida com sucesso!')
   end
-
-  scenario 'and normal employee can not' do
-    paulista = create(:gym, name: 'Academia Paulista')
-    madalena = create(:gym, name: 'Academia Madalena')
-    consolação  = create(:gym, name: 'Academia Consolação')
-    oscar_freire = create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
-    login_as (employee)
-
-    visit root_path
-    click_on 'Lista de Academias'
-    click_on 'Academia Oscar Freire'
-    
-    expect(page).not_to have_link('Remover')
-  end
 end

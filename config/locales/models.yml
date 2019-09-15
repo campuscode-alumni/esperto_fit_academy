@@ -46,7 +46,6 @@ pt-BR:
         email: E-mail
         gym_id: Academia
         plan_id: Plano
-
   enum:
     activity:
       status:
@@ -58,3 +57,10 @@ pt-BR:
         active: Ativa
         banished: Banido
         inactive: Inativa
+
+  notice:
+    gym:
+      successfully_editing: Academia atualizada com sucesso!
+      successfully_creating: Academia cadastrada
+      successfully_destroying: Academia removida com sucesso!
+      fails_editing: Aconteceu um erro
