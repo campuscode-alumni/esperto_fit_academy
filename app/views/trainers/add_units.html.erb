@@ -2,7 +2,9 @@
 
 <%@gyms.each do |gym|%>
 
-  <div id="<%=gym.id%>" style="display:inline-block; width:300px; height: 150px; text-align:center" >
+  <div id="<%=gym.id%>" class="add_units" >
+
+
 
     <h3><%= gym.name %></h3>
     <%if @trainer.gym?(gym) %>
