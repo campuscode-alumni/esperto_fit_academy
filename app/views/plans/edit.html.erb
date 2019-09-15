@@ -1,17 +1,21 @@
-<%= "Editando plano: #{@plan.name}" %>
-
-
 <% @plan.errors.full_messages.each do |message| %>
   <li><%= message %></li>
 <%end%>
 <br>
 
+<div class="mx-auto" style="width: 500px;">
+  <blockquote class="blockquote text-left">
+    <h2 class="font-weight-bold"><%= "Editando plano: #{@plan.name}" %></h2>
 
-<%= form_for @plan do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name  %>
-  <%= f.label :minimum_permanence %>
-  <%= f.number_field :minimum_permanence  %>
-  
-  <%= f.submit 'Salvar' %>
-<% end %>
+      <%= form_for @plan do |f| %>
+        <%= f.label :name, class:"bnt-block" %>
+        <%= f.text_field :name  %>
+        <%= f.label :minimum_permanence %>
+        <%= f.number_field :minimum_permanence  %>
+        <%= f.submit 'Salvar', class:"btn btn-secondary btn-block" %>
+      <% end %>
+      <br>
+      <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block"%>
+    
+  </blockquote>
+</div>

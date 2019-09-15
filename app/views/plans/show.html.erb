@@ -1,8 +1,26 @@
-<%= flash[:success] %>
+<div class="fixed-top"><%= flash[:success] %></div>
 
-<%= "Nome: #{@plan.name}" %>
-<%= "Permanência mínima: #{@plan.minimum_permanence} meses" %>
+<div class="mx-auto" style="width: 500px;">
+  <blockquote class="blockquote text-center">
+    <h2 class="font-weight-bold"><%= "#{@plan.name}" %></h2>
+    <br>
+    <h4>Detalhes:</h4>
+    <%= "Permanência mínima: #{@plan.minimum_permanence} meses" %>
 
-<%= link_to 'Editar', edit_plan_path(@plan) %>
-<%= link_to 'Deletar Plano', plan_path(@plan), method: :delete %>
-<%= link_to 'Voltar', root_path %>
+    <br>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <%= link_to 'Editar', edit_plan_path(@plan), class:"btn btn-secondary btn-block" %>
+        </div>
+        <div class="col">
+          <%= link_to 'Deletar Plano', plan_path(@plan), class:"btn btn-secondary btn-block", method: :delete %></br>
+        </div>
+      </div>
+    </div>
+
+    <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block"%>
+    
+  </blockquote>
+</div>
