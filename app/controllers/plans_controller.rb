@@ -50,7 +50,7 @@ class PlansController < ApplicationController
   end
 
   def verify_admin
-    redirect_to rnew_employee_session_path unless current_employee.admin?
+    redirect_to new_employee_session_path unless current_employee.admin?
   end
 
   def find_id
