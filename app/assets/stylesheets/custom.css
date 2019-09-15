@@ -1,5 +1,12 @@
 body {
   background-color: #5b6974;
+  color: white;
+}
+h1 {
+  color: #f9a103;
+}
+h2 {
+  color: #f9a103;
 }
 a {
   color: white;
@@ -26,4 +33,29 @@ nav .navbar-nav li a:hover {
 }
 .dropdown-item:hover {
   background-color: #f9a103;
+}
+.jumbotron {
+  background-image: asset-url("gym_monaghan.jpg");
+  background-size: cover;
+  height: 500px;
+}
+.jumbotron-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 320px;
+  width: auto;
+}
+.jumbotron-content {
+  position: absolute;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+}
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #f9a103;
+  color: #f9a103;
+  text-align: center;
 }

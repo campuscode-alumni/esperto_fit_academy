@@ -23,7 +23,7 @@ class Employee < ApplicationRecord
   end
 
   def translate_status
-    I18n.t "activerecord.attributes.employee.status.#{status}"
+    I18n.t "activerecord.attributes.employee.statuses.#{status}"
   end
 
 

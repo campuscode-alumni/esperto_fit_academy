@@ -11,6 +11,9 @@ pt-BR:
       employee:
         name: Nome
         status: Status
+        statuses:
+          active: Ativo
+          unactive: Inativo
         gym_id: Unidade
         email: Email específico
         password: Senha
