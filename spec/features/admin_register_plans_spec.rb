@@ -16,7 +16,7 @@ feature 'Admin register plans' do
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Nome: Premium')
+    expect(page).to have_content('Premium')
     expect(page).to have_content('Permanência mínima: 3 meses')
     expect(page).to have_link('Voltar')
   end
