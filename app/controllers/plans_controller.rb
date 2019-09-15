@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_action :authenticate_employee! 
+  before_action :autorized_admin
   before_action :verify_admin, only: %i[new create show edit update management] 
   before_action :find_id, only: %i[show edit update]
 
@@ -51,5 +52,11 @@ class PlansController < ApplicationController
   def find_id
     @plan = Plan.find(params[:id])
   end
+
+  def autorized_admin
+    redirect_to new_employee_session_path unless current_employee.admin?
+  end
+
+
 
 end
