@@ -20,7 +20,7 @@ feature 'trainers linked to gym 'do
     click_on "Cadastrar"
 
     expect(page).to have_content "Academias"
-    expect(page).to have_content "* #{gym.name}"
+    expect(page).to have_content "#{gym.name}"
   end
 
   scenario 'employee add more units ' do
@@ -52,9 +52,9 @@ feature 'trainers linked to gym 'do
     click_on "Voltar"
 
     #expect(current_path).to eq(trainer)
-    expect(page).to have_content("* #{gym_1.name}")
-    expect(page).to have_content("* #{gym_2.name}")
-    expect(page).not_to have_content("* #{gym_3.name}")
+    expect(page).to have_content("#{gym_1.name}")
+    expect(page).to have_content("#{gym_2.name}")
+    expect(page).not_to have_content("#{gym_3.name}")
   end
 
   scenario 'employee add more units ' do
@@ -88,8 +88,8 @@ feature 'trainers linked to gym 'do
     click_on "Voltar"
 
     #expect(current_path).to eq(trainer)
-    expect(page).not_to have_content("* #{gym_1.name}")
-    expect(page).to have_content("* #{gym_2.name}")
+    expect(page).not_to have_content("#{gym_1.name}")
+    expect(page).to have_content("#{gym_2.name}")
 
 
   end
