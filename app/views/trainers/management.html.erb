@@ -1,13 +1,15 @@
-<h1>Lista de Professores</h1>
+<div class="text-center">
+  <h1>Lista de Professores</h1>
 
-<div class="row">
-  <% @trainers.each do |trainer| %>
-    <div class="col-3">
-        <div class="text-center">
-        <h2><%= link_to trainer.name, trainer %></h2>
-        <p>CPF: <%= trainer.cpf %></p>
-        <p>Status: <%= trainer.translate_status %></p>
-        </div>
-    </div>
-  <%end%>
+  <div class="row">
+    <% @trainers.each do |trainer| %>
+      <div class="col-3">
+
+          <h2><%= link_to trainer.name, trainer %></h2>
+          <p>CPF: <%= trainer.cpf %></p>
+          <p>Status: <%= trainer.translate_status %></p>
+
+      </div>
+    <%end%>
+  </div>
 </div>

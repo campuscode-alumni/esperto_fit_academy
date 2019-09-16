@@ -1,19 +1,22 @@
+<div class="text-center">
 
-<div class="row" >
-<%@gyms.each do |gym|%>
-    <div id="<%=gym.id%>"class="col-4">
-      <div class="text-center">
-        <h3 ><%= gym.name %></h3>
-        <%if @trainer.gym?(gym) %>
-          <h3><%= link_to "Desvincular", gym_trainer_path(@trainer.gym_trainer(gym).id), method: :delete, style: 'color:red;' %></h3>
-        <% else %>
-          <h3><%= link_to "Vincular", gym_trainer_gym_trainers_path(gym, @trainer), method: :post %></h3>
-        <% end %>
-      </div>
-      </br>
-    </div>
-<% end %>
+  <div class="row" >
+
+    <%@gyms.each do |gym|%>
+        <div id="<%=gym.id%>"class="col-4">
+
+            <h3 ><%= gym.name %></h3>
+            <%if @trainer.gym?(gym) %>
+              <h3><%= link_to "Desvincular", gym_trainer_path(@trainer.gym_trainer(gym).id), method: :delete, style: 'color:red;' %></h3>
+            <% else %>
+              <h3><%= link_to "Vincular", gym_trainer_gym_trainers_path(gym, @trainer), method: :post %></h3>
+            <% end %>
+
+          </br>
+        </div>
+    <% end %>
+
+  </div>
+
+  <h3><%= link_to "Voltar", @trainer%></h3>
 </div>
-
-
-<h3 class="text-center"><%= link_to "Voltar", @trainer%></h3>
