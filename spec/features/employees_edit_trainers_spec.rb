@@ -88,4 +88,6 @@ feature 'Employees edit trainers ' do
 
     expect(current_path).to eq(new_employee_session_path)
   end
+
+  
 end

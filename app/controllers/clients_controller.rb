@@ -45,6 +45,20 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
+  def inactivate
+    @client = Client.find(params[:id])
+    if @client.active?
+      @client.inactive!
+      flash[:notice] = 'Cliente desvinculado com sucesso!'
+    else 
+      flash[:alert] = 'Cliente deve estar com status ativo para desvincular.'
+    end
+    redirect_to @client
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Não existe esse aluno!'
+    redirect_to clients_path
+  end
+
   private
 
   def client_params

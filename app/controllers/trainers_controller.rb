@@ -1,6 +1,7 @@
 class TrainersController < ApplicationController 
 before_action :authenticate_employee!, only: %i[ new create edit update show]
 before_action :params_find, only: %i[ show edit update add_units]
+before_action :authorize_admin, only: [:add_units]
 
 
   def new
@@ -67,5 +68,9 @@ before_action :params_find, only: %i[ show edit update add_units]
 
   def params_find
     @trainer = Trainer.find(params[:id])
+  end
+
+  def authorize_admin
+    redirect_to root_path unless current_employee.admin
   end
 end

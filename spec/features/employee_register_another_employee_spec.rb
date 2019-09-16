@@ -24,9 +24,9 @@ feature 'Admin register another employee' do
     # assert
     expect(page).to have_content('Nome: Alan')
     expect(page).to have_content(gym.name)
-    expect(page).to have_content('Status: active')
+    expect(page).to have_content('Status: Ativo')
     expect(page).to have_content('Email específico: alan.h@espertofit.com.br')
-    expect(page).to have_content('Admin: false')
+    expect(page).to have_content('Admin: Nao')
     expect(page).to have_content('Funcionario cadastrado com sucesso!')
     expect(page).to have_link('Voltar')
   end
@@ -47,7 +47,7 @@ feature 'Admin register another employee' do
 
     # assert
     expect(page).to have_content('Nome deve ser preenchido!')
-    
+
     expect(page).to have_content('Preencha para cadastrar um usuário')
   end
 
@@ -62,7 +62,7 @@ feature 'Admin register another employee' do
     fill_in 'Email', with: 'batata@espertofit.com.br'
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
-    
+
     click_on 'Cadastrar novo funcionário'
     fill_in 'Nome', with: 'Alan'
     select gym.name, from: 'Unidade'
@@ -99,7 +99,7 @@ feature 'Admin register another employee' do
 
   scenario 'and visitor can access nothing of employees by route' do
 
-    visit new_employee_path 
+    visit new_employee_path
 
     expect(current_path).to eq new_employee_session_path
   end
@@ -115,18 +115,18 @@ feature 'Admin register another employee' do
         fill_in 'Email', with: 'batata@espertofit.com.br'
         fill_in 'Senha', with: '123456'
         click_on 'Entrar'
-        
-  
+
+
         click_on 'Cadastrar novo funcionário'
         fill_in 'Nome', with: 'Alan'
         select gym.name, from: 'Unidade'
         fill_in 'Email específico', with: 'ciro@gmail.com'
         fill_in 'Senha', with: '123456'
         click_on 'Enviar'
-    
+
         # assert
         expect(page).to have_content('Preencha para cadastrar um usuário')
-        expect(page).to have_content('Email deve ser corporativo!')    
+        expect(page).to have_content('Email deve ser corporativo!')
   end
 
   scenario 'and status must be active' do
@@ -146,4 +146,3 @@ feature 'Admin register another employee' do
     expect(page).to have_content('Você esta INATIVO')
   end
 end
-

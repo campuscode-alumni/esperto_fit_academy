@@ -7,17 +7,17 @@ feature 'Admin change employee status' do
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'active')
 
     # act
-    login_as admin 
+    login_as admin
     visit root_path
     click_on 'Lista de Funcionários'
     click_on 'Roberto da Silva'
     click_on 'Editar'
     click_on 'Alterar status'
-   
+
 
     expect(current_path).to eq(employee_path(user))
-    expect(page).to have_css('h1', text: 'Roberto da Silva')  
-    expect(page).to have_css('p', text: 'unactive')
+    expect(page).to have_css('h1', text: 'Roberto da Silva')
+    expect(page).to have_css('p', text: 'Inativo')
   end
 
   scenario 'successfully activate him' do
@@ -26,17 +26,17 @@ feature 'Admin change employee status' do
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'unactive')
 
     # act
-    login_as admin 
+    login_as admin
     visit root_path
     click_on 'Lista de Funcionários Inativos'
     click_on 'Roberto da Silva'
     click_on 'Editar'
     click_on 'Alterar status'
-   
+
 
     expect(current_path).to eq(employee_path(user))
-    expect(page).to have_css('h1', text: 'Roberto da Silva')  
-    expect(page).to have_css('p', text: 'active')
+    expect(page).to have_css('h1', text: 'Roberto da Silva')
+    expect(page).to have_css('p', text: 'Ativo')
   end
 
   scenario 'and only admin can access the routes' do
@@ -58,7 +58,7 @@ feature 'Admin change employee status' do
     create(:employee, name: 'John da Silva', email: 'john_silva@espertofit.com.br', status: 'active')
 
     # act
-    login_as admin 
+    login_as admin
     visit root_path
     click_on 'Lista de Funcionários Inativos'
 
@@ -75,7 +75,7 @@ feature 'Admin change employee status' do
     create(:employee, name: 'John da Silva', email: 'john_silva@espertofit.com.br', status: 'active')
 
     # act
-    login_as admin 
+    login_as admin
     visit root_path
     click_on 'Lista de Funcionários'
 
@@ -85,7 +85,7 @@ feature 'Admin change employee status' do
   end
 
   scenario 'and only admins can access the unactive employees list' do
-    # arrange 
+    # arrange
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'active' , admin: false)
 
     # act
