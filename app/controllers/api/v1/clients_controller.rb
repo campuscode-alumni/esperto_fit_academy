@@ -10,6 +10,13 @@ class Api::V1::ClientsController < Api::V1::ApiController
     end
   end
 
+  def show
+    @client = Client.find_by(cpf: params[:cpf])
+    return render json: 'Cliente não encontrado', status: 404 unless @client
+
+    render json: @client, status: 302
+  end
+
   private
 
   def client_params
