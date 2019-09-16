@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   before_action :authenticate_employee!
   before_action :find_all, only: %i[create update]
-  before_action :find_id, only: %i[show edit update ]
+  before_action :find_id, only: %i[show edit update verify_payments ]
   
   def index
     @clients = Client.all 
@@ -57,6 +57,11 @@ class ClientsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'Não existe esse aluno!'
     redirect_to clients_path
+  end
+
+  def verify_payments
+    @client.indebted! if @client.last_payment_status == 'indebted'
+    redirect_to @client
   end
 
   private

@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'mini_racer', platforms: :ruby
 
 gem 'faraday'
+gem 'faraday_middleware'
 
 gem 'devise'
 
