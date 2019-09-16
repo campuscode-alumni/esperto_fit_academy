@@ -76,3 +76,14 @@ Things you may want to cover:
       }
     }
     ```
+    
+# API get CPF status
+> GET "/api/v1/clients/consult_cpf/#{client.cpf}"
+
+```json
+# Exemplo de resposta, status: 302
+{
+  "CPF":"12312312300",
+  "status":"banished"
+}
+```
