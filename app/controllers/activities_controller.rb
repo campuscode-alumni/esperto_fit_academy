@@ -27,8 +27,7 @@ class ActivitiesController < ApplicationController
 
   def update
     if @activity.update(activity_params)
-      redirect_to @activity
-      flash[:notice] = 'Aula atualizada com sucesso!'
+      redirect_to @activity, notice: 'Aula atualizada com sucesso!'
     else
       render :edit
     end
