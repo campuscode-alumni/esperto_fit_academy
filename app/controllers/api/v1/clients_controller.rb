@@ -5,6 +5,7 @@ class Api::V1::ClientsController < Api::V1::ApiController
     return render json: 'CPF não encontrado', status: 404 unless @client
 
     render json: @client.to_json(only: [:cpf, :status]), status: 302
+  end
   
   def create
     @client = Client.new(client_params)
