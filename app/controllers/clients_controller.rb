@@ -52,6 +52,9 @@ class ClientsController < ApplicationController
     @client.suspended!
     flash[:notice] = 'CPF suspenso com sucesso!'
     redirect_to @client
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Não existe esse aluno!'
+    redirect_to clients_path
   end
   private
 

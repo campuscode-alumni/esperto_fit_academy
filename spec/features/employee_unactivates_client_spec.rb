@@ -36,5 +36,27 @@ feature 'Employee unactivate client' do
     expect(page).not_to have_content('SUSPENDER ALUNO') 
   end
 
-  
+  scenario 'and link must be protected to visitors' do
+    # arrange
+    client = create(:client, status: 0)
+
+    # act
+    visit suspend_client_path(client)
+
+    #assert 
+    expect(current_path).to eq new_employee_session_path
+  end
+
+  scenario 'and client must exist' do
+    #arrange
+    employee = create(:employee)
+
+    #act
+    login_as employee
+    visit suspend_client_path(1)
+
+    #assert
+    expect(current_path).to eq clients_path
+    expect(page).to have_content('Não existe esse aluno!')
+  end
 end
