@@ -13,7 +13,7 @@ describe 'show gym details ' do
     expect(json_gym[:gym][:close_hour]).to eq gym.close_hour
     expect(json_gym[:gym][:working_days]).to eq gym.working_days
     expect(json_gym[:gym][:address]).to eq gym.address
-    expect(json_gym[:gym][:images].first).to eq "http://www.example.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f38dc1ef0ace3dbcd4f962ceffdf6ffa578a23f1/academia_01.jpeg"
+    expect(json_gym[:gym][:images].first).to include "/academia_01.jpeg"
   end
   
   it 'returns an error if the gym is not found' do

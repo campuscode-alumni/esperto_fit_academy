@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :clients, only: %i[show new create edit update index] do
     get 'ban', on: :member
     get 'suspend', on: :member
+    get 'inactivate', on: :member 
   end
 
   resources :gym_trainers, only: %i[destroy]
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :gyms, only: %i[index show]
+      resources :clients, only: %i[create]
     end
   end
   
