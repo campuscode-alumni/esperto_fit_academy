@@ -13,7 +13,7 @@ class PlansController < ApplicationController
       flash[:notice] = 'Plano cadastrado com sucesso!'
       redirect_to @plan 
     else
-      flash.now[:alert] = 'Não foi possível cadastrar o plano'
+      flash.now[:message] = @plan.errors.full_messages
       render :new
     end
   end

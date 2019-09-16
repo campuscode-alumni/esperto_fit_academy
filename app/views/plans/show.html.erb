@@ -1,26 +1,28 @@
-<div class="fixed-top"><%= flash[:success] %></div>
+<div class="text-center font-weight-bold app-space-top-bottom">
+  <%= flash[:success] %>
+</div>
 
-<div class="mx-auto" style="width: 500px;">
-  <blockquote class="blockquote text-center">
-    <h2 class="font-weight-bold"><%= "#{@plan.name}" %></h2>
-    <br>
-    <h4>Detalhes:</h4>
-    <%= "Permanência mínima: #{@plan.minimum_permanence} meses" %>
-
-    <br>
-    <br>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <%= link_to 'Editar', edit_plan_path(@plan), class:"btn btn-secondary btn-block" %>
-        </div>
-        <div class="col">
-          <%= link_to 'Deletar Plano', plan_path(@plan), class:"btn btn-secondary btn-block", method: :delete %></br>
-        </div>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="font-weight-bold text-center"><%= "#{@plan.name}" %></h2>
+      <h4 class="app-space-line-bottom">Descrição:</h4>
+      <h4>Detalhes:</h4>
+      <%= "Permanência mínima: #{@plan.minimum_permanence} meses" %>
     </div>
-
-    <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block"%>
-    
-  </blockquote>
+  </div>
+  <div class="row app-space-line-top">
+    <div class="col">
+      <%= link_to 'Editar', edit_plan_path(@plan), class:"btn btn-secondary btn-block" %>
+    </div>
+    <div class="col">
+      <%= link_to 'Deletar Plano', plan_path(@plan), class:"btn btn-secondary btn-block", method: :delete %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block app-space-button"%>
+    </div>
+  </div> 
+  
 </div>

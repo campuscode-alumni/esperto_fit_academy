@@ -1,21 +1,28 @@
-<% @plan.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-<%end%>
-<br>
+<div class="text-center font-weight-bold app-space-top-bottom">
+  <% @plan.errors.full_messages.each do |message| %>
+    <%= message %>
+  <%end%>
+</div>
 
-<div class="mx-auto" style="width: 500px;">
-  <blockquote class="blockquote text-left">
-    <h2 class="font-weight-bold"><%= "Editando plano: #{@plan.name}" %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Editando plano:<span class="text-warning font-weight-bold "><%="  #{@plan.name}"%></span></h3>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col">
 
-      <%= form_for @plan do |f| %>
-        <%= f.label :name, class:"bnt-block" %>
-        <%= f.text_field :name  %>
-        <%= f.label :minimum_permanence %>
-        <%= f.number_field :minimum_permanence  %>
-        <%= f.submit 'Salvar', class:"btn btn-secondary btn-block" %>
-      <% end %>
-      <br>
-      <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block"%>
-    
-  </blockquote>
+        <%= form_for @plan do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name, class:"form-control app-space-imput-bottom" %>
+          <%= f.label :minimum_permanence %>
+          <%= f.number_field :minimum_permanence, class:"form-control app-space-input-bottom"%>
+          <%= f.submit 'Salvar', class:"btn btn-secondary btn-block app-space-button" %>
+        <% end %>
+
+    </div>
+  </div>
+
+        <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block app-space-button"%>
 </div>
