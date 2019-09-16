@@ -10,13 +10,13 @@ feature 'Admin register plans' do
     fill_in 'Email', with: admin.email
     fill_in 'Senha', with: admin.password 
     click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastrar Planos'
     fill_in 'Nome', with: 'Premium'
     fill_in 'Permanência mínima', with: 3
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Nome: Premium')
+    expect(page).to have_content('Premium')
     expect(page).to have_content('Permanência mínima: 3 meses')
     expect(page).to have_link('Voltar')
   end
@@ -30,12 +30,13 @@ feature 'Admin register plans' do
     fill_in 'Email', with: admin.email
     fill_in 'Senha', with: admin.password 
     click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastrar Planos'
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Não foi possível cadastrar o plano')
-    expect(page).to have_content('Todos os campos devem ser preenchidos')
+ 
+    expect(page).to have_content('Nome Todos os campos devem ser preenchidos')
+    expect(page).to have_content('Permanência mínima Todos os campos devem ser preenchidos')
   end
 
   scenario 'and the name must be unique' do
@@ -48,13 +49,13 @@ feature 'Admin register plans' do
     fill_in 'Email', with: admin.email
     fill_in 'Senha', with: admin.password 
     click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastrar Planos'
     fill_in 'Nome', with: 'Premium'
     fill_in 'Permanência mínima', with: 3 
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Não foi possível cadastrar o plano')
+
     expect(page).to have_content('O nome deve ser único')
   end
 

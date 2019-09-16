@@ -1,12 +1,27 @@
-<p>Preencha para cadastrar um plano</p>
-<%= form_for @plan do |f| %>
-  <%= f.label :name, 'Nome' %>
-  <%= f.text_field :name  %>
-  <%= f.label :minimum_permanence, 'Permanência mínima' %>
-  <%= f.number_field :minimum_permanence  %>
-  
-  <%= f.submit 'Cadastrar' %>
-<% end %>
-<%= flash[:alert] %>
 
-<%= @plan.errors.full_messages %>
+<div class="text-center font-weight-bold app-space-top-bottom">
+  <% @plan.errors.full_messages.each do |message| %>
+    <%= message %></li>
+  <%end%>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h1 class="app-title-spaces ">Cadastro de Planos</h1>
+      <p class="app-space-line-top">Preencha para cadastrar um plano:</p>
+
+      <%= form_for @plan do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class:"form-control app-space-imput-bottom"  %>
+        <%= f.label :minimum_permanence %>
+        <%= f.number_field :minimum_permanence, class:"form-control app-space-imput-bottom"  %>
+        
+        <%= f.submit 'Cadastrar', class:"btn btn-secondary btn-block app-space-button"  %>
+      <% end %>
+      <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block app-space-button"%>
+    </div>
+  </div>
+</div>
+
+
