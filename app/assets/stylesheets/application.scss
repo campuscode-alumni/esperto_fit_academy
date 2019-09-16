@@ -1,1 +1,15 @@
 @import "bootstrap";
+@import url("show.scss");
+
+body {
+    background-color: #5b6974;
+}
+
+a {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #f9a103;
+    text-decoration: none;
+}
