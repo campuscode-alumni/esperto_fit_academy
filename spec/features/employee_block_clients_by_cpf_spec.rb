@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 feature 'Employee block clients by CPF' do
   scenario 'successfully' do
     # arrange
@@ -8,7 +9,7 @@ feature 'Employee block clients by CPF' do
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de alunos'
+    click_on 'Lista de Alunos'
     click_on client.name
     click_on 'BANIR ALUNO'
 
@@ -26,7 +27,7 @@ feature 'Employee block clients by CPF' do
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de alunos'
+    click_on 'Lista de Alunos'
     click_on client.name
 
     # assert 

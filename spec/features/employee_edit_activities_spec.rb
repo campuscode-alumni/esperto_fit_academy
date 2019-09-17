@@ -8,6 +8,7 @@ feature 'Employee edit activities' do
 
         visit root_path
 
+        click_on 'Listas'
         click_on 'Lista de Aulas'
         click_on activity.name
         click_on 'Editar'

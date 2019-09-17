@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
   end
-  
+
   def create
     @activity = Activity.new(activity_params)
     if @activity.save
