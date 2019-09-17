@@ -107,13 +107,13 @@ Things you may want to cover:
     ```
 
 
-  ### Show all plans
+  ### Show search for one plans
 
     > GET "/api/v1/plans/#{plan.id}"
 
     ```json
 
-    # Exemplo de resposta para um ou mais planos
+    # Exemplo de resposta para um plano
 
 
     [ {"id":1,
