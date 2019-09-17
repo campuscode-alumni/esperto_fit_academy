@@ -21,4 +21,5 @@ class Api::V1::ClientsController < Api::V1::ApiController
 	def client_params
 		params.require(:client).permit(:name, :cpf, :email, :gym_id, :plan_id)
 	end
+	
 end

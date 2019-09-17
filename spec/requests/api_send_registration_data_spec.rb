@@ -16,6 +16,7 @@ describe 'api send registration data' do
 		expect(json_client[:status]).to eq client.status
 		expect(json_client[:cpf]).to eq client.cpf
 	end
+	
 	it 'and return message if client not found' do
 		# arrange
 		client = create(:client)
