@@ -24,4 +24,47 @@ require 'rails_helper'
       expect(response.body).to include('payment')
       expect(response.body).to include('pending')
     end
+    
+    it 'get fail' do
+      stub_request(:get, "http://payment.com.br/api/v1/payments/123456").
+        with(
+          headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'User-Agent'=>'Faraday v0.15.4'
+          }).
+      to_return(status: 404, body: "Dados inválidos", headers: {})
+        
+      # arrange
+      employee = create(:employee)
+
+      # act
+      response = Faraday.get 'http://payment.com.br/api/v1/payments/123456'
+
+      # assert
+      expect(response.status).to eq 404
+      expect(response.body).to include('Dados inválidos')
+    end
+
+    it 'get fail' do
+      stub_request(:get, "http://payment.com.br/api/v1/payments/123456").
+        with(
+          headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'User-Agent'=>'Faraday v0.15.4'
+          }).
+      to_return(status: 500, body: "Dados inválidos", headers: {})
+        
+      # arrange
+      employee = create(:employee)
+
+      # act
+      response = Faraday.get 'http://payment.com.br/api/v1/payments/123456'
+
+      # assert
+      expect(response.status).to eq 500
+      
+    end
+
   end
