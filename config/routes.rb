@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :employees
 
-  resources :gyms, only: %i[show new create]
+  resources :gyms, only: %i[index show new create edit update destroy]
   resources :trainers, only: %i[create new show edit update] 
   resources :activities, only: %i[show new create]
   resources :plans, only: %i[new create show edit update destroy]
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :gyms, only: %i[index show]
+      resources :gyms, only: %i[index show destroy]
       resources :clients, only: %i[create]
     end
   end

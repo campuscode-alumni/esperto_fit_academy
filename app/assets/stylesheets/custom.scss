@@ -12,7 +12,10 @@ h2{
 a{
   color: white;
 }
-
+a:hover {
+  color: #f9a103;
+  text-decoration: none;
+}
 .navbar-brand{
   height: 80px;
 }
