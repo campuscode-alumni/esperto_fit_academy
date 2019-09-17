@@ -16,6 +16,14 @@ class Api::V1::ClientsController < Api::V1::ApiController
     end
   end
 
+  def inactivate
+    @client = Client.find_by(cpf: params[:cpf])
+    return render json: 'CPF não encontrado', status: 404 unless @client
+
+    @client.inactive! if @client.active?
+    render json: @client.to_json(only: [:cpf, :status]), status: 202
+  end
+
   private
 
   def client_params
