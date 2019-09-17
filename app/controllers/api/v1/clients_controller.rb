@@ -21,7 +21,7 @@ class Api::V1::ClientsController < Api::V1::ApiController
     return render json: 'CPF não encontrado', status: 404 unless @client
 
     @client.inactive! if @client.active?
-    render json: 'Cliente desmatriculado com sucesso', status: 202
+    render json: @client.to_json(only: [:cpf, :status]), status: 202
   end
 
   private
