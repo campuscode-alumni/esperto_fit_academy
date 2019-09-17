@@ -41,6 +41,7 @@ Rails.application.routes.draw do
         get 'consult_cpf/:cpf', to: 'clients#consult_cpf', on: :collection
       end
       post 'inactivate_client/:cpf', to: 'clients#inactivate'
+
     end
   end
   
