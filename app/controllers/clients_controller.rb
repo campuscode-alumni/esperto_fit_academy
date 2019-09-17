@@ -60,7 +60,9 @@ class ClientsController < ApplicationController
   end
 
   def verify_payments
-    @client.indebted! if @client.last_payment_status == 'indebted'
+    @client.indebted! if @client.last_payment_status == 'unpaid' && @client.active?
+    @client.active! if @client.last_payment_status == 'paid' && @client.indebted?
+
     redirect_to @client
   end
 

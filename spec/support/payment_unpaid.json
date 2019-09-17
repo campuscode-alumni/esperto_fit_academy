@@ -1,0 +1,13 @@
+{"cpf":"123456","payments":[
+  {"value":40.0,"dt_venc":"2019-09-16","status":"unpaid"}, 
+  {"value":40.0,"dt_venc":"2019-10-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2019-11-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2019-12-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2020-01-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2020-02-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2020-03-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2020-04-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2020-05-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2020-06-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2020-07-16","status":"pending"},
+  {"value":40.0,"dt_venc":"2020-08-16","status":"pending"}]}

@@ -5,8 +5,7 @@ class PaymentsApi
 
   class << self
     def endpoint
-      #Rails.configuration.cookbook[:base_url]
-     'http://localhost:4000'
+      Rails.configuration.payment[:base_url]
     end
 
     def api_version
