@@ -76,3 +76,57 @@ Things you may want to cover:
       }
     }
     ```
+
+  # Api Show Plans    
+
+  ### Show all plans
+
+    > GET api/v1/plans
+
+   ```json
+
+    # Exemplo de resposta para um ou mais planos
+
+    [ {"id":1,
+      "name":"Premium",
+      "minimum_permanence":60,
+      "created_at":"2019-09-17T12:48:51.882Z",
+      "updated_at":"2019-09-17T12:48:51.882Z"},
+      { "id":2,
+      "name":"Básico",
+      "minimum_permanence":3,
+      "created_at":"2019-09-17T12:55:00.722Z",
+      "updated_at":"2019-09-17T14:33:24.232Z"}
+    ]
+    
+    
+    # Exemplo de resposta para falha
+
+    {"menssages":"Nenhum plano encontrado"}
+
+    ```
+
+
+  ### Show all plans
+
+    > GET "/api/v1/plans/#{plan.id}"
+
+    ```json
+
+    # Exemplo de resposta para um ou mais planos
+
+
+    [ {"id":1,
+      "name":"Premium",
+      "minimum_permanence":60,
+      "created_at":"2019-09-17T12:48:51.882Z",
+      "updated_at":"2019-09-17T12:48:51.882Z"}
+    ]
+
+    # Exemplo de resposta para falha
+
+    {"menssages":"Nenhum plano encontrado"}
+
+    ```
+      
+
