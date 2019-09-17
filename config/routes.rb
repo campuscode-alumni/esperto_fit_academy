@@ -34,7 +34,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :gyms, only: %i[index show destroy]
+      resources :gyms, only: %i[index show destroy] do
+        resources :plans, only: %i[index] 
+      end
       resources :clients, only: %i[create]
     end
   end
