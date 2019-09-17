@@ -30,10 +30,11 @@
               Listas
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Lista de Aulas', clients_path, class:"dropdown-item" %>
               <%= link_to 'Lista de Alunos', clients_path, class:"dropdown-item" %>
               <%= link_to 'Lista de Funcionários Ativos', employees_path, class:"dropdown-item" %>
               <%= link_to 'Lista de Funcionários Inativos', employees_unactives_path, class:"dropdown-item" %>
-              <%= link_to 'Lista de Academias', gyms_path, class: "dropdow-item" %>
+              <%= link_to 'Lista de Academias', gyms_path, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
@@ -42,8 +43,9 @@
               Listas
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to 'Lista de Aulas', activities_path, class:"dropdown-item" %>
               <%= link_to 'Lista de Alunos', clients_path, class:"dropdown-item" %>
-              <%= link_to 'Lista de Academias', gyms_path, class: "dropdow-item" %>
+              <%= link_to 'Lista de Academias', gyms_path, class: "dropdown-item" %>
             </div>
           </li>
         <% end %>

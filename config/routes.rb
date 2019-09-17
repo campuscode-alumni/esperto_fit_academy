@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :gyms, only: %i[index show new create edit update destroy]
   resources :trainers, only: %i[create new show edit update] 
-  resources :activities, only: %i[show new create]
+  resources :activities, only: %i[index show new create edit update]
   resources :plans, only: %i[new create show edit update destroy]
   resources :prices, only: %i[new create]
   resources :employees, only: %i[new create show index edit update] do
