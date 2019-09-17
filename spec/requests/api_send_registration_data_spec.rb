@@ -1,30 +1,30 @@
 require 'rails_helper'
 
 describe 'api send registration data' do
-    it 'successfully' do
-        # arrange
-        client = create(:client, cpf: '12312312300')
+	it 'successfully' do
+		# arrange
+		client = create(:client, cpf: '12312312300')
 
-        # act
-        get "/api/v1/clients/#{client.cpf}"
-        json_client = JSON.parse(response.body, symbolize_names: true)
+		# act
+		get "/api/v1/clients/#{client.cpf}"
+		json_client = JSON.parse(response.body, symbolize_names: true)
 
-        # assert
-        expect(response.status).to eq 302
-        expect(json_client[:name]).to eq client.name
-        expect(json_client[:email]).to eq client.email
-        expect(json_client[:status]).to eq client.status
-        expect(json_client[:cpf]).to eq client.cpf
-    end
-    it 'and return message if client not found' do
-        # arrange
-        client = create(:client)
+		# assert
+		expect(response.status).to eq 302
+		expect(json_client[:name]).to eq client.name
+		expect(json_client[:email]).to eq client.email
+		expect(json_client[:status]).to eq client.status
+		expect(json_client[:cpf]).to eq client.cpf
+	end
+	it 'and return message if client not found' do
+		# arrange
+		client = create(:client)
 
-        # act
-        get "/api/v1/clients/00000000"
+		# act
+		get "/api/v1/clients/00000000"
 
-        # assert
-        expect(response.status).to eq 404
-        expect(response.body).to include('Cliente não encontrado')
-    end
+		# assert
+		expect(response.status).to eq 404
+		expect(response.body).to include('Cliente não encontrado')
+	end
 end
