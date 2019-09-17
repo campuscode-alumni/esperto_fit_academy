@@ -9,7 +9,8 @@ feature 'Employee unactivate client' do
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de alunos'
+    click_on 'Listas'
+    click_on 'Lista de Alunos'
     click_on client.name 
     click_on 'SUSPENDER ALUNO'
 
@@ -27,7 +28,8 @@ feature 'Employee unactivate client' do
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de alunos'
+    click_on 'Listas'
+    click_on 'Lista de Alunos'
     click_on client.name
 
     # assert 

@@ -10,7 +10,8 @@ feature 'Admin edit employee' do
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de Funcionários'
+    click_on 'Listas'
+    click_on 'Lista de Funcionários Ativos'
     click_on 'Roberto da Silva'
     click_on 'Editar'
     fill_in 'Nome', with: 'Roperto'
@@ -76,7 +77,8 @@ feature 'Admin edit employee' do
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de Funcionários'
+    click_on 'Listas'
+    click_on 'Lista de Funcionários Ativos'
     click_on 'Roberto da Silva'
     click_on 'Editar'
     fill_in 'Nome', with: ''
