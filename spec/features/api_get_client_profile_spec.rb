@@ -10,9 +10,8 @@ feature 'API get client profile' do
     login_as(employee)
 
     visit root_path
-
-    click_on 'Lista de alunos'
-
+    click_on 'Listas'
+    click_on 'Lista de Alunos'
     click_on 'Customer Smith'
     
     expect(page).to have_content 'Customer Street'
@@ -36,9 +35,8 @@ feature 'API get client profile' do
     login_as(employee)
 
     visit root_path
-
-    click_on 'Lista de alunos'
-
+    click_on 'Listas'
+    click_on 'Lista de Alunos'
     click_on 'Customer Smith'
          
     expect(page).to have_content 'Perfil não encontrado'

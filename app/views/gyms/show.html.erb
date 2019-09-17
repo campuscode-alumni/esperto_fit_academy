@@ -1,10 +1,28 @@
-<h3><%= @gym.name %></h3>
-<p><%=  @gym.cod %></p>
-<p><%= @gym.address %></p>
-<p><%= @gym.open_hour  %></p>
-<p><%= @gym.close_hour  %></p>
-<p><%= @gym.working_days  %></p>
-<% @gym.gallery.each do |image| %>
-  <%= image_tag image %>
+<div class='container'>
+  <div class='big-display'>
+    <div class='big-display-text'>
+      <h3><%= @gym.name %></h3>
+      <p>Código: <%= @gym.cod %></p>
+      <p>Endereço: <%= @gym.address %></p>
+      <p>Horário de abertura: <%= @gym.open_hour  %></p>
+      <p>Horário de fechamento: <%= @gym.close_hour  %></p>
+      <p>Dias de funcionamento: <%= @gym.working_days  %></p>
+    </div>
+    <div class='big-display-gallery'>
+      <p>Galeria:</p>
+      <% @gym.gallery.each do |image| %>
+        <%= image_tag image %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if employee_signed_in? && current_employee.gym?(@gym) || current_employee.admin?%>
+  <%= link_to 'Editar', edit_gym_path %>
 <% end %>
+
+<% if current_employee.admin? %>
+  <%= link_to 'Remover', @gym, method: :delete %>
+<% end %>
+
 <%= link_to 'Voltar', root_path %>
