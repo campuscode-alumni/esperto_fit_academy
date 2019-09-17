@@ -9,6 +9,7 @@ feature 'Employee register class ' do
     login_as(employee, scope: :employee)
 
     visit root_path
+    click_on 'Cadastros'
     click_on 'Cadastrar Aula'
 
     fill_in 'Nome', with: 'Zumba'
@@ -43,6 +44,7 @@ feature 'Employee register class ' do
     login_as(employee, scope: :employee)
 
     visit root_path
+    click_on 'Cadastros'
     click_on 'Cadastrar Aula'
     fill_in 'Nome', with: ''
     select 'Ativa', from: 'Status'
@@ -62,11 +64,12 @@ feature 'Employee register class ' do
   scenario "but name must be unique" do
     trainer = create(:trainer)
     gym = create(:gym)
-    activity = create(:activity, name: "Zumba", trainer: trainer, gym: gym)
+    create(:activity, name: "Zumba", trainer: trainer, gym: gym)
     employee = create(:employee)
     login_as(employee, scope: :employee)
 
     visit root_path
+    click_on 'Cadastros'
     click_on 'Cadastrar Aula'
     fill_in 'Nome', with: 'Zumba'
     select 'Ativa', from: 'Status'

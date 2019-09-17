@@ -5,12 +5,13 @@ feature 'Admin edit plans' do
     # arrange
     admin = create(:employee, admin: true)
     plan_basic = create(:plan, name: 'Simples', minimum_permanence: 10)
-    plan_premium = create(:plan, name: 'Premium', minimum_permanence: 10)
+    create(:plan, name: 'Premium', minimum_permanence: 10)
   
     # act
     login_as admin
 
     visit root_path
+    click_on 'Gerenciar'
     click_on 'Gerenciar Planos'
     click_on 'Simples'
     click_on 'Editar'
@@ -30,7 +31,7 @@ feature 'Admin edit plans' do
   scenario 'and filds cannot be empty' do
     # arrange
     admin = create(:employee, admin: true)
-    plan_basic = create(:plan, name: 'Simples', minimum_permanence: 10)
+    create(:plan, name: 'Simples', minimum_permanence: 10)
 
     # act
     login_as admin

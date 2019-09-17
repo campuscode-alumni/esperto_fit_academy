@@ -1,10 +1,7 @@
-<p>Preencha para cadastrar um preço</p>
-<%= form_for @price do |f| %>
-  <%= f.label :gym_id, 'Unidades' %>
+<h1>Cadastro de Preço</h1>
+<%= bootstrap_form_for @price, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4" do |f| %>
   <%= f.collection_select(:gym_id, @gyms, :id, :name) %>
-  <%= f.label :plan_id, 'Planos' %>
   <%= f.collection_select(:plan_id, @plans, :id, :name) %>
-  <%= f.label :value, 'Valor' %>
   <%= f.number_field :value  %>
   <%= f.submit 'Cadastrar' %>
 <% end %>

@@ -16,6 +16,16 @@ class Api::V1::GymsController < Api::V1::ApiController
     render json: { message: 'Academia não encontrada'}, status: 404
   end
 
+  def destroy
+    @gym = Gym.find(params[:id])
+    if current_employee.admin?
+      @gym.destroy
+      render json: { msg: 'Academia apagada com sucesso' }, status: :accepted
+    else
+      render json: { msg: 'Você não tem essa permissão' }, status: :precondition_failed
+    end
+  end
+
   private
 
   def build_images

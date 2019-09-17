@@ -8,3 +8,7 @@
 <p><%= @activity.trainer.name %></p>
 <p><%= @activity.gym.name %></p>
 <%= link_to 'Voltar', root_path %>
+
+<% if employee_signed_in? %>
+  <%= link_to 'Editar', edit_activity_path %>
+<% end %>
