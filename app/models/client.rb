@@ -10,5 +10,4 @@ class Client < ApplicationRecord
   def profile  
     @profile ||= Profile.find(cpf)
   end
-  
 end
