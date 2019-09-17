@@ -1,7 +1,6 @@
 @import "bootstrap";
 @import 'rails_bootstrap_forms';
 @import 'custom';
-
 .app-space-line-top {
     margin-top: 20px;
 }
@@ -13,6 +12,10 @@
 .app-space-button {
     margin-bottom: 12px;
     margin-top: 12px;
+}
+
+.app-color-button {
+    background-color: #f9a103;
 }
 
 .app-space-imput-bottom {
