@@ -10,11 +10,18 @@
   </head>
 
   <body>
-    <%= flash[:message]%>
-    <h1><%= link_to 'Esperto Fit', root_path %></h1>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <%= flash[:message]%>
+
+    <%= render 'layouts/navbar' %>
+
+
+    <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>
