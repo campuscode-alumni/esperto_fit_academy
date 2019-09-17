@@ -106,7 +106,7 @@ Things you may want to cover:
 
     ```
 
-  # Api Show Plans 
+  
   ### Show search for one plans
 
     > GET "/api/v1/plans/#{plan.id}"
