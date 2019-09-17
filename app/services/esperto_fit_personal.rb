@@ -4,8 +4,9 @@ require 'faraday_middleware'
 class EspertoFitPersonal
   class << self
     def endpoint
-      #Rails.configuration.esperto_fit_personal[:base_url]
-      'http://localhost:4000'
+      Rails.configuration.esperto_fit_personal[:base_url]
+     #"http://localhost:4000"
+
     end
 
     def api_version

@@ -7,9 +7,7 @@ class Client < ApplicationRecord
 
   enum status: {active: 0, inactive: 1, banished: 9}
 
-  def profile
-   
-    @profile ||= Profile.find(3)
-   
+  def profile  
+    @profile ||= Profile.find(cpf)
   end
 end

@@ -8,10 +8,12 @@ class Profile
     end
   end
 
-  def self.find(id)
+  def self.find(cpf)
     response = EspertoFitPersonal.client.get do |req|
-      req.url "customers/#{id}"
+      req.url "customers/#{cpf}"
     end
-    return new(response.body[:profile]) if response.status == 202
+    
+    return new(response.body[0][:profile]) if response.status == 202
+
   end
 end

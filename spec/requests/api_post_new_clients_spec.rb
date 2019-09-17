@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe 'api post new clients' do
   it 'successfully' do
     gym = create(:gym)

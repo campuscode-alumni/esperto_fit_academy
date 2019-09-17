@@ -1,9 +1,10 @@
 require 'rails_helper'
 feature 'Employee block clients by CPF' do
   scenario 'successfully' do
+    load_profile_mock
     # arrange
     employee = create(:employee)
-    client = create(:client)
+    client = create(:client, cpf: '12345678900')
 
     # act
     login_as employee
@@ -20,7 +21,8 @@ feature 'Employee block clients by CPF' do
 
   scenario 'and link must not show when client is alredy banished' do
     # arrange
-    client = create(:client, status: 9)
+    load_profile_mock
+    client = create(:client, status: 9, cpf: '12345678900')
     employee = create(:employee)
 
     # act
@@ -35,8 +37,9 @@ feature 'Employee block clients by CPF' do
     expect(page).not_to have_content('BANIR ALUNO') 
   end
   scenario 'and link must be protected to visitors' do
+    load_profile_mock
     # arrange
-    client = create(:client, status: 0)
+    client = create(:client, status: 0, cpf: '12345678900')
 
     # act
     visit ban_client_path(client)
