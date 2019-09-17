@@ -1,14 +1,9 @@
 
-<%= form_for @employee do |f| %>
-  <%= f.label :name, 'Nome' %>
-  <%= f.text_field :name  %>
-  <%= f.label :status %>
-  <%= f.text_field :status  %>
-  <%= f.label :gym_id, 'Unidade' %>
+<%= bootstrap_form_for @employee, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4" do |f| %>
+  <%= f.text_field :name %>
+  <%= f.select(:status, Employee.statuses.keys.map { |key| [t("enum.employee.status.#{key}"), key]}) %>  
   <%= f.collection_select(:gym_id, Gym.all, :id, :name) %>
-  <%= f.label :email, 'Email específico' %>
-  <%= f.text_field :email  %>
-  <%= f.label :password, 'Senha' %>
+  <%= f.text_field :email %>
   <%= f.password_field :password  %>
   <%= f.submit 'Enviar' %>
 <% end %>

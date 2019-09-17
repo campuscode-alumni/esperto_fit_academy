@@ -1,22 +1,18 @@
 <p>Preencha para editar um usuário</p>
 
-<%= form_for @employee do |f| %>
-  <%= f.label :name, 'Nome' %>
+<%= bootstrap_form_for @employee, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4"  do |f| %>
   <%= f.text_field :name  %>
-  <%= f.label :gym_id, 'Unidade' %>
   <%= f.collection_select(:gym_id, Gym.all, :id, :name) %>
-  <%= f.label :email, 'Email específico' %>
   <%= f.text_field :email  %>
-  <%= f.label :password, 'Senha' %>
   <%= f.password_field :password  %>
   <%= f.submit 'Enviar' %>
 <% end %>
 <%= flash[:alert] %>
-<h2><%= "Status: #{@employee.status} "%></h2>
+<h2><%= "Status: #{@employee.translate_status} "%></h2>
 
 
 
-<%= link_to 'Alterar status', change_status_employee_path, data: { confirm: 'Após essa ação, o funcionario perde alguns acessos. Tem certeza?' } %>
+<%= link_to 'Alterar status', change_status_employee_path, data: { confirm: 'Tem certeza?' } %>
 
 <% if @employee.errors.any? %>
   <div id="error_explanation">

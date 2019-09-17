@@ -24,12 +24,13 @@ feature 'Admin set prices' do
   scenario 'and must fill the value' do
     # arrange
     admin = create(:employee, admin: true)
-    plan = create(:plan)
+    create(:plan)
     gym = create(:gym)
 
     # act
     login_as admin
     visit root_path
+    click_on 'Cadastros'
     click_on 'Cadastrar Preços'
     select gym.name, from: 'Unidades'
     select 'Premium', from: 'Planos'
