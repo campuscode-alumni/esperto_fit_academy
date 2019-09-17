@@ -83,7 +83,7 @@ Things you may want to cover:
 
     > GET api/v1/plans
 
-   ```json
+    ```json
 
     # Exemplo de resposta para um ou mais planos
 
@@ -106,7 +106,7 @@ Things you may want to cover:
 
     ```
 
-
+  # Api Show Plans 
   ### Show search for one plans
 
     > GET "/api/v1/plans/#{plan.id}"
