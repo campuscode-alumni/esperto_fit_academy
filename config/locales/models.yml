@@ -55,15 +55,10 @@ pt-BR:
       plan:
         name: Nome
         minimum_permanence: Permanência mínima
-<<<<<<< HEAD
       price:
         gym_id: Unidades
         plan_id: Planos
         value: Valor
-
-=======
->>>>>>> 7e8d3d9d0b9fb7fe88d587e0195f8e700f3f0f89
-
   enum:
     activity:
       status:

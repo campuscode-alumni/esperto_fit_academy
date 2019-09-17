@@ -47,6 +47,9 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to 'Gerenciar Professores', trainers_path, class:"dropdown-item" %>
+            <% if current_employee.admin? %>
+              <%= link_to 'Gerenciar Planos', plans_path, class:"dropdown-item" %>
+            <% end %>
           </div>
         </li>
         <li class="nav-item">
