@@ -14,7 +14,7 @@ feature 'Admin register plans' do
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Nome: Premium')
+    expect(page).to have_content('Premium')
     expect(page).to have_content('Permanência mínima: 3 meses')
     expect(page).to have_link('Voltar')
   end
@@ -30,8 +30,9 @@ feature 'Admin register plans' do
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Não foi possível cadastrar o plano')
-    expect(page).to have_content('Todos os campos devem ser preenchidos')
+ 
+    expect(page).to have_content('Nome Todos os campos devem ser preenchidos')
+    expect(page).to have_content('Permanência mínima Todos os campos devem ser preenchidos')
   end
 
   scenario 'and the name must be unique' do
@@ -48,7 +49,7 @@ feature 'Admin register plans' do
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Não foi possível cadastrar o plano')
+
     expect(page).to have_content('O nome deve ser único')
   end
 

@@ -14,7 +14,7 @@ gym.gallery.attach(io: File.open(Rails.root.join('spec/support/academia_01.jpeg'
 another_gym.gallery.attach(io: File.open(Rails.root.join('spec/support/academia_01.jpeg')), filename: 'academia_01.jpeg')
 spare_gym.gallery.attach(io: File.open(Rails.root.join('spec/support/academia_01.jpeg')), filename: 'academia_01.jpeg')
 
-Employee.create(name:'admin', status: 'active', gym:gym, email:'admin2@espertofit.com.br', password: '123456', admin: true)
+Employee.create(name:'admin', status: 'active', gym:gym, email:'admin@espertofit.com.br', password: '123456', admin: true)
 Employee.create(name:'funcionario', status: 'active', gym:gym, email:'funcionario@espertofit.com.br', password: '123456', admin: false)
 
 plan = Plan.create(name: 'Premium', minimum_permanence: 60)

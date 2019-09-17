@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
   before_action :authenticate_employee! 
-  before_action :verify_admin, only: %i[new create show] 
+  before_action :verify_admin 
+  before_action :find_id, only: %i[show edit update destroy]
 
   def new 
     @plan = Plan.new 
@@ -12,16 +13,36 @@ class PlansController < ApplicationController
       flash[:notice] = 'Plano cadastrado com sucesso!'
       redirect_to @plan 
     else
-      flash[:alert] = 'Não foi possível cadastrar o plano'
+      flash.now[:message] = @plan.errors.full_messages
       render :new
     end
   end
 
-  def show
-    @plan = Plan.find(params[:id])
+  def show 
   end
 
+  def management
+    @plans = Plan.all
+  end
 
+  def edit
+  end
+
+  def update
+    if @plan.update(plan_params)
+      flash[:success] = "Alterações realizadas com sucesso"
+      redirect_to @plan
+    else
+      flash.now[:message] = @plan.errors.full_messages
+      render :edit
+    end
+     
+  end
+
+  def destroy
+    @plan.destroy
+    redirect_to plans_path
+  end
 
   private
   def plan_params
@@ -29,6 +50,14 @@ class PlansController < ApplicationController
   end
 
   def verify_admin
-    redirect_to root_path unless current_employee.admin?
+    redirect_to new_employee_session_path unless current_employee.admin?
   end
+
+  def find_id
+    @plan = Plan.find(params[:id])
+  end
+
+
+
+
 end
