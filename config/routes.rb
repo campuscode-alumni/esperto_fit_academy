@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :gyms, only: %i[index show]
       resources :clients, only: %i[create]
+      resources :plans, only: %i[index show]
     end
   end
   
