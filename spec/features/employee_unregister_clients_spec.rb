@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'Employee unregister clients' do
   scenario 'successfully' do
+    load_profile_mock
     # arrange
     employee = create(:employee, admin: true)
-    client = create(:client)
+    client = create(:client, cpf: '12345678900')
 
     # act
     login_as employee
@@ -20,8 +21,9 @@ feature 'Employee unregister clients' do
     expect(page).to have_content('Status: inactive')
   end
   scenario 'and link must not show when client is alredy inactive' do
+    load_profile_mock
     # arrange
-    client = create(:client, status: 1)
+    client = create(:client, status: 1, cpf: '12345678900')
     employee = create(:employee)
 
     # act
@@ -36,8 +38,9 @@ feature 'Employee unregister clients' do
     expect(page).not_to have_content('DESVINCULAR ALUNO') 
   end
   scenario 'and link must be protected to visitors' do
+    load_profile_mock
     # arrange
-    client = create(:client, status: 0)
+    client = create(:client, status: 0, cpf: '12345678900')
 
     # act
     visit inactivate_client_path(client)
@@ -58,8 +61,9 @@ feature 'Employee unregister clients' do
     expect(page).to have_content('Não existe esse aluno!')
   end
   scenario 'and status must be active to unregister' do
+    load_profile_mock
     # arrange
-    client = create(:client, status: 6)
+    client = create(:client, status: 6, cpf: '12345678900')
     employee = create(:employee)
 
     # act
@@ -74,8 +78,9 @@ feature 'Employee unregister clients' do
     expect(page).not_to have_content('DESVINCULAR ALUNO')
   end
   scenario 'and must be active even from route' do
+    load_profile_mock
     # arrange
-    client = create(:client, status: 6)
+    client = create(:client, status: 6, cpf: '12345678900')
     employee = create(:employee)
 
     # act

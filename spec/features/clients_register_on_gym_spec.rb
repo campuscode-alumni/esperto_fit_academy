@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'clients register on gym ' do
   scenario 'successfully' do
+    load_profile_mock
     employee = create(:employee)
     gym = create(:gym)
     other_gym = create(:gym)
@@ -14,7 +15,7 @@ feature 'clients register on gym ' do
     click_on 'Matrícule-se'
 
     fill_in 'Nome', with: 'Vinícius'
-    fill_in 'CPF', with: '385.093.321-08'
+    fill_in 'CPF', with: '12345678900'
     fill_in 'E-mail', with: 'vini@gmail.com'
     select plan.name, from: 'Plano'
     select other_gym.name, from: 'Academia'
@@ -22,7 +23,7 @@ feature 'clients register on gym ' do
     click_on 'Criar Matrícula'
 
     expect(page).to have_css('p', text: 'Vinícius')
-    expect(page).to have_css('p', text: '385.093.321-08')
+    expect(page).to have_css('p', text: '12345678900')
     expect(page).to have_css('p', text: 'vini@gmail.com')
     expect(page).to have_css('p', text: plan.name)
     expect(page).to have_css('p', text: other_gym.name)
@@ -30,6 +31,7 @@ feature 'clients register on gym ' do
   end
 
   scenario 'and edit his register' do
+    load_profile_mock
     employee = create(:employee)
     gym = create(:gym)
     other_gym = create(:gym)
@@ -43,7 +45,7 @@ feature 'clients register on gym ' do
     click_on 'Matrícule-se'
 
     fill_in 'Nome', with: 'Vinícius'
-    fill_in 'CPF', with: '385.093.321-08'
+    fill_in 'CPF', with: '12345678900'
     fill_in 'E-mail', with: 'vini@gmail.com'
     select plan.name, from: 'Plano'
     select other_gym.name, from: 'Academia'
@@ -56,7 +58,7 @@ feature 'clients register on gym ' do
     click_on 'Atualizar Matrícula'
 
     expect(page).to have_css('p', text: 'Vinícius')
-    expect(page).to have_css('p', text: '385.093.321-08')
+    expect(page).to have_css('p', text: '12345678900')
     expect(page).to have_css('p', text: 'vini@gmail.com')
     expect(page).to have_css('p', text: other_plan.name)
     expect(page).to have_css('p', text: other_gym.name)
@@ -111,6 +113,7 @@ feature 'clients register on gym ' do
   end
 
   scenario 'and edit his register rigth' do
+    load_profile_mock
     employee = create(:employee)
     gym = create(:gym)
     other_gym = create(:gym)
@@ -124,7 +127,7 @@ feature 'clients register on gym ' do
     click_on 'Matrícule-se'
 
     fill_in 'Nome', with: 'Vinícius'
-    fill_in 'CPF', with: '385.093.321-08'
+    fill_in 'CPF', with: '12345678900'
     fill_in 'E-mail', with: 'vini@gmail.com'
     select plan.name, from: 'Plano'
     select other_gym.name, from: 'Academia'
