@@ -19,7 +19,7 @@ feature 'employee view home page' do
     click_on 'Cadastrar Academia'
 
     fill_in 'Nome', with: 'Academia Paulista'
-    fill_in 'Código', with: '001'
+    fill_in 'Código', with: '004'
     fill_in 'Endereço', with: 'Av Paulista, 123'
     fill_in 'Horário de abertura', with: '09:00'
     fill_in 'Horário de fechamento', with: '23:00'

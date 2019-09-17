@@ -21,6 +21,7 @@ gem 'faraday'
 gem 'faraday_middleware'
 
 gem 'devise'
+gem "bootstrap_form"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
