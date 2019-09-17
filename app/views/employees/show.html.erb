@@ -6,7 +6,7 @@
 <p><%= "Status: #{@employee.translate_status}" %></p>
 <p><%= "Email específico: #{@employee.email}" %></p>
 
-<% if @employee.admin %>
+<% if @employee.admin? %>
   <p><%= "Admin: Sim" %></p>
 <% else %>
   <p><%= "Admin: Nao" %></p>
