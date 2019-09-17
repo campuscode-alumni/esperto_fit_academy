@@ -1,15 +1,40 @@
 @import "bootstrap";
 @import url("show.scss");
+@import 'rails_bootstrap_forms';
+@import 'custom';
 
-body {
-    background-color: #5b6974;
+.app-space-line-top {
+    margin-top: 20px;
 }
 
-a {
-    color: #ffffff;
+.app-space-line-bottom {
+    margin-bottom: 12px;
 }
 
-a:hover {
-    color: #f9a103;
-    text-decoration: none;
+.app-space-button {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.app-space-imput-bottom {
+    margin-bottom: 25px;
+}
+
+.app-space-top-bottom {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.app-box {
+    background-color: gray;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.app-title-spaces {
+    margin-bottom: 50px;
+}
+
+.app-container {
+    max-width: 500px;
 }

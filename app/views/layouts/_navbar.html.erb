@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <%= link_to image_tag('logo espertofit Color'), root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if employee_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cadastros
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Cadastrar Academia', new_gym_path, class:"dropdown-item" %>
+            <%= link_to 'Cadastrar Aula', new_activity_path, class:"dropdown-item" %>
+            <%= link_to 'Cadastrar Professor', new_trainer_path, class:"dropdown-item" %>
+            <% if current_employee.admin? %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Cadastrar Funcionário', new_employee_path, class:"dropdown-item" %>
+              <%= link_to 'Cadastrar Plano', new_plan_path, class:"dropdown-item" %>
+              <%= link_to 'Cadastrar Preços', new_price_path, class:"dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+
+        <% if current_employee.admin? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Listas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to 'Lista de Alunos', clients_path, class:"dropdown-item" %>
+              <%= link_to 'Lista de Funcionários Ativos', employees_path, class:"dropdown-item" %>
+              <%= link_to 'Lista de Funcionários Inativos', employees_unactives_path, class:"dropdown-item" %>
+              <%= link_to 'Lista de Academias', gyms_path, class: "dropdow-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Listas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to 'Lista de Alunos', clients_path, class:"dropdown-item" %>
+              <%= link_to 'Lista de Academias', gyms_path, class: "dropdow-item" %>
+            </div>
+          </li>
+        <% end %>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Gerenciar
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Gerenciar Professores', trainers_path, class:"dropdown-item" %>
+            <% if current_employee.admin? %>
+              <%= link_to 'Gerenciar Planos', plans_path, class:"dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Meu Perfil', employee_path(current_employee), class: "nav-link"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sair', destroy_employee_session_path, method: :delete, class: "nav-link"  %>
+        </li>
+        <li class="nav-link text-white">
+          <%= current_employee.name %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Entrar', new_employee_session_path, class: "nav-link"  %>
+        </li>
+
+      <% end %>
+    </ul>
+  </div>
+</nav>

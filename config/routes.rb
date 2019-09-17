@@ -10,13 +10,14 @@ Rails.application.routes.draw do
   resources :gyms, only: %i[index show new create edit update destroy]
   resources :trainers, only: %i[create new show edit update] 
   resources :activities, only: %i[show new create]
-  resources :plans, only: %i[new create show]
+  resources :plans, only: %i[new create show edit update destroy]
   resources :prices, only: %i[new create]
   resources :employees, only: %i[new create show index edit update] do
     get 'change_status', on: :member
   end
   resources :clients, only: %i[show new create edit update index] do
     get 'ban', on: :member
+    get 'inactivate', on: :member 
   end
 
   resources :gym_trainers, only: %i[destroy]
@@ -25,10 +26,10 @@ Rails.application.routes.draw do
   resources :gyms, only: %i[] do
     resources :trainers, only: %i[] do 
       resources :gym_trainers, only: %i[create]
-      # delete 'banana', to: 'gym_trainers#destroy'
     end
   end
   get 'trainers', to: 'trainers#management'
+  get 'plans', to: 'plans#management'
   get 'unactives', to: 'employees#unactives', as: 'employees_unactives'
 
   namespace :api do

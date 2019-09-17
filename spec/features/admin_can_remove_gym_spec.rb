@@ -10,6 +10,7 @@ feature 'admin can remove gym' do
     login_as (employee)
 
     visit root_path
+    click_on 'Listas'
     click_on 'Lista de Academias'
     click_on 'Academia Oscar Freire'
     click_on 'Remover'

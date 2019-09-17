@@ -4,19 +4,17 @@ feature 'Admin register plans' do
   scenario 'successfully' do
     # arrange
     admin = create(:employee, admin: true)
-    
+
+    login_as admin
     visit root_path
-    click_on 'Entrar'
-    fill_in 'Email', with: admin.email
-    fill_in 'Senha', with: admin.password 
-    click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastros'
+    click_on 'Cadastrar Plano'
     fill_in 'Nome', with: 'Premium'
     fill_in 'Permanência mínima', with: 3
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Nome: Premium')
+    expect(page).to have_content('Premium')
     expect(page).to have_content('Permanência mínima: 3 meses')
     expect(page).to have_link('Voltar')
   end
@@ -25,17 +23,16 @@ feature 'Admin register plans' do
     # arrange
     admin = create(:employee, admin: true)
     
+    login_as admin
     visit root_path
-    click_on 'Entrar'
-    fill_in 'Email', with: admin.email
-    fill_in 'Senha', with: admin.password 
-    click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastros'
+    click_on 'Cadastrar Plano'
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Não foi possível cadastrar o plano')
-    expect(page).to have_content('Todos os campos devem ser preenchidos')
+ 
+    expect(page).to have_content('Nome Todos os campos devem ser preenchidos')
+    expect(page).to have_content('Permanência mínima Todos os campos devem ser preenchidos')
   end
 
   scenario 'and the name must be unique' do
@@ -43,18 +40,16 @@ feature 'Admin register plans' do
     admin = create(:employee, admin: true)
     create(:plan)
     
+    login_as admin
     visit root_path
-    click_on 'Entrar'
-    fill_in 'Email', with: admin.email
-    fill_in 'Senha', with: admin.password 
-    click_on 'Entrar'
-    click_on 'Cadastrar planos'
+    click_on 'Cadastros'
+    click_on 'Cadastrar Plano'
     fill_in 'Nome', with: 'Premium'
     fill_in 'Permanência mínima', with: 3 
     click_on 'Cadastrar'
 
     # assert
-    expect(page).to have_content('Não foi possível cadastrar o plano')
+
     expect(page).to have_content('O nome deve ser único')
   end
 
@@ -63,11 +58,9 @@ feature 'Admin register plans' do
     user = create(:employee, admin: false)
     
     #act
+    login_as user
     visit root_path
-    click_on 'Entrar'
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password 
-    click_on 'Entrar'
+    click_on 'Cadastros'
 
     #assert
     expect(page).not_to have_content('Cadastrar planos')
@@ -86,11 +79,8 @@ feature 'Admin register plans' do
     user = create(:employee, admin: false)
     
     #act
+    login_as user
     visit root_path
-    click_on 'Entrar'
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password 
-    click_on 'Entrar'
     visit new_plan_path
 
     #assert

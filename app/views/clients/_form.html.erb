@@ -8,16 +8,11 @@
   </div>
 <% end %>
 
-<%= form_for @client do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %> 
-<%= f.label :cpf %>
-<%= f.text_field :cpf %>
-<%= f.label :email %>
-<%= f.email_field :email %>
-<%= f.label :gym_id %>
-<%= f.collection_select(:gym_id, Gym.all, :id, :name) %>
-<%= f.label :plan_id %>
-<%= f.collection_select(:plan_id, Plan.all, :id, :name) %>
-<%= f.submit %>
+<%= bootstrap_form_for @client, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4"  do |f| %>
+  <%= f.text_field :name %> 
+  <%= f.text_field :cpf %>
+  <%= f.email_field :email %>
+  <%= f.collection_select(:gym_id, Gym.all, :id, :name) %>
+  <%= f.collection_select(:plan_id, Plan.all, :id, :name) %>
+  <%= f.submit %>
 <% end %>

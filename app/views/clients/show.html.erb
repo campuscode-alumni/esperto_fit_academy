@@ -9,4 +9,5 @@
 
 <%= link_to 'Editar', edit_client_path %>
 <%= link_to 'Voltar', clients_path %>
-<%= link_to('BANIR ALUNO', ban_client_path) unless @client.banished? %>
+<%= link_to('BANIR ALUNO', ban_client_path, data: { confirm: 'Ação permanente. Tem certeza?' }) unless @client.banished? %>
+<%= link_to('DESVINCULAR ALUNO', inactivate_client_path, data: { confirm: 'Ação permanente. Tem certeza?' }) if @client.active? %>
