@@ -15,6 +15,7 @@
             <%= link_to 'Cadastrar Academia', new_gym_path, class:"dropdown-item" %>
             <%= link_to 'Cadastrar Aula', new_activity_path, class:"dropdown-item" %>
             <%= link_to 'Cadastrar Professor', new_trainer_path, class:"dropdown-item" %>
+            <%= link_to 'Cadastrar Aluno', new_client_path, class:"dropdown-item" %>
             <% if current_employee.admin? %>
               <div class="dropdown-divider"></div>
               <%= link_to 'Cadastrar Funcionário', new_employee_path, class:"dropdown-item" %>
