@@ -6,6 +6,19 @@
 <p><%= @client.gym.name %></p>
 <p><%= @client.plan.name %></p>
 <p>Status: <%= @client.status %></p>
+<% if @client.profile %>
+  <p><%= @client.profile.address %></p>
+  <p><%= @client.profile.date_of_birth %></p>
+  <p><%= @client.profile.gender %></p>
+  <p><%= @client.profile.contact %></p>
+  <p><%= @client.profile.nickname %></p>
+  <p><%= @client.profile.payment_method %></p>
+  <p><%= @client.profile.work_document %></p>
+<% else%>
+  <p> Perfil não encontrado </p>
+<% end %>
+
+
 
 <%= link_to 'Editar', edit_client_path %>
 <%= link_to 'Voltar', clients_path %>

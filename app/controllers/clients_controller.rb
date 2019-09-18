@@ -29,8 +29,7 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
-      flash[:notice] = 'Atualizado com sucesso!'
-      redirect_to @client
+      redirect_to @client, notice: 'Atualizado com sucesso!'
     else
       find_all
       render :edit
@@ -40,8 +39,7 @@ class ClientsController < ApplicationController
   def ban
     @client = Client.find(params[:id])
     @client.banished!
-    flash[:notice] = 'CPF banido com sucesso!'
-    redirect_to @client
+    redirect_to @client, notice: 'CPF banido com sucesso!'
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'Não existe esse aluno!'
     redirect_to clients_path

@@ -23,8 +23,8 @@ plan = Plan.create(name: 'Premium', minimum_permanence: 60)
 trainer = Trainer.create(name: 'Professor', cpf: 32467821, status: 0, email: 'professor@email.com')
 
 
-Activity.create(name:'Zumba',price: 50.00, duration: 60, difficulty: 'Medio', equipments:'Nenhum', rules: 'Ser gentil', gym:gym,trainer:trainer, status: 0 )
-Activity.create(name:'Zumba',price: 50.00, duration: 60, difficulty: 'Medio', equipments:'Nenhum', rules: 'Ser gentil', gym:gym,trainer:trainer, status: 9 )
+Activity.create!(name:'Zumba',price: 50.00, duration: 60, difficulty: 'Medio', equipments:'Nenhum', rules: 'Ser gentil', gym_id:gym.id, trainer_id:trainer.id, status: 0, capacity:50 )
+Activity.create(name:'Yoga',price: 50.00, duration: 60, difficulty: 'Medio', equipments:'Nenhum', rules: 'Ser gentil', gym_id:gym.id, trainer_id:trainer.id, status: 9 , capacity:50)
 
 
 

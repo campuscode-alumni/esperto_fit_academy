@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Employee unactivate client' do
-  scenario 'successfully' do
+  xscenario 'successfully' do
     # arrange
     employee = create(:employee)
     client = create(:client)
@@ -20,7 +20,7 @@ feature 'Employee unactivate client' do
     expect(page).to have_content('Status: suspended')
   end
 
-  scenario 'and link must not show when client is alredy suspended' do
+  xscenario 'and link must not show when client is alredy suspended' do
     # arrange
     client = create(:client, status: 2)
     employee = create(:employee)
