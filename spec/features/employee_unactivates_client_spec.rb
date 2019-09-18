@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'Employee unactivate client' do
   scenario 'successfully' do
+    load_profile_mock 
     # arrange
     employee = create(:employee)
-    client = create(:client)
+    client = create(:client, cpf: '12345678900')
 
     # act
     login_as employee
@@ -21,8 +22,9 @@ feature 'Employee unactivate client' do
   end
 
   scenario 'and link must not show when client is alredy suspended' do
+    load_profile_mock 
     # arrange
-    client = create(:client, status: 2)
+    client = create(:client, cpf: '12345678900', status: 2)
     employee = create(:employee)
 
     # act
