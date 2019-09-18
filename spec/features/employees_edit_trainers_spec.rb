@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Employees edit trainers ' do
   scenario 'Successfully' do
     gym = create(:gym)
-    employeer = create(:employee, email: 'email@espertofit.com.br', password: '123456', gym:gym)
+    employeer = create(:employee, email: 'email@espertofit.com.br', password: '123456', gym: gym)
     create(:trainer, name: 'Thiago', status: 0)
 
     login_as employeer
@@ -25,7 +25,7 @@ feature 'Employees edit trainers ' do
 
   scenario 'all fields must fill in, in edit' do
     gym = create(:gym)
-    employeer = create(:employee, email: 'email@espertofit.com.br', password: '123456', gym:gym)
+    employeer = create(:employee, email: 'email@espertofit.com.br', password: '123456', gym: gym)
     create(:trainer)
 
     login_as employeer
@@ -44,7 +44,7 @@ feature 'Employees edit trainers ' do
 
   scenario 'field cpf must be unique , in edit' do
     gym = create(:gym)
-    employeer = create(:employee, email: 'email@espertofit.com.br', password: '123456', gym:gym)
+    employeer = create(:employee, email: 'email@espertofit.com.br', password: '123456', gym: gym)
     create(:trainer, cpf: '123', email: 'trainer@espertofit.com.br')
     create(:trainer, name: 'Kah', cpf: '1234', email: 'ka@espertofit.com.br')
 
@@ -62,7 +62,7 @@ feature 'Employees edit trainers ' do
   end
 
   scenario 'employee must be autenticated to edit trainers' do
-    trainer = create(:trainer, cpf: "123")
+    trainer = create(:trainer, cpf: '123')
     visit edit_trainer_path(trainer)
 
     expect(current_path).to eq(new_employee_session_path)

@@ -16,10 +16,8 @@ describe 'api show all gyms' do
     expect(json_gyms[0][:name]).to eq gym.name
     expect(json_gyms[1][:name]).to eq another_gym.name
   end
-  
-  it 'fails' do
-    
 
+  it 'fails' do
     get api_v1_gyms_path
 
     json_gyms = JSON.parse(response.body, symbolize_names: true)
