@@ -6,4 +6,8 @@ class Client < ApplicationRecord
   validates :cpf, uniqueness: true
 
   enum status: {active: 0, inactive: 1, indebted:6, banished: 9}
+
+  def profile  
+    @profile ||= Profile.find(cpf)
+  end
 end

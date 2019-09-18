@@ -34,12 +34,18 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get 'show_all_plans', to: 'plans#show_all'
+      resources :plans, only: %i[index show] do
+      end
       resources :gyms, only: %i[index show destroy] do
         resources :plans, only: %i[index] 
+        resources :activities, only: [:index]
       end
       resources :clients, only: %i[create] do
         get 'consult_cpf/:cpf', to: 'clients#consult_cpf', on: :collection
+        get ':cpf', to: 'clients#show', on: :collection
       end
+      post 'inactivate_client/:cpf', to: 'clients#inactivate'
     end
   end
   
