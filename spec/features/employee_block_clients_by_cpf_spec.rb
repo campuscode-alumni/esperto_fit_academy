@@ -2,7 +2,10 @@ require 'rails_helper'
 
 feature 'Employee block clients by CPF' do
   scenario 'successfully' do
+    # arrange stubs
     load_profile_mock
+    
+    expect(Faraday).to receive(:post).with('http://payment.com.br/api/v1/payments/ban?cpf=12345678900')       
     # arrange
     employee = create(:employee)
     client = create(:client, cpf: '12345678900')
@@ -35,8 +38,9 @@ feature 'Employee block clients by CPF' do
     # assert 
     expect(current_path).to eq client_path(client.id) 
     expect(page).to have_content('Status: banished')
-    expect(page).not_to have_content('BANIR ALUNO') 
+    expect(page).not_to have_content('BANIR ALUNO')
   end
+
   scenario 'and link must be protected to visitors' do
     load_profile_mock
     # arrange
