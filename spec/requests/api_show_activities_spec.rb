@@ -18,9 +18,8 @@ describe 'api show all gyms' do
     expect(json_activities[1][:name]).to eq another_activity.name
     expect(json_activities).not_to include spare_activity.name
   end
-  
-  it 'fails' do
 
+  it 'fails' do
     get '/api/v1/gyms/7858/activities'
 
     json_gyms = JSON.parse(response.body, symbolize_names: true)
