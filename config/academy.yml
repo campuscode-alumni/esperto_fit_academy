@@ -1,7 +1,8 @@
 development:
-  base_url: http://0.0.0.0:4000
+  base_url: localhost:4000
+  payment_url: localhost:5000
 production:
-  base_url: https://example.com.br/
+  base_url: https://example.com.br
 test:
   base_url: http://0.0.0.0:4000
   payment_url: http://payment.com.br
