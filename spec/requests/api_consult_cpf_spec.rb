@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'API consult CPF' do
   it 'successfully' do
-    # arrange 
-    client = create(:client, cpf:'12312312300', status: :banished)
+    # arrange
+    client = create(:client, cpf: '12312312300', status: :banished)
 
     # act
     get "/api/v1/clients/consult_cpf/#{client.cpf}"
@@ -17,12 +17,10 @@ describe 'API consult CPF' do
 
   it 'and CPF must exit' do
     # act
-    get "/api/v1/clients/consult_cpf/000"
+    get '/api/v1/clients/consult_cpf/000'
 
     # assert
     expect(response.status).to eq 404
     expect(response.body).to include('CPF não encontrado')
   end
-
-
 end
