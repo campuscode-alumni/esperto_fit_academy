@@ -165,3 +165,41 @@ Things you may want to cover:
         }]
     }
   ```
+
+  # Api Show All Activities  
+  
+    > GET "/api/v1/gyms/#{gym.id}/activities"
+
+  ```json
+    # Exemplo de resposta
+      [{
+        "id":1,
+        "name":"Zumba",
+        "status": "active",
+        "price": 45.35,
+        "duration": 40,
+        "capacity": 45,
+        "difficulty": "fácil",
+        "equipaments": "Nenhum",
+        "rules": "Respeitar todos os membros",
+        "gym_id": 1,
+        "trainer_id": 1,
+        "created_at":"2019-09-17T18:28:35.445Z",
+        "updated_at":"2019-09-17T18:28:35.445Z",
+      },
+       {
+        "id":1,
+        "name":"Yoga",
+        "status": "active",
+        "price": 45.35,
+        "duration": 40,
+        "capacity": 45,
+        "difficulty": "fácil",
+        "equipaments": "Nenhum",
+        "rules": "Respeitar todos os membros",
+        "gym_id": 1,
+        "trainer_id": 1,
+        "created_at":"2019-09-17T18:28:35.445Z",
+        "updated_at":"2019-09-17T18:28:35.445Z",
+        }]  
+  ```
