@@ -25,7 +25,7 @@ Bundler/OrderedGems:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: outdent, indent
-Layout/AccessModifierIndentation:
+# Layout/AccessModifierIndentation:
   Exclude:
     - 'app/controllers/api/v1/clients_controller.rb'
 
