@@ -18,6 +18,10 @@ require 'rspec/rails'
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 
+require 'webmock/rspec'
+
+# Checks for pending migrations and applies them before tests are run.
+# If you are not using ActiveRecord, you can remove these lines.
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -26,6 +30,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include Warden::Test::Helpers
+  config.include ProfileApi
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -35,7 +40,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   
   WebMock.disable_net_connect!(allow_localhost: true)
-
+  
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

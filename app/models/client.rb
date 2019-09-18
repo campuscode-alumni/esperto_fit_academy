@@ -10,4 +10,8 @@ class Client < ApplicationRecord
   def last_payment_status
     Payment.find(cpf).first.status
   end
+  
+  def profile  
+    @profile ||= Profile.find(cpf)
+  end
 end

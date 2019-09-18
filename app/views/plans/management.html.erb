@@ -10,6 +10,7 @@
               <h3 class="text-center"><%= link_to plan.name, plan %></h3>
               <hr>
               <h5>Resumo:</h5>
+              <h6><%= "Permanência mínima: #{plan.minimum_permanence} meses" %></h6>
               <%= link_to "Detalhes", plan, class:"btn btn-secondary btn-block app-space-button" %>
             </div>
         </div>
@@ -17,7 +18,7 @@
 
     </div>
     <div class="col-4 offset-4">
-      <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block app-space-button"%>
+      <%= link_to 'Voltar', root_path, class:"btn app-color-button btn-block app-space-button"%>
     </div>
   </div>
 </div>

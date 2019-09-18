@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'Employee verify payment status' do 
   scenario 'successfully' do 
-    stub_request(:get, "http://payment.com.br/api/v1/payments/123456").
+    load_profile_mock
+    stub_request(:get, "http://payment.com.br/api/v1/payments/12345678900").
     with(
       headers: {
      'Accept'=>'*/*',
@@ -14,12 +15,12 @@ feature 'Employee verify payment status' do
 
     # arrange
     employee = create(:employee)
-    client = create(:client, cpf: '123456', status: :active)
+    client = create(:client, cpf: '12345678900', status: :active)
 
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de alunos'
+    click_on 'Lista de Alunos'
     click_on client.name
     click_on 'Atualizar status de pagamentos'
 
@@ -30,7 +31,8 @@ feature 'Employee verify payment status' do
   end
 
   scenario 'and must turn active if payment is ok' do
-    stub_request(:get, "http://payment.com.br/api/v1/payments/123456").
+    load_profile_mock
+    stub_request(:get, "http://payment.com.br/api/v1/payments/12345678900").
     with(
       headers: {
      'Accept'=>'*/*',
@@ -42,13 +44,13 @@ feature 'Employee verify payment status' do
 
     # arrange
     employee = create(:employee)
-    client = create(:client, name: 'Ciro', cpf: '123456', status: :indebted)
+    client = create(:client, name: 'Ciro', cpf: '12345678900', status: :indebted)
     # Status do ultimo pagamento é paid
 
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de alunos'
+    click_on 'Lista de Alunos'
     click_on client.name
     click_on 'Atualizar status de pagamentos'
 
@@ -59,7 +61,8 @@ feature 'Employee verify payment status' do
   end
 
   scenario 'and client must not be banished' do
-    stub_request(:get, "http://payment.com.br/api/v1/payments/123456").
+    load_profile_mock
+    stub_request(:get, "http://payment.com.br/api/v1/payments/12345678900").
     with(
       headers: {
      'Accept'=>'*/*',
@@ -71,13 +74,13 @@ feature 'Employee verify payment status' do
     
     # arrange
     employee = create(:employee)
-    client = create(:client, name: 'Ciro', cpf: '123456', status: :banished)
+    client = create(:client, name: 'Ciro', cpf: '12345678900', status: :banished)
     # Status do ultimo pagamento é paid
 
     # act
     login_as employee
     visit root_path
-    click_on 'Lista de alunos'
+    click_on 'Lista de Alunos'
     click_on client.name
     click_on 'Atualizar status de pagamentos'
 

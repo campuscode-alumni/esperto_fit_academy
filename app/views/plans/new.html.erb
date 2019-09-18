@@ -7,18 +7,21 @@
 <div class="container">
   <div class="row">
     <div class="col-5">
-      <h1 class="app-title-spaces ">Cadastro de Planos</h1>
-      <p class="app-space-line-top">Preencha para cadastrar um plano:</p>
+      <h1>Cadastro de Planos</h1>
+    </div>
+  </div>
+</div>
 
-      <%= form_for @plan do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name, class:"form-control app-space-imput-bottom"  %>
-        <%= f.label :minimum_permanence %>
-        <%= f.number_field :minimum_permanence, class:"form-control app-space-imput-bottom"  %>
-        
-        <%= f.submit 'Cadastrar', class:"btn btn-secondary btn-block app-space-button"  %>
+<%= bootstrap_form_for @plan, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4" do |f| %> 
+  <%= f.text_field :name %>
+  <%= f.number_field :minimum_permanence%>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <%= f.submit 'Cadastrar', class:"btn btn-secondary btn-block app-space-button"  %>
       <% end %>
-      <%= link_to 'Voltar', root_path, class:"btn btn-warning btn-block app-space-button"%>
+      <%= link_to 'Voltar', root_path, class:"btn btn-secondary btn-block app-space-button"%>
+
     </div>
   </div>
 </div>

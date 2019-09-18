@@ -1,18 +1,19 @@
 require 'faraday'
 require 'faraday_middleware'
 
-class PaymentsApi 
-
+class EspertoFitPersonal
   class << self
     def endpoint
-      Rails.configuration.esperto_fit_payment[:payment_url]
+      Rails.configuration.esperto_fit_personal[:base_url]
+     #"http://localhost:4000"
+
     end
 
     def api_version
       'v1'
     end
 
-    def payments_url
+    def personal_url
       "#{endpoint}/api/#{api_version}"
     end
 
@@ -23,7 +24,7 @@ class PaymentsApi
     private
 
     def new_connection
-      Faraday.new(url: payments_url) do |faraday|
+      Faraday.new(url: personal_url) do |faraday|
         faraday.use :instrumentation
         faraday.headers['Content-Type'] = 'application/json'
 
@@ -33,5 +34,4 @@ class PaymentsApi
       end
     end
   end
-
 end
