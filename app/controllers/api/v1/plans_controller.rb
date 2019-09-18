@@ -25,8 +25,6 @@ class Api::V1::PlansController < Api::V1::ApiController
 
 end
 
-  
-
 private
 
   def build_gym_plans(plans, gym)
