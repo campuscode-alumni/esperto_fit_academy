@@ -4,7 +4,7 @@ feature 'Admin register another employee' do
   scenario 'successfully' do
     # arrange
     gym = create(:gym)
-    employee = create(:employee, admin: true, gym:gym)
+    employee = create(:employee, admin: true, gym: gym)
 
     # act
     login_as employee
@@ -30,7 +30,7 @@ feature 'Admin register another employee' do
   scenario 'and must fill in all the fields' do
     # arrange
     gym = create(:gym)
-    employee = create(:employee, admin: true, gym:gym)
+    employee = create(:employee, admin: true, gym: gym)
 
     # act
     login_as employee
@@ -47,7 +47,7 @@ feature 'Admin register another employee' do
   scenario 'and email must be unique' do
     # arrange
     gym = create(:gym)
-    employee = create(:employee, admin: true, gym:gym)
+    employee = create(:employee, admin: true, gym: gym)
 
     # act
     login_as employee
@@ -74,7 +74,7 @@ feature 'Admin register another employee' do
   scenario 'and the employee must be an admin to register another employee' do
     # arrange
     gym = create(:gym)
-    employee = create(:employee, admin: false, gym:gym)
+    employee = create(:employee, admin: false, gym: gym)
 
     # act
     login_as employee
@@ -94,7 +94,7 @@ feature 'Admin register another employee' do
   scenario 'and the email must be from the EspertoFit domain' do
     # arrange
     gym = create(:gym)
-    employee = create(:employee, admin: true, gym:gym)
+    employee = create(:employee, admin: true, gym: gym)
 
     # act
     login_as employee
@@ -115,7 +115,7 @@ feature 'Admin register another employee' do
   scenario 'and status must be active' do
     # arrange
     gym = create(:gym)
-    employee = create(:employee, admin: true, status: :unactive, gym:gym)
+    employee = create(:employee, admin: true, status: :unactive, gym: gym)
 
     # act
     login_as employee
