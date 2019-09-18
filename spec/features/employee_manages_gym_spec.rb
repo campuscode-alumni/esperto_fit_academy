@@ -4,7 +4,7 @@ feature 'employee manages gym' do
   scenario 'successfully' do
     paulista = create(:gym, name: 'Academia Paulista')
     madalena = create(:gym, name: 'Academia Madalena')
-    consolação  = create(:gym, name: 'Academia Consolação')
+    consolacao  = create(:gym, name: 'Academia Consolação')
     oscar_freire = create(:gym, name: 'Academia Oscar Freire')
     employee = create(:employee, gym_id: 4)
     login_as (employee)
@@ -33,7 +33,7 @@ feature 'employee manages gym' do
   scenario 'only employee of the gym can edit' do
     paulista = create(:gym, name: 'Academia Paulista')
     madalena = create(:gym, name: 'Academia Madalena')
-    consolação  = create(:gym, name: 'Academia Consolação')
+    consolacao  = create(:gym, name: 'Academia Consolação')
     oscar_freire = create(:gym, name: 'Academia Oscar Freire')
     employee = create(:employee, gym_id: 4)
     login_as (employee)
@@ -48,7 +48,7 @@ feature 'employee manages gym' do
   scenario 'and all fields must be filled' do
     paulista = create(:gym, name: 'Academia Paulista')
     madalena = create(:gym, name: 'Academia Madalena')
-    consolação  = create(:gym, name: 'Academia Consolação')
+    consolacao  = create(:gym, name: 'Academia Consolação')
     oscar_freire = create(:gym, name: 'Academia Oscar Freire')
     employee = create(:employee, gym_id: 4)
     login_as (employee)
@@ -67,7 +67,7 @@ feature 'employee manages gym' do
   scenario 'and gym name must be unique' do
     paulista = create(:gym, name: 'Academia Paulista')
     madalena = create(:gym, name: 'Academia Madalena')
-    consolação  = create(:gym, name: 'Academia Consolação')
+    consolacao  = create(:gym, name: 'Academia Consolação')
     oscar_freire = create(:gym, name: 'Academia Oscar Freire')
     employee = create(:employee, gym_id: 4)
     login_as (employee)
@@ -86,7 +86,7 @@ feature 'employee manages gym' do
   scenario 'and admin also can edit' do
     paulista = create(:gym, name: 'Academia Paulista')
     madalena = create(:gym, name: 'Academia Madalena')
-    consolação  = create(:gym, name: 'Academia Consolação')
+    consolacao  = create(:gym, name: 'Academia Consolação')
     oscar_freire = create(:gym, name: 'Academia Oscar Freire')
     employee = create(:employee, admin: true)
     login_as (employee)

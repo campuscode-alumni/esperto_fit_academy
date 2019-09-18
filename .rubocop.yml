@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop-rails
 
@@ -21,7 +23,7 @@ Metrics/BlockLength:
  ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
 
 Metrics/LineLength:
-  Max: 80
+  Max: 500
 
 AsciiComments:
   Enabled: false
