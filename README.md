@@ -22,6 +22,8 @@ Feita em grupo para o curso Treinadev da Campus Code
 - [Consulta de CPF](#API_consult_cpf)
 - [Mostrar todos os planos](#API_show_plans)
 - [Mostrar detalhes de um plano](#API_show_one_plan)
+- [Mostrar dados de matricula](#API_send_registration_data)
+- [Desmatricular clientes](#API_recive_unregistration_from_client_site)
 
 # API's_endpoints
 
@@ -225,7 +227,41 @@ Feita em grupo para o curso Treinadev da Campus Code
     
     {"menssages":"Nenhum plano encontrado"}
   ```
+   
+  ##API_send_registration_data
+  
+    > GET "/api/v1/clients/#{client.cpf}"
 
+  ```json
+    # Exemplo de resposta
+    {
+      "id":1,
+      "name":"Mario",
+      "email":"teste@espertofit.com.br",
+      "status":"active",
+      "gym_id":"gym.id",
+      "plan_id":"plan.id",
+      "cpf":"123"
+    }
+
+    # Exemplo de resposta para falha
+    
+    "Cliente não encontrado"
+  ```
+  ##API_recive_unregistration_from_client_site
+  
+    >POST "/api/v1/inactivate_client/#{client.cpf}"
+    
+    ``json
+    # Exemplo de resposta
+    {
+      "Cliente desmatriculado com sucesso"
+    }
+
+    # Exemplo de resposta para falha
+    
+    "CPF não encontrado"
+  ```
 
 ## Equipe
 
