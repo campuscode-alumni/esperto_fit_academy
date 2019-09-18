@@ -26,6 +26,10 @@ class Employee < ApplicationRecord
     I18n.t "activerecord.attributes.employee.statuses.#{status}"
   end
 
+  def gym?(gym)
+    self.gym == gym
+  end
+
 
 
   private

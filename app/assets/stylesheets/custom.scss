@@ -9,10 +9,19 @@ h1{
 h2{
   color: #F9A103;
 }
-a{
-  color: white;
+h3{
+  color: #343A40;
 }
-
+h5{
+  color: #343A40;
+}
+a{
+  color: #343A40;
+}
+a:hover {
+  color: #f9a103;
+  text-decoration: none;
+}
 .navbar-brand{
   height: 80px;
 }
@@ -64,4 +73,8 @@ footer {
   border-top: 1px solid #F9A103;
   color: #F9A103;
   text-align: center;
+}
+
+.container {
+  display: block;
 }

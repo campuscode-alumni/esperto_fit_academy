@@ -1,0 +1,18 @@
+<h1>Lista de Academias</h1>
+
+
+<div class='box'>
+  <% @gyms.each do |gym| %>
+    <div class='display'>
+      <h3> <%= link_to gym.name, gym %> </h3>
+      <ul>
+        <li> Endereço: <%= gym.address %> </li>
+        <li> Horário de abertura: <%= gym.open_hour %> </li>
+        <li> Horário de fechamento: <%= gym.close_hour %> </li>
+        <li> Dias de funcionamento: <%= gym.working_days %> </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+ 
+<%= link_to 'Voltar', root_path %>
