@@ -53,6 +53,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.8'
   gem 'webmock'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
 end
 
 group :development do
