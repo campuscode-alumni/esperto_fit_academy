@@ -34,6 +34,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get 'show_all_plans', to: 'plans#show_all'
+      resources :plans, only: %i[index show] do
+      end
       resources :gyms, only: %i[index show destroy] do
         resources :plans, only: %i[index] 
       end

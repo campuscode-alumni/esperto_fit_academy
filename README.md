@@ -83,6 +83,61 @@ Things you may want to cover:
         "images":["http://www.example.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f38dc1ef0ace3dbcd4f962ceffdf6ffa578a23f1/academia_01.jpeg"]
       }
     }
+    ```
+
+  # Api Show Just the Plans    
+
+  ### Show all plans (somente mostra planos, sem preços)
+
+    > GET api/v1/show_all_plans
+
+    ```json
+
+    # Exemplo de resposta para todos os planos
+
+    [ {"id":1,
+      "name":"Premium",
+      "minimum_permanence":60,
+      "created_at":"2019-09-17T12:48:51.882Z",
+      "updated_at":"2019-09-17T12:48:51.882Z"},
+      { "id":2,
+      "name":"Básico",
+      "minimum_permanence":3,
+      "created_at":"2019-09-17T12:55:00.722Z",
+      "updated_at":"2019-09-17T14:33:24.232Z"}
+    ]
+    
+    
+    # Exemplo de resposta para falha
+
+    {"menssages":"Nenhum plano encontrado"}
+
+    ```
+
+  
+  ### Show search for one plan (somente mostra planos, sem preços)
+
+    > GET "/api/v1/plans/#{plan.id}"
+
+    ```json
+
+    # Exemplo de resposta para um plano
+
+
+    [ {"id":1,
+      "name":"Premium",
+      "minimum_permanence":60,
+      "created_at":"2019-09-17T12:48:51.882Z",
+      "updated_at":"2019-09-17T12:48:51.882Z"}
+    ]
+
+    # Exemplo de resposta para falha
+
+    {"menssages":"Nenhum plano encontrado"}
+
+    ```
+      
+
   ```
 
   # Api Show All Plans Prices   
