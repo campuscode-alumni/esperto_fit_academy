@@ -11,7 +11,7 @@ class Api::V1::GymsController < Api::V1::ApiController
   def show
     @gym = Gym.find(params[:id])
 
-    render  json: {gym: @gym.as_json.merge(images: build_images)}, status: 200
+    render json: {gym: @gym.as_json.merge(images: build_images)}, status: 200
   rescue ActiveRecord::RecordNotFound
     render json: { message: 'Academia não encontrada'}, status: 404
   end

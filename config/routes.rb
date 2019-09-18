@@ -39,9 +39,9 @@ Rails.application.routes.draw do
       end
       resources :clients, only: %i[create] do
         get 'consult_cpf/:cpf', to: 'clients#consult_cpf', on: :collection
+        get ':cpf', to: 'clients#show', on: :collection
       end
       post 'inactivate_client/:cpf', to: 'clients#inactivate'
-
     end
   end
   
