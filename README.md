@@ -83,18 +83,17 @@ Things you may want to cover:
         "images":["http://www.example.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f38dc1ef0ace3dbcd4f962ceffdf6ffa578a23f1/academia_01.jpeg"]
       }
     }
-<<<<<<< HEAD
     ```
 
-  # Api Show Plans    
+  # Api Show Just the Plans    
 
-  ### Show all plans
+  ### Show all plans (somente mostra planos, sem preços)
 
-    > GET api/v1/plans
+    > GET api/v1/show_all_plans
 
     ```json
 
-    # Exemplo de resposta para um ou mais planos
+    # Exemplo de resposta para todos os planos
 
     [ {"id":1,
       "name":"Premium",
@@ -116,7 +115,7 @@ Things you may want to cover:
     ```
 
   
-  ### Show search for one plans
+  ### Show search for one plan (somente mostra planos, sem preços)
 
     > GET "/api/v1/plans/#{plan.id}"
 
@@ -139,7 +138,6 @@ Things you may want to cover:
     ```
       
 
-=======
   ```
 
   # Api Show All Plans Prices   
@@ -167,4 +165,3 @@ Things you may want to cover:
         }]
     }
   ```
->>>>>>> f95f97298a8edaf65d4db9ac6ab0e27af44cd13d
