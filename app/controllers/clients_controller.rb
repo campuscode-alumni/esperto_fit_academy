@@ -45,6 +45,16 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
+  def suspend
+    @client = Client.find(params[:id])
+    @client.suspended!
+    flash[:notice] = 'CPF suspenso com sucesso!'
+    redirect_to @client
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Não existe esse aluno!'
+    redirect_to clients_path
+  end
+  
   def inactivate
     @client = Client.find(params[:id])
     if @client.active?

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
   resources :clients, only: %i[show new create edit update index] do
     get 'ban', on: :member
+    get 'suspend', on: :member
     get 'inactivate', on: :member 
     get 'verify_payments', on: :member
   end
