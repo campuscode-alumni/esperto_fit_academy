@@ -1,20 +1,12 @@
-[
-  {
+{
   "id":1,
-  "document":"12345678900",
-  "profile":
-    {
-      "id":1,
-      "first_name":"Customer",
-      "last_name":"Smith",
-      "date_of_birth":"1970-01-01",
-      "gender":"male",
-      "address":"Customer Street",
-      "contact":"123-456-789",
-      "nickname":"CustomerNick",
-      "payment_method":"Credito",
-      "work_document":null,
-      "account_id":1
-    }
-  }
-]
+  "first_name":"Customer",
+  "last_name":"Smith",
+  "date_of_birth":"1970-01-01",
+  "gender":"male",
+  "address":"Customer Street",
+  "contact":"123-456-789",
+  "nickname":"CustomerNick",
+  "payment_method":"Credito",
+  "account_id":1
+}

@@ -12,7 +12,8 @@ feature 'clients register on gym ' do
     login_as employee
 
     visit root_path
-    click_on 'Matrícule-se'
+    click_on 'Cadastros'
+    click_on 'Cadastrar Aluno'
 
     fill_in 'Nome', with: 'Vinícius'
     fill_in 'CPF', with: '12345678900'
@@ -41,8 +42,8 @@ feature 'clients register on gym ' do
     login_as employee
 
     visit root_path
-
-    click_on 'Matrícule-se'
+    click_on 'Cadastros'
+    click_on 'Cadastrar Aluno'
 
     fill_in 'Nome', with: 'Vinícius'
     fill_in 'CPF', with: '12345678900'
@@ -76,8 +77,8 @@ feature 'clients register on gym ' do
     login_as employee
 
     visit root_path
-
-    click_on 'Matrícule-se'
+    click_on 'Cadastros'
+    click_on 'Cadastrar Aluno'
 
     fill_in 'Nome', with: 'Vinícius'
     fill_in 'CPF', with: '385.093.321-08'
@@ -99,8 +100,8 @@ feature 'clients register on gym ' do
     login_as employee
 
     visit root_path
-
-    click_on 'Matrícule-se'
+    click_on 'Cadastros'
+    click_on 'Cadastrar Aluno'
 
     fill_in 'Nome', with: 'Vinícius'
     fill_in 'CPF', with: ''
@@ -123,8 +124,8 @@ feature 'clients register on gym ' do
     login_as employee
 
     visit root_path
-
-    click_on 'Matrícule-se'
+    click_on 'Cadastros'
+    click_on 'Cadastrar Aluno'
 
     fill_in 'Nome', with: 'Vinícius'
     fill_in 'CPF', with: '12345678900'

@@ -21,6 +21,7 @@ module EspertoFitAcademy
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.payment = config_for(:payment).symbolize_keys
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -30,5 +31,6 @@ module EspertoFitAcademy
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.esperto_fit_personal = config_for(:academy).symbolize_keys
+    config.esperto_fit_payment = config_for(:academy).symbolize_keys
   end
 end

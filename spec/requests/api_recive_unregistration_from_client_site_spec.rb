@@ -16,7 +16,7 @@ describe 'API recive unregistration from client site' do
 
   it 'and CPF must exit' do
     # act
-    get '/api/v1/clients/consult_cpf/000'
+    post '/api/v1/inactivate_client/000'
 
     # assert
     expect(response.status).to eq 404

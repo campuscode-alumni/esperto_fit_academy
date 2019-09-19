@@ -1,7 +1,7 @@
 class Api::V1::ClientsController < Api::V1::ApiController
   def consult_cpf
     @client = Client.find_by(cpf: params[:cpf])
-    return render json: 'CPF não encontrado', status: :not_found unless @client
+    return render json: { message: 'CPF não encontrado' }, status: :not_found unless @client
 
     render json: @client.to_json(only: %i[cpf status]), status: :found
   end
@@ -17,14 +17,14 @@ class Api::V1::ClientsController < Api::V1::ApiController
 
   def show
     @client = Client.find_by(cpf: params[:cpf])
-    return render json: 'Cliente não encontrado', status: :not_found unless @client
+    return render json: { message: 'Cliente não encontrado' }, status: :not_found unless @client
 
     render json: @client, status: :found
   end
 
   def inactivate
     @client = Client.find_by(cpf: params[:cpf])
-    return render json: 'CPF não encontrado', status: :not_found unless @client
+    return render json: { message: 'CPF não encontrado' }, status: :not_found unless @client
 
     @client.inactive! if @client.active?
     render json: @client.to_json(only: %i[cpf status]), status: :accepted

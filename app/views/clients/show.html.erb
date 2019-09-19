@@ -7,13 +7,12 @@
 <p><%= @client.plan.name %></p>
 <p>Status: <%= @client.status %></p>
 <% if @client.profile %>
-  <p><%= @client.profile.address %></p>
-  <p><%= @client.profile.date_of_birth %></p>
-  <p><%= @client.profile.gender %></p>
-  <p><%= @client.profile.contact %></p>
-  <p><%= @client.profile.nickname %></p>
-  <p><%= @client.profile.payment_method %></p>
-  <p><%= @client.profile.work_document %></p>
+  <p>Endereço: <%= @client.profile.address %></p>
+  <p>Data de nascimento: <%= @client.profile.date_of_birth %></p>
+  <p>Gênero: <%= @client.profile.gender %></p>
+  <p>Contato: <%= @client.profile.contact %></p>
+  <p>Apelido: <%= @client.profile.nickname %></p>
+  <p>Método de pagamento: <%= @client.profile.payment_method %></p>
 <% else%>
   <p> Perfil não encontrado </p>
 <% end %>
@@ -21,6 +20,8 @@
 
 
 <%= link_to 'Editar', edit_client_path %>
+<%= link_to 'Atualizar status de pagamentos', verify_payments_client_path %>
 <%= link_to 'Voltar', clients_path %>
+<%= link_to('SUSPENDER ALUNO', suspend_client_path) unless @client.banished? || @client.suspended? %>
 <%= link_to('BANIR ALUNO', ban_client_path, data: { confirm: 'Ação permanente. Tem certeza?' }) unless @client.banished? %>
 <%= link_to('DESVINCULAR ALUNO', inactivate_client_path, data: { confirm: 'Ação permanente. Tem certeza?' }) if @client.active? %>

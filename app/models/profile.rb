@@ -1,6 +1,6 @@
 class Profile
 
-  attr_reader :id, :first_name, :last_name, :document, :account_id, :address, :date_of_birth, :gender, :nickname, :contact, :payment_method, :work_document
+  attr_reader :id, :first_name, :last_name, :document, :address, :date_of_birth, :gender, :nickname, :contact, :payment_method
 
   def initialize(**args)
     args.each do |key, value|
@@ -10,10 +10,9 @@ class Profile
 
   def self.find(cpf)
     response = EspertoFitPersonal.client.get do |req|
-      req.url "customers/#{cpf}"
+      req.url "search/customer?document=#{cpf}"
     end
     
-    return new(response.body[0][:profile]) if response.status == 202
-
+    return new(response.body) if response.status == 202
   end
 end

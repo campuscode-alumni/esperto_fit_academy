@@ -2,7 +2,10 @@ require 'rails_helper'
 
 feature 'Employee block clients by CPF' do
   scenario 'successfully' do
+    # arrange stubs
     load_profile_mock
+    
+    expect(Faraday).to receive(:post).with('http://payment.com.br/api/v1/payments/ban?cpf=12345678900')       
     # arrange
     employee = create(:employee)
     client = create(:client, cpf: '12345678900')

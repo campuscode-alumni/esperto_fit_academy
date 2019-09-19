@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   before_action :authenticate_employee!
   before_action :find_all, only: %i[create update]
-  before_action :find_id, only: %i[show edit update ]
+  before_action :find_id, only: %i[show edit update verify_payments ]
   
   def index
     @clients = Client.all 
@@ -38,13 +38,23 @@ class ClientsController < ApplicationController
 
   def ban
     @client = Client.find(params[:id])
-    @client.banished!
+    @client.ban 
     redirect_to @client, notice: 'CPF banido com sucesso!'
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'Não existe esse aluno!'
     redirect_to clients_path
   end
 
+  def suspend
+    @client = Client.find(params[:id])
+    @client.suspended!
+    flash[:notice] = 'CPF suspenso com sucesso!'
+    redirect_to @client
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Não existe esse aluno!'
+    redirect_to clients_path
+  end
+  
   def inactivate
     @client = Client.find(params[:id])
     if @client.active?
@@ -57,6 +67,13 @@ class ClientsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'Não existe esse aluno!'
     redirect_to clients_path
+  end
+
+  def verify_payments
+    @client.indebted! if @client.last_payment_status == 'unpaid' && @client.active?
+    @client.active! if @client.last_payment_status == 'paid' && @client.indebted?
+
+    redirect_to @client
   end
 
   private

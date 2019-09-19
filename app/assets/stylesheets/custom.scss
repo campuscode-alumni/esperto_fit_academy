@@ -1,80 +1,100 @@
-body{
-  background-color: #5B6974;
-  color: white;
+body {
+    background-color: #5B6974;
+    color: white;
 }
 
-h1{
-  color: #F9A103;
+h1 {
+    color: #F9A103;
 }
-h2{
-  color: #F9A103;
+
+h2 {
+    color: #F9A103;
 }
-h3{
-  color: #343A40;
+
+h3 {
+    color: #343A40;
 }
-h5{
-  color: #343A40;
+
+h4 {
+    color: white;
 }
-a{
-  color: #343A40;
+
+h5 {
+    color: #343A40;
 }
+
+h6 {
+    color: #343A40;
+}
+
+a {
+    color: #343A40;
+}
+
 a:hover {
-  color: #f9a103;
-  text-decoration: none;
-}
-.navbar-brand{
-  height: 80px;
+    color: #f9a103;
+    text-decoration: none;
 }
 
-nav .navbar-nav li a{
-  color: white !important;
-}
-nav .navbar-nav li a:hover{
-  color: #343A40 !important;
-}
-.nav-link:hover{
-  background-color: #F9A103;
-  border-radius: 15px;
+.navbar-brand {
+    height: 80px;
 }
 
-.dropdown-menu{
-  background-color: #343A40;
+nav .navbar-nav li a {
+    color: white !important;
 }
-.dropdown-item{
-  color: white;
-  background-color: #343A40;
+
+nav .navbar-nav li a:hover {
+    color: #343A40 !important;
 }
-.dropdown-item:hover{
-  background-color: #F9A103;
+
+.nav-link:hover {
+    background-color: #F9A103;
+    border-radius: 15px;
+}
+
+.dropdown-menu {
+    background-color: #343A40;
+}
+
+.dropdown-item {
+    color: white;
+    background-color: #343A40;
+}
+
+.dropdown-item:hover {
+    background-color: #F9A103;
 }
 
 .jumbotron {
-  background-image: asset-url('gym_monaghan.jpg'); 
-  background-size: cover;
-  height: 500px;
+    background-image: asset-url('gym_monaghan.jpg');
+    background-size: cover;
+    height: 500px;
 }
-.jumbotron-logo{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 320px;
-  width: auto;
+
+.jumbotron-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 320px;
+    width: auto;
 }
-.jumbotron-content{
-  position: absolute;
-  border-radius: 15px;
-  background-color: rgba(0,0,0,0.6);
-  padding: 20px;
+
+.jumbotron-content {
+    position: absolute;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
 }
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #F9A103;
-  color: #F9A103;
-  text-align: center;
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid #F9A103;
+    color: #F9A103;
+    text-align: center;
 }
 
 .container {
-  display: block;
+    display: block;
 }
