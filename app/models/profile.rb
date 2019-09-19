@@ -1,6 +1,6 @@
 class Profile
 
-  attr_reader :id, :first_name, :last_name, :date_of_birth, :gender, :address, :nickname, :contact, :payment_method
+  attr_reader :id, :first_name, :last_name, :document, :address, :date_of_birth, :gender, :nickname, :contact, :payment_method
 
   def initialize(**args)
     args.each do |key, value|
@@ -14,6 +14,5 @@ class Profile
     end
     
     return new(response.body) if response.status == 202
-
   end
 end
