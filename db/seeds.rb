@@ -60,8 +60,8 @@ Activity.create(name:'Boxe',price: 50.00, duration: 40, difficulty: 'Difícil', 
 Activity.create(name:'HIIT',price: 60.00, duration: 60, difficulty: 'Médio', equipments: 'Nenhum', rules: 'Seguir cuidadosamente as instruções', gym_id: spare_gym.id, trainer_id: another_trainer.id, status: 9 , capacity:50)
 Activity.create(name:'Spinning',price: 75.00, duration: 60, difficulty: 'Fácil', equipments: 'Nenhum', rules: 'Seguir cuidadosamente as instruções', gym_id: spare_gym.id, trainer_id: another_trainer.id, status: 9 , capacity:50)
 
-Client.create(name: 'John Doe', email: 'john.doe@email.com', cpf: '23445656778', gym_id: gym.id, plan_id: premium_plan.id, status: 0)
-Client.create(name: 'Heitor da Cruz', email: 'heitor.cruz@email.com', cpf: '478564543', gym_id: gym.id, plan_id: basic_plan.id, status: 1)
+Client.create(name: 'John Doe', email: 'john.doe@email.com', cpf: '12345678900', gym_id: gym.id, plan_id: premium_plan.id, status: 0)
+Client.create(name: 'Heitor da Cruz', email: 'heitor.cruz@email.com', cpf: '12345678910', gym_id: gym.id, plan_id: basic_plan.id, status: 1)
 Client.create(name: 'Karen de Azevedo', email: 'karen.azevedo@email.com', cpf: '14692289805', gym_id: gym.id, plan_id: vip_plan.id, status: 6)
 Client.create(name: 'Lúcia Alcântara', email: 'lucia.alcantara@email.com', cpf: '53646312815', gym_id: gym.id, plan_id: basic_plan.id, status: 0)
 Client.create(name: 'Roberto Pereira', email: 'roberto.pereira@email.com', cpf: '01553956885', gym_id: gym.id, plan_id: premium_plan.id, status: 0)

@@ -40,7 +40,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @client.ban 
     redirect_to @client, notice: 'CPF banido com sucesso!'
-  rescue ActiveRecord::RecordNotFound
+  rescue StandardError => e
     flash[:alert] = 'Não existe esse aluno!'
     redirect_to clients_path
   end

@@ -11,8 +11,11 @@ class Payment
     response = PaymentsApi.client.get do |req|
       req.url "payments/#{cpf}"
     end
-    response.body[:payments].map do |payment|
+    return response.body[:payments].map do |payment|
       new(payment)
-    end
+    end if response.status == 200
+
+
+    []
   end
 end

@@ -1,6 +1,6 @@
 development:
-  base_url: localhost:4000
-  payment_url: localhost:5000
+  base_url: http://localhost:3000
+  payment_url: http://localhost:5000
 production:
   base_url: https://example.com.br
 test:
