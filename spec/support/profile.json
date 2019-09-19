@@ -1,8 +1,6 @@
 [
   {
-  "id":1,
-  "document":"12345678900",
-  "profile":
+  "customer.profile":
     {
       "id":1,
       "first_name":"Customer",
@@ -13,7 +11,6 @@
       "contact":"123-456-789",
       "nickname":"CustomerNick",
       "payment_method":"Credito",
-      "work_document":null,
       "account_id":1
     }
   }

@@ -20,7 +20,7 @@ feature 'API get client profile' do
   end
 
   scenario 'and fails' do
-    stub_request(:get, "http://0.0.0.0:4000/api/v1/customers/123456789").
+    stub_request(:get, "http://0.0.0.0:4000/api/v1/search/customer?document=123456789").
           with(
             headers: {
             'Accept'=>'*/*',
