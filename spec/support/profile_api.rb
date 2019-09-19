@@ -8,9 +8,8 @@ module ProfileApi
             'Content-Type'=>'application/json',
             'User-Agent'=>'Faraday v0.15.4'
             }).
-          to_return(status: 202, body: JSON.parse(
-            File.read(Rails.root.join('spec', 'support', 'profile.json')),
-            symbolize_names: true), headers: {})
+          to_return(status: 202, body: File.read(Rails.root.join('spec', 'support', 'profile.json')),
+                     headers: {'Content-Type' => 'aplication/json'})
   end
 end
          
