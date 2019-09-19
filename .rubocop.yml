@@ -1,0 +1,26 @@
+require:
+  - rubocop-rails
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+ TargetRubyVersion: 2.6.4
+ Exclude:
+   - 'bin/**/*'
+   - 'vendor/**/*'
+   - 'db/**/*'
+   - 'config/**/*'
+   - 'script/**/*'
+   - 'spec/rails_helper.rb'
+
+Documentation:
+ Enabled: false
+
+Style/FrozenStringLiteralComment:
+ Enabled: false
+
+Metrics/BlockLength:
+ ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
+
+AsciiComments:
+  Enabled: false

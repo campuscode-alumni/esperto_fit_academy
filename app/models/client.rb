@@ -16,13 +16,13 @@ class Client < ApplicationRecord
   end
 
   def ban
-    self.banished!
+    banished!
     notify_payments_api
   end
 
   private
 
   def notify_payments_api
-    Faraday.post("http://payment.com.br/api/v1/payments/ban?cpf=#{self.cpf}")
+    Faraday.post("http://payment.com.br/api/v1/payments/ban?cpf=#{cpf}")
   end
 end

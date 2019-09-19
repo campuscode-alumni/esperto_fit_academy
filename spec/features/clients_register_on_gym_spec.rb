@@ -4,11 +4,11 @@ feature 'clients register on gym ' do
   scenario 'successfully' do
     load_profile_mock
     employee = create(:employee)
-    gym = create(:gym)
+    create(:gym)
     other_gym = create(:gym)
     plan = create(:plan)
-    other_plan = create(:plan, name: 'Basic')
-    
+    create(:plan, name: 'Basic')
+
     login_as employee
 
     visit root_path
@@ -34,7 +34,7 @@ feature 'clients register on gym ' do
   scenario 'and edit his register' do
     load_profile_mock
     employee = create(:employee)
-    gym = create(:gym)
+    create(:gym)
     other_gym = create(:gym)
     plan = create(:plan)
     other_plan = create(:plan, name: 'Basic')
@@ -66,13 +66,13 @@ feature 'clients register on gym ' do
     expect(page).to have_content('Atualizado com sucesso!')
   end
 
-  scenario 'and cpf must be unique' do 
+  scenario 'and cpf must be unique' do
     employee = create(:employee)
     gym = create(:gym)
     other_gym = create(:gym)
     plan = create(:plan)
     other_plan = create(:plan, name: 'Basic')
-    client = create(:client, cpf: '385.093.321-08', gym: gym, plan: plan)
+    create(:client, cpf: '385.093.321-08', gym: gym, plan: plan)
 
     login_as employee
 
@@ -90,11 +90,11 @@ feature 'clients register on gym ' do
     expect(page).to have_content('CPF já está em uso')
   end
 
-  scenario 'and must fill all fields' do 
+  scenario 'and must fill all fields' do
     employee = create(:employee)
-    gym = create(:gym)
+    create(:gym)
     other_gym = create(:gym)
-    plan = create(:plan)
+    create(:plan)
     other_plan = create(:plan, name: 'Basic')
 
     login_as employee
@@ -116,10 +116,10 @@ feature 'clients register on gym ' do
   scenario 'and edit his register rigth' do
     load_profile_mock
     employee = create(:employee)
-    gym = create(:gym)
+    create(:gym)
     other_gym = create(:gym)
     plan = create(:plan)
-    other_plan = create(:plan, name: 'Basic')
+    create(:plan, name: 'Basic')
 
     login_as employee
 
@@ -140,9 +140,6 @@ feature 'clients register on gym ' do
 
     click_on 'Atualizar Matrícula'
 
-
     expect(page).to have_content('Nome completo não pode ficar em branco')
   end
-
-
 end

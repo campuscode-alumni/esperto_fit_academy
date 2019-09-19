@@ -2,7 +2,6 @@ require 'faraday'
 require 'faraday_middleware'
 
 class PaymentsApi 
-
   class << self
     def endpoint
       Rails.configuration.esperto_fit_payment[:payment_url]
@@ -28,10 +27,9 @@ class PaymentsApi
         faraday.headers['Content-Type'] = 'application/json'
 
         faraday.response :json, parser_options: { symbolize_names: true },
-          content_type: /\bjson$/
+                                content_type: /\bjson$/
         faraday.adapter :net_http
       end
     end
   end
-
 end

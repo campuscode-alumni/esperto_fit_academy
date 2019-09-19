@@ -17,8 +17,8 @@ feature 'Employee block clients by CPF' do
     click_on client.name
     click_on 'BANIR ALUNO'
 
-    # assert 
-    expect(current_path).to eq client_path(client.id) 
+    # assert
+    expect(current_path).to eq client_path(client.id)
     expect(page).to have_content('CPF banido com sucesso!')
     expect(page).to have_content('Status: banished')
   end
@@ -35,8 +35,8 @@ feature 'Employee block clients by CPF' do
     click_on 'Lista de Alunos'
     click_on client.name
 
-    # assert 
-    expect(current_path).to eq client_path(client.id) 
+    # assert
+    expect(current_path).to eq client_path(client.id)
     expect(page).to have_content('Status: banished')
     expect(page).not_to have_content('BANIR ALUNO')
   end
@@ -49,19 +49,19 @@ feature 'Employee block clients by CPF' do
     # act
     visit ban_client_path(client)
 
-    #assert 
+    # assert
     expect(current_path).to eq new_employee_session_path
   end
 
   scenario 'and client must exist' do
-    #arrange
+    # arrange
     employee = create(:employee)
 
-    #act
+    # act
     login_as employee
     visit ban_client_path(1)
 
-    #assert
+    # assert
     expect(current_path).to eq clients_path
     expect(page).to have_content('Não existe esse aluno!')
   end

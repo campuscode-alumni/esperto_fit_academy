@@ -8,7 +8,7 @@ describe 'api send registration data' do
 		# act
 		post "/api/v1/clients/#{client.cpf}"
 		json_client = JSON.parse(response.body, symbolize_names: true)
-
+		
 		# assert
 		expect(response.status).to eq 302
 		expect(json_client[:name]).to eq client.name

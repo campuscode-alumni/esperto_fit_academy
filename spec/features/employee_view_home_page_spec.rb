@@ -25,7 +25,7 @@ feature 'employee view home page' do
     fill_in 'Horário de fechamento', with: '23:00'
     fill_in 'Dias de funcionamento', with: 'Segunda à Sexta'
     attach_file 'Galeria', [Rails.root.join('spec', 'support', 'academia_01.jpeg'), Rails.root.join('spec', 'support', 'academia_02.jpg')]
-   
+
     click_on 'Criar Academia'
 
     expect(page).to have_content('Academia cadastrada')
@@ -38,11 +38,11 @@ feature 'employee view home page' do
 
   scenario 'and fields must be unique' do
     employee = create(:employee)
-    gym = create(:gym, name: "Academia Paulista", cod: "001")
-    login_as(employee, scope: :employee) 
+    create(:gym, name: 'Academia Paulista', cod: '001')
+    login_as(employee, scope: :employee)
 
     visit root_path
-    
+
     click_on 'Cadastrar Academia'
 
     fill_in 'Nome', with: 'Academia Paulista'
@@ -51,7 +51,7 @@ feature 'employee view home page' do
     fill_in 'Horário de abertura', with: '09:00'
     fill_in 'Horário de fechamento', with: '23:00'
     fill_in 'Dias de funcionamento', with: 'Segunda à Sexta'
-    #attach_file 'Galeria', Rails.root.join('spec', 'support', 'unidade.jpg')
+    # attach_file 'Galeria', Rails.root.join('spec', 'support', 'unidade.jpg')
     click_on 'Criar Academia'
 
     expect(page).to have_content('Nome já está em uso')
@@ -59,16 +59,15 @@ feature 'employee view home page' do
   end
 
   scenario 'and fields must be fill' do
-    employee = create(:employee)  
-    gym = build(:gym, name: "", cod: "")
+    employee = create(:employee)
+    build(:gym, name: '', cod: '')
     login_as(employee, scope: :employee)
 
     visit root_path
-    
+
     click_on 'Cadastrar Academia'
     click_on 'Criar Academia'
 
     expect(page).to have_content('Nome não pode ficar em branco')
   end
-  
 end

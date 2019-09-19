@@ -9,7 +9,7 @@ module ProfileApi
             'User-Agent'=>'Faraday v0.15.4'
             }).
           to_return(status: 202, body: File.read(Rails.root.join('spec', 'support', 'profile.json')),
-                     headers: {'Content-Type' => 'aplication/json'})
+                     headers: { 'Content-Type' => 'aplication/json' })
   end
 end
          

@@ -47,19 +47,19 @@ feature 'Employee unactivate client' do
     # act
     visit suspend_client_path(client)
 
-    #assert 
+    # assert 
     expect(current_path).to eq new_employee_session_path
   end
 
   scenario 'and client must exist' do
-    #arrange
+    # arrange
     employee = create(:employee)
 
-    #act
+    # act
     login_as employee
     visit suspend_client_path(1)
 
-    #assert
+    # assert
     expect(current_path).to eq clients_path
     expect(page).to have_content('Não existe esse aluno!')
   end

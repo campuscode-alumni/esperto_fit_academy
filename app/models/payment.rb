@@ -1,5 +1,4 @@
 class Payment
-
   attr_reader :value, :dt_venc, :status
    
   def initialize(value:, dt_venc:, status:)
@@ -16,5 +15,4 @@ class Payment
       new(payment)
     end
   end
-
 end

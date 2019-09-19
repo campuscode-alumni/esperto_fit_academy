@@ -6,7 +6,7 @@ feature 'Employee access his profile page' do
     user = create(:employee, name: 'Usuario Teste')
 
     # act
-    login_as user 
+    login_as user
     visit root_path
     click_on 'Meu Perfil'
 
@@ -21,12 +21,10 @@ feature 'Employee access his profile page' do
     other_user = create(:employee, email: 'email_teste@espertofit.com.br', name: 'Outro Usuario')
 
     # act
-    login_as user 
+    login_as user
     visit employee_path(other_user)
 
     # assert
-    expect(current_path).to eq root_path 
-
+    expect(current_path).to eq root_path
   end
-  
 end
