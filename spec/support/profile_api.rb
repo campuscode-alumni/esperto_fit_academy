@@ -1,6 +1,6 @@
 module ProfileApi
   def load_profile_mock 
-    stub_request(:get, "http://0.0.0.0:4000/api/v1/customers/12345678900").
+    stub_request(:get, "http://0.0.0.0:4000/api/v1/search/customer?document=12345678900").
           with(
             headers: {
             'Accept'=>'*/*',
@@ -8,9 +8,8 @@ module ProfileApi
             'Content-Type'=>'application/json',
             'User-Agent'=>'Faraday v0.15.4'
             }).
-          to_return(status: 202, body: JSON.parse(
-            File.read(Rails.root.join('spec', 'support', 'profile.json')),
-            symbolize_names: true), headers: {})
+          to_return(status: 202, body: File.read(Rails.root.join('spec', 'support', 'profile.json')),
+                     headers: {'Content-Type' => 'aplication/json'})
   end
 end
          
