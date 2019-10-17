@@ -1,8 +1,8 @@
 development:
-  base_url: localhost:4000
-  payment_url: localhost:5000
+  base_url: http://esperto_fit_personal_web_run_1:3000
+  payment_url: http://esperto_fit_payments_web_run_1:3000
 production:
-  base_url: https://example.com.br
+  base_url: http://0.0.0.0:5000
 test:
-  base_url: http://0.0.0.0:4000
-  payment_url: http://payment.com.br
+  base_url: http://0.0.0.0:5000
+  payment_url: http://esperto_fit_payments_web_run_1:3000

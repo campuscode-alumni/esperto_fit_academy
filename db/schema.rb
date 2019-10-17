@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2019_09_10_181101) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 2019_09_10_181101) do
     t.string "difficulty"
     t.string "equipments"
     t.text "rules"
-    t.integer "gym_id"
-    t.integer "trainer_id"
+    t.bigint "gym_id"
+    t.bigint "trainer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gym_id"], name: "index_activities_on_gym_id"
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 2019_09_10_181101) do
     t.string "name"
     t.string "email"
     t.integer "status", default: 0
-    t.integer "gym_id"
-    t.integer "plan_id"
+    t.bigint "gym_id"
+    t.bigint "plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "cpf"
@@ -74,15 +77,15 @@ ActiveRecord::Schema.define(version: 2019_09_10_181101) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "gym_id"
+    t.bigint "gym_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["gym_id"], name: "index_employees_on_gym_id"
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
   create_table "gym_trainers", force: :cascade do |t|
-    t.integer "trainer_id"
-    t.integer "gym_id"
+    t.bigint "trainer_id"
+    t.bigint "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gym_id"], name: "index_gym_trainers_on_gym_id"
@@ -109,8 +112,8 @@ ActiveRecord::Schema.define(version: 2019_09_10_181101) do
 
   create_table "prices", force: :cascade do |t|
     t.integer "value"
-    t.integer "plan_id"
-    t.integer "gym_id"
+    t.bigint "plan_id"
+    t.bigint "gym_id"
     t.index ["gym_id"], name: "index_prices_on_gym_id"
     t.index ["plan_id"], name: "index_prices_on_plan_id"
   end
@@ -124,4 +127,14 @@ ActiveRecord::Schema.define(version: 2019_09_10_181101) do
     t.string "email"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "gyms"
+  add_foreign_key "activities", "trainers"
+  add_foreign_key "clients", "gyms"
+  add_foreign_key "clients", "plans"
+  add_foreign_key "employees", "gyms"
+  add_foreign_key "gym_trainers", "gyms"
+  add_foreign_key "gym_trainers", "trainers"
+  add_foreign_key "prices", "gyms"
+  add_foreign_key "prices", "plans"
 end

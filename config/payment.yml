@@ -1,6 +1,6 @@
 test:
-  base_url: http://payment.com.br
+  base_url: http://esperto_fit_payments_web_run_1:3000
 development:
-  base_url: http://localhost:4000 
+  base_url: http://esperto_fit_payments_web_run_1:3000
 production:
-  base_url:
+  base_url: http://esperto_fit_payments_web_run_1:3000
