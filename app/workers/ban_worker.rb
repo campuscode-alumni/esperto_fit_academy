@@ -2,7 +2,6 @@ class BanWorker
   include Sidekiq::Worker
 
   def perform(client_id)
-byebug
     ClientMailer.ban_email(client_id).deliver_now
     notify_payments_api(client_id)
   end

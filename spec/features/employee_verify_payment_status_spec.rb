@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Employee verify payment status' do 
   scenario 'successfully' do 
     load_profile_mock
-    stub_request(:get, 'http://192.168.15.53:82/api/v1/payments/12345678900')
+    stub_request(:get, 'http://esperto_fit_payments_web_run_1:3000/api/v1/payments/12345678900')
       .with(
         headers: {
           'Accept' => '*/*',
@@ -34,7 +34,7 @@ feature 'Employee verify payment status' do
 
   scenario 'and must turn active if payment is ok' do
     load_profile_mock
-    stub_request(:get, 'http://192.168.15.53:82/api/v1/payments/12345678900')
+    stub_request(:get, 'http://esperto_fit_payments_web_run_1:3000/api/v1/payments/12345678900')
       .with(
         headers: {
           'Accept' => '*/*',
@@ -64,7 +64,7 @@ feature 'Employee verify payment status' do
 
   scenario 'and client must not be banished' do
     load_profile_mock
-    stub_request(:get, 'http://192.168.15.53:82/api/v1/payments/12345678900')
+    stub_request(:get, 'http://esperto_fit_payments_web_run_1:3000/api/v1/payments/12345678900')
       .with(
         headers: {
           'Accept' => '*/*',
