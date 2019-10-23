@@ -8,18 +8,23 @@ describe 'api show all gyms' do
     activity = create(:activity, gym_id: gym.id, trainer_id: trainer.id)
     another_activity = create(:activity, name: 'Yoga', gym_id: gym.id, trainer_id: trainer.id)
     spare_activity = create(:activity, name: 'Boxe', gym_id: another_gym.id, trainer_id: trainer.id)
+    admin = create(:employee, admin: true)    
 
+    sign_in admin
     get "/api/v1/gyms/#{gym.id}/activities"
 
     json_activities = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq 200
-    expect(json_activities[0][:name]).to eq activity.name
-    expect(json_activities[1][:name]).to eq another_activity.name
-    expect(json_activities).not_to include spare_activity.name
+    expect(response.body).to include activity.name
+    expect(response.body).to include another_activity.name
+    expect(response.body).not_to include spare_activity.name
   end
 
   it 'fails' do
+    admin = create(:employee, admin:true)
+
+    sign_in admin
     get '/api/v1/gyms/7858/activities'
 
     json_gyms = JSON.parse(response.body, symbolize_names: true)

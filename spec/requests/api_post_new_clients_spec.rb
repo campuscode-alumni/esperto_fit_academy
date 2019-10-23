@@ -4,7 +4,9 @@ describe 'api post new clients' do
   it 'successfully' do
     gym = create(:gym)
     plan = create(:plan)
+    admin = create(:employee, admin: true)    
 
+    sign_in admin
     post api_v1_clients_path, params: { client: { name: 'Mario', cpf: '123', email: 'teste@espertofit.com.br', gym_id: gym.id, plan_id: plan.id } }
     json_client = JSON.parse(response.body, symbolize_names: true)
     expect(response.status).to eq 201
@@ -15,7 +17,8 @@ describe 'api post new clients' do
 
   it 'and all fields must be fill' do
     gym = create(:gym)
-
+    admin = create(:employee, admin:true)
+    sign_in admin
     post api_v1_clients_path, params: { client: { name: 'Mario', cpf: '', email: 'teste@espertofit.com.br', gym_id: gym.id, plan_id: '' } }
 
     json_client = JSON.parse(response.body, symbolize_names: true)

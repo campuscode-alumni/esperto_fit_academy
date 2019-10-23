@@ -32,5 +32,18 @@ module EspertoFitAcademy
     config.generators.system_tests = nil
     config.esperto_fit_personal = config_for(:academy).symbolize_keys
     config.esperto_fit_payment = config_for(:academy).symbolize_keys
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://esperto_fit_academy_web_run_1'
+        resource '/api/v1/*',
+          headers: %w(Authorization),
+          methods: :any,
+          expose: ["Authorization", "jti"],
+          max_age: 600
+      end
+    end
   end
+
+  
 end

@@ -1,4 +1,6 @@
 class Api::V1::GymsController < Api::V1::ApiController
+  respond_to :json
+
   def index
     @gyms = Gym.all 
     if @gyms.empty?
@@ -30,6 +32,14 @@ class Api::V1::GymsController < Api::V1::ApiController
 
   def build_images
     @gym.gallery.map {|image| url_for(image)}
+  end
+
+  def authenticated?
+    @authenticated || unauthorized
+  end
+
+  def unauthorized
+    head :unauthorized
   end
 
 end

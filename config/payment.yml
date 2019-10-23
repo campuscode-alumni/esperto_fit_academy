@@ -1,6 +1,6 @@
 test:
-  base_url: http://esperto_fit_payments_web_run_1:3000
+  base_url: http://192.168.15.53:82
 development:
-  base_url: http://esperto_fit_payments_web_run_1:3000
+  base_url: http://192.168.15.53:82
 production:
-  base_url: http://esperto_fit_payments_web_run_1:3000
+  base_url: http://192.168.15.53:82

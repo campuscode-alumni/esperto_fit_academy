@@ -11,11 +11,31 @@ services:
       - "4000:3000"
     depends_on:
       - db
+      - sidekiq
+      - redis
     volumes:
        - .:/espertofit_academy
 
+  redis:
+    image: redis
+    volumes:
+      - Redis_db:/var/lib/redis
+    ports:
+      - "6379:6379"
+  
+  sidekiq:  
+    build: .
+    volumes:
+      - .:/espertofit_academy
+    command: bundle exec sidekiq
+    links:
+      - db
+    depends_on:
+      - redis
+
 volumes:
   Academy:
+  Redis_db:
 
 networks:
   default:

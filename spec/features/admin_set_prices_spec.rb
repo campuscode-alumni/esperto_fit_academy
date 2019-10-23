@@ -2,6 +2,17 @@ require 'rails_helper'
 
 feature 'Admin set prices' do
   scenario 'successfully' do
+    stub_request(:post, "http://192.168.15.53:82/api/v1/plans?plan%5Bname%5D=Premium&plan%5Bvalue%5D=9999").
+         with(
+           headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'Content-Length'=>'0',
+       	  'Content-Type'=>'application/json',
+       	  'User-Agent'=>'Faraday v0.15.4'
+           }).
+         to_return(status: 200, body: "", headers: {})
+         
     # arrange
     admin = create(:employee, admin: true)
     plan = create(:plan)
