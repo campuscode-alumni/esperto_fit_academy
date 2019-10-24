@@ -7,7 +7,7 @@ class Employee < ApplicationRecord
 
 
   devise :database_authenticatable,
-         :recoverable, :rememberable, :validatable, :jwt_authenticatable, jwt_revocation_strategy: self
+         :recoverable, :rememberable, :validatable, :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
          
   validates :name, :status, :email,  presence: { message: 'deve ser preenchido!' }
   validates :email, uniqueness: { message: 'Email deve ser unico!' }

@@ -1,5 +1,6 @@
 class Api::SessionsController < Devise::SessionsController
   #skip_before_action :verify_signed_out_employee
+  protect_from_forgery with: :exception, unless: :json_request?
   respond_to :json  
   
   def create
