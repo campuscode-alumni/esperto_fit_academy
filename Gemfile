@@ -49,7 +49,7 @@ gem 'devise-jwt', '~> 0.5.9'
 gem 'devise-encryptable'
 gem 'activerecord-session_store'
 gem 'rack-cors'
-
+gem "rubycritic", require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

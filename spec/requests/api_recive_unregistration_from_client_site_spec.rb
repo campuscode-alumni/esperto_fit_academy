@@ -14,7 +14,7 @@ describe 'API recive unregistration from client site' do
 
     # assert
     expect(response.status).to eq 202
-    expect(json_client[:status]).to eq 'inactive'
+    expect(json_client[:data][:attributes][:status]).to eq 'inactive'
   end
 
   it 'and CPF must exit' do
@@ -42,7 +42,7 @@ describe 'API recive unregistration from client site' do
 
     # assert
     expect(response.status).to eq 202
-    expect(json_client[:status]).to eq 'banished'
+    expect(json_client[:data][:attributes][:status]).to eq 'banished'
   end
 
   it 'and client must not been inacitve' do
@@ -58,6 +58,6 @@ describe 'API recive unregistration from client site' do
 
     # assert
     expect(response.status).to eq 202
-    expect(json_client[:status]).to eq 'inactive'
+    expect(json_client[:data][:attributes][:status]).to eq 'inactive'
   end
 end

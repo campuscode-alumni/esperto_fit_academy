@@ -9,7 +9,7 @@ class Api::V1::ClientsController < Api::V1::ApiController
   def create
     @client = Client.new(client_params)
     if @client.save
-      render json: @client, status: :created
+      render json: ClientSerializer.new(@client).serialized_json, status: :created
     else
       render json: { message: 'Não foi possivel cadastrar esse aluno', errors: @client.errors.full_messages }, status: :precondition_failed
     end
@@ -19,7 +19,7 @@ class Api::V1::ClientsController < Api::V1::ApiController
     @client = Client.find_by(cpf: params[:cpf])
     return render json: { message: 'Cliente não encontrado' }, status: :not_found unless @client
 
-    render json: @client, status: :found
+    render json: ClientSerializer.new(@client).serialized_json, status: :found
   end
 
   def inactivate
@@ -27,7 +27,7 @@ class Api::V1::ClientsController < Api::V1::ApiController
     return render json: { message: 'CPF não encontrado' }, status: :not_found unless @client
 
     @client.inactive! if @client.active?
-    render json: @client.to_json(only: %i[cpf status]), status: :accepted
+    render json: ClientStatusSerializer.new(@client).serialized_json, status: :accepted
   end
 
   private

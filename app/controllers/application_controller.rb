@@ -27,7 +27,4 @@ class ApplicationController < ActionController::Base
     end
   end  
   
-  def set_current_employee
-    @current_employee ||= warden.authenticate(scope: :api_employee)
-  end
 end

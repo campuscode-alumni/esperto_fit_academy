@@ -4,14 +4,14 @@ feature 'Employee block clients by CPF' do
   scenario 'successfully' do
     # arrange stubs
     load_profile_mock
-    stub_request(:post, "http://192.168.15.53:82/api/v1/payments/ban?cpf=12345678900").
+    stub_request(:post, "http://esperto_fit_payments_web_run_1:3000/api/v1/payments/ban?cpf=12345678900").
          with(
            headers: {
-       	  'Accept'=>'*/*',
-       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       	  'Content-Length'=>'0',
-       	  'Content-Type'=>'application/json',
-       	  'User-Agent'=>'Faraday v0.15.4'
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Content-Length'=>'0',
+          'Content-Type'=>'application/json',
+          'User-Agent'=>'Faraday v0.15.4'
            }).
          to_return(status: 200, body: "", headers: {})
       
@@ -26,6 +26,8 @@ feature 'Employee block clients by CPF' do
     click_on client.name
     # byebug
     click_on 'BANIR ALUNO'
+    # expect(BanWorker).to receive(:perform_async(client.id))
+
 
     # assert
     expect(current_path).to eq client_path(client.id)
