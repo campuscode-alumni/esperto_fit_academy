@@ -38,7 +38,8 @@ class ClientsController < ApplicationController
 
   def ban
     @client = Client.find(params[:id])
-    @client.ban 
+    @client.banished!
+    BanWorker.perform_async(@client.id)
     redirect_to @client, notice: 'CPF banido com sucesso!'
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'Não existe esse aluno!'

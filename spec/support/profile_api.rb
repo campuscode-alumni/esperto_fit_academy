@@ -1,6 +1,6 @@
 module ProfileApi
   def load_profile_mock 
-    stub_request(:get, "http://0.0.0.0:4000/api/v1/search/customer?document=12345678900").
+    stub_request(:get, "http://0.0.0.0:5000/api/v1/search/customer?document=12345678900").
           with(
             headers: {
             'Accept'=>'*/*',

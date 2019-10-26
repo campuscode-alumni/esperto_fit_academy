@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe 'API recive unregistration from client site' do
   it 'successfully' do
+    admin = create(:employee, admin: true)    
+    
     # arrange
+    sign_in admin
     client = create(:client, cpf: '12312312300')
 
     # act
@@ -11,11 +14,14 @@ describe 'API recive unregistration from client site' do
 
     # assert
     expect(response.status).to eq 202
-    expect(json_client[:status]).to eq 'inactive'
+    expect(json_client[:data][:attributes][:status]).to eq 'inactive'
   end
 
   it 'and CPF must exit' do
+    admin = create(:employee, admin: true)
+
     # act
+    sign_in admin
     post '/api/v1/inactivate_client/000'
 
     # assert
@@ -25,6 +31,9 @@ describe 'API recive unregistration from client site' do
 
   it 'and client must not been banished' do
     # arrange
+    admin = create(:employee, admin: true)
+
+    sign_in admin
     client = create(:client, cpf: '12312312300', status: :banished)
 
     # act
@@ -33,10 +42,13 @@ describe 'API recive unregistration from client site' do
 
     # assert
     expect(response.status).to eq 202
-    expect(json_client[:status]).to eq 'banished'
+    expect(json_client[:data][:attributes][:status]).to eq 'banished'
   end
 
   it 'and client must not been inacitve' do
+    admin = create(:employee, admin: true)
+
+    sign_in admin
     # arrange
     client = create(:client, cpf: '12312312300', status: :inactive)
 
@@ -46,6 +58,6 @@ describe 'API recive unregistration from client site' do
 
     # assert
     expect(response.status).to eq 202
-    expect(json_client[:status]).to eq 'inactive'
+    expect(json_client[:data][:attributes][:status]).to eq 'inactive'
   end
 end

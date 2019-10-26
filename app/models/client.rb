@@ -15,14 +15,5 @@ class Client < ApplicationRecord
     @profile ||= Profile.find(cpf)
   end
 
-  def ban
-    banished!
-    notify_payments_api
-  end
 
-  private
-
-  def notify_payments_api
-    Faraday.post("http://payment.com.br/api/v1/payments/ban?cpf=#{cpf}")
-  end
 end

@@ -23,15 +23,11 @@ before_action :authorize_admin, only: [:add_units]
     else
       flash.now[:message] = @trainer.errors.full_messages.first
       render :new
-    end
-    
-    
+    end    
   end
 
 
   def show
-    
-    
   end
 
   def edit
@@ -57,8 +53,6 @@ before_action :authorize_admin, only: [:add_units]
     @gym_trainer = GymTrainer.new()
     
   end
-
-
 
   private 
 
