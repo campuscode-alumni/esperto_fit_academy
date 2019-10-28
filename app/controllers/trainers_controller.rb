@@ -1,5 +1,5 @@
 class TrainersController < ApplicationController 
-before_action :authenticate_employee!, only: %i[ new create edit update show]
+before_action :authenticate_employee!, only: %i[new create edit update show]
 before_action :params_find, only: %i[ show edit update add_units]
 before_action :authorize_admin, only: [:add_units]
 
@@ -9,15 +9,9 @@ before_action :authorize_admin, only: [:add_units]
   end
 
   def create
-    @trainer = Trainer.new(set_trainer)
-    
-    if @trainer.save
-      if !current_employee.admin
-        @gym = Gym.where()
-        
-        @gym_trainer = GymTrainer.create!(trainer: @trainer, gym: current_employee.gym)
-        
-      end
+    @trainer = Trainer.new(set_trainer)  
+    if @trainer.save       
+      @gym_trainer = GymTrainer.create(trainer: @trainer, gym: current_employee.gym) if !current_employee.admin
       redirect_to @trainer, notice: t(:success_create, 
       scope: [:notice], models: Trainer.model_name.human)
     else
@@ -27,12 +21,9 @@ before_action :authorize_admin, only: [:add_units]
   end
 
 
-  def show
-  end
+  def show;  end
 
-  def edit
-    
-  end
+  def edit;  end
 
   def update
     if @trainer.update(set_trainer)
@@ -44,14 +35,13 @@ before_action :authorize_admin, only: [:add_units]
     end
   end
 
-  def management
+  def index
     @trainers = Trainer.all
   end
 
   def add_units
     @gyms = Gym.all
     @gym_trainer = GymTrainer.new()
-    
   end
 
   private 
@@ -62,9 +52,5 @@ before_action :authorize_admin, only: [:add_units]
 
   def params_find
     @trainer = Trainer.find(params[:id])
-  end
-
-  def authorize_admin
-    redirect_to root_path unless current_employee.admin
   end
 end

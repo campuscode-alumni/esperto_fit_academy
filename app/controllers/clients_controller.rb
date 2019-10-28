@@ -51,9 +51,14 @@ class ClientsController < ApplicationController
   end
   
   def inactive_client
-    BanisheService.new(@client).call
+    InactiveService.new(@client).call
+    if @client.inactive?
+     redirect_to @client, notice: t(:client_inactive, 
+     scope: [:notice])
+    else
+      redirect_to @client, alert: t(:fail_inactive, 
+      scope: [:alert, :client])
     end
-    redirect_to @client
   end
 
   def verify_payments

@@ -50,11 +50,7 @@ class GymsController < ApplicationController
   end
 
   def find_gym
-    @gym = Gym.find(params[:id])
-  end
-
-  def authorize_admin
-    redirect_to root_path unless current_employee.admin?
+    @gym ||= Gym.find(params[:id])
   end
 
   def authorize_employee

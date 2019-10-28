@@ -15,10 +15,9 @@ feature 'Employee block clients by CPF' do
     visit root_path
     click_on 'Lista de Alunos'
     click_on client.name
-    # byebug
     click_on 'BANIR ALUNO'
+    # save_page
     # expect(BanWorker).to receive(:perform_async(client.id))
-
 
     # assert
     expect(current_path).to eq client_path(client.id)

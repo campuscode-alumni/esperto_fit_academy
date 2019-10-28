@@ -18,15 +18,13 @@ class PlansController < ApplicationController
     end
   end
 
-  def show 
-  end
+  def show;  end
 
-  def management
+  def index
     @plans = Plan.all
   end
 
-  def edit
-  end
+  def edit;  end
 
   def update
     if @plan.update(plan_params)
@@ -45,6 +43,7 @@ class PlansController < ApplicationController
   end
 
   private
+  
   def plan_params
     params.require(:plan).permit(:name, :minimum_permanence)
   end

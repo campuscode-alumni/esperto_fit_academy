@@ -25,6 +25,9 @@ class ApplicationController < ActionController::Base
                     error: 'Login invalid or expired' }
       format.json { head 401 }
     end
-  end  
+  end 
   
+  def authorize_admin
+    redirect_to root_path unless current_employee.admin?
+  end
 end
