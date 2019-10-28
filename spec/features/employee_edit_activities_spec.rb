@@ -19,7 +19,7 @@ feature 'Employee edit activities' do
         expect(page).to have_css('h3', text: activity.name)
         expect(page).to have_css('p', text: activity.equipments)
         expect(page).to have_css('p', text: 'Difícil')
-        expect(page).to have_content('Aula atualizada com sucesso!')
+        expect(page).to have_content('Alterações realizadas com sucesso!')
     end
 
     scenario 'and unathenticated user cant see button' do

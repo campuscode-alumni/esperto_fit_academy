@@ -15,6 +15,6 @@ feature 'admin can remove gym' do
     click_on 'Academia Oscar Freire'
     click_on 'Remover'
     
-    expect(page).to have_content('Academia removida com sucesso!')
+    expect(page).to have_content('Academia removido com sucesso')
   end
 end

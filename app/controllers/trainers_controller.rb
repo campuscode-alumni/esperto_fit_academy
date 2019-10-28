@@ -12,14 +12,14 @@ before_action :authorize_admin, only: [:add_units]
     @trainer = Trainer.new(set_trainer)
     
     if @trainer.save
-      flash[:message] = 'Professor cadastrado com sucesso' 
       if !current_employee.admin
         @gym = Gym.where()
         
         @gym_trainer = GymTrainer.create!(trainer: @trainer, gym: current_employee.gym)
         
       end
-      redirect_to @trainer
+      redirect_to @trainer, notice: t(:success_create, 
+      scope: [:notice], models: Trainer.model_name.human)
     else
       flash.now[:message] = @trainer.errors.full_messages.first
       render :new
@@ -36,7 +36,7 @@ before_action :authorize_admin, only: [:add_units]
 
   def update
     if @trainer.update(set_trainer)
-      flash[:message] = "Alterações realizadas com sucesso"
+      flash[:message] = t(:success_update, scope:[:notice])
       redirect_to @trainer
     else
       flash.now[:message] = @trainer.errors.full_messages

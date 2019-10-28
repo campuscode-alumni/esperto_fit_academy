@@ -17,7 +17,7 @@ feature 'employee manages gym' do
     fill_in 'Endereço', with: 'Rua Oscar Freire, 1439'
     click_on 'Atualizar Academia'
 
-    expect(page).to have_content('Academia atualizada com sucesso!')
+    expect(page).to have_content('Alterações realizadas com sucesso!')
     expect(page).to have_css('h3', text: 'Academia Oscar Freire')
     expect(page).to have_css('p', text: 'Rua Oscar Freire, 1439')
   end
@@ -60,7 +60,7 @@ feature 'employee manages gym' do
     fill_in 'Endereço', with: ''
     click_on 'Atualizar Academia'
 
-    expect(page).not_to have_content('Academia atualizada com sucesso!')
+    expect(page).not_to have_content('Alterações realizadas com sucesso!')
     expect(page).to have_content('Endereço não pode ficar em branco')
   end
 
@@ -79,7 +79,7 @@ feature 'employee manages gym' do
     fill_in 'Nome', with: 'Academia Paulista'
     click_on 'Atualizar Academia'
 
-    expect(page).not_to have_content('Academia atualizada com sucesso!')
+    expect(page).not_to have_content('Alterações realizadas com sucesso!')
     expect(page).to have_content('Nome já está em uso')
   end
 
@@ -99,7 +99,7 @@ feature 'employee manages gym' do
     fill_in 'Endereço', with: 'Rua Oscar Freire, 1439'
     click_on 'Atualizar Academia'
 
-    expect(page).to have_content('Academia atualizada com sucesso!')
+    expect(page).to have_content('Alterações realizadas com sucesso!')
     expect(page).to have_css('h3', text: 'Academia Oscar Freire')
     expect(page).to have_css('p', text: 'Rua Oscar Freire, 1439')
   end

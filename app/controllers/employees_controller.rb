@@ -12,12 +12,12 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-  
     if @employee.save
-      flash[:success] = 'Funcionario cadastrado com sucesso!'
-      redirect_to @employee
+      redirect_to @employee, notice: t(:success_create,
+      scope:[:notice], models: Employee.model_name.human)
     else
-      flash.now[:alert] = 'Funcionario não cadastrado'
+      flash.now[:alert] = t(:fail_create, scope:[:alert],
+      models: Employee.model_name.human)
       render :new
     end
   end
@@ -34,10 +34,11 @@ class EmployeesController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     if @employee.update(employee_params)
-      flash[:success] = 'Funcionario alterado com sucesso!'
-      redirect_to @employee
+      redirect_to @employee, notice: t(:success_updates,
+      scope:[:notice], models: Employee.model_name.human)
     else
-      flash.now[:alert] = 'Funcionario não alterado'
+      flash.now[:alert] = t(:fail_update, 
+      scope:[:alert], models: Employee.model_name.human)
       render :edit
     end
   end
@@ -46,10 +47,12 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     if @employee.status == 'active'
       @employee.unactive!
-      flash[:success] = 'Funcionario inativado com sucesso!'
+      flash[:notice] = t(:employee_unactive,
+      scope: [:notice], models: Employee.model_name.human)
     else
       @employee.active!
-      flash[:success] = 'Funcionario ativado com sucesso!'
+      flash[:notice] = t(:employee_active,
+      scope: [:notice], models: Employee.model_name.human)
     end
     redirect_to @employee
   end

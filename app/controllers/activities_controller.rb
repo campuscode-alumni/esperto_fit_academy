@@ -15,8 +15,8 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     if @activity.save
-      redirect_to @activity
-      flash[:notice] = 'Aula cadastrada com sucesso!'
+      redirect_to @activity, notice: t(:success_create, 
+      scope: [:notice], models: Activity.model_name.human)
     else
       render :new
       find_all
@@ -27,7 +27,8 @@ class ActivitiesController < ApplicationController
 
   def update
     if @activity.update(activity_params)
-      redirect_to @activity, notice: 'Aula atualizada com sucesso!'
+      redirect_to @activity, notice: t(:success_update, 
+      scope: [:notice])
     else
       render :edit
     end

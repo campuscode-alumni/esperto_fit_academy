@@ -28,7 +28,7 @@ feature 'employee view home page' do
 
     click_on 'Criar Academia'
 
-    expect(page).to have_content('Academia cadastrada')
+    expect(page).to have_content('Academia cadastrado com sucesso!')
     expect(page).to have_css('h3', text: 'Academia Paulista')
     expect(page).to have_css('p', text: 'Av Paulista, 123')
     expect(page).to have_css('img[src*="academia_01.jpeg"]')

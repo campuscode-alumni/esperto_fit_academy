@@ -23,7 +23,7 @@ feature 'Admin register another employee' do
     expect(page).to have_content('Status: Ativo')
     expect(page).to have_content('Email específico: alan.h@espertofit.com.br')
     expect(page).to have_content('Admin: Nao')
-    expect(page).to have_content('Funcionario cadastrado com sucesso!')
+    expect(page).to have_content('Funcionário cadastrado com sucesso!')
     expect(page).to have_link('Voltar')
   end
 

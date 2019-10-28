@@ -1,9 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      employee: Funcionários
+      employee: Funcionário
       gym: Academia
-      trainer: Professores
+      trainer: Professor
       activity: Aula
       client: Matrícula
       price: Preços
@@ -75,10 +75,33 @@ pt-BR:
         banished: Banido
         inactive: Inativa
         suspended: Suspenso
-
   notice:
+    success_create: "%{models} cadastrado com sucesso!"
+    success_update: Alterações realizadas com sucesso!
+    success_destroy: "%{models} removido com sucesso"
+    employee_unactive: "%{models} inativado com sucesso!"
+    employee_active: "%{models} ativado com sucesso!"
+    price_create: "O plano %{price_name} na unidade %{price_gym_name} foi dado o valor de %{price_format} com sucesso!"
+    client_banished: CPF banido com sucesso!
+    client_suspend: CPF suspenso com sucesso!
+    client_inactive: Cliente desvinculado com sucesso!
     gym:
       successfully_editing: Academia atualizada com sucesso!
       successfully_creating: Academia cadastrada
       successfully_destroying: Academia removida com sucesso!
       fails_editing: Aconteceu um erro
+    plan:
+      success_update: Alterações realizadas com sucesso
+      success_create: Plano cadastrado com sucesso!
+    trainer:
+      success_update: Alterações realizadas com sucesso
+      success_create: Professor cadastrado com sucesso
+  alert:
+    fail_create: "%{models} não cadastrado"
+    fail_update: "%{models} não alterado"
+    price_fail_create: Você deve preencher todos os campos
+
+    client:
+      not_found: Não existe esse aluno!
+      fail_inactive: Cliente deve estar com status ativo para desvincular.
+        
