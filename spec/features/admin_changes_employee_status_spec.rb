@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'database_cleaner'
 
 feature 'Admin change employee status' do
   scenario 'successfully deactivate him' do

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'database_cleaner'
 
 feature 'admin can remove gym' do
   scenario 'successfully' do

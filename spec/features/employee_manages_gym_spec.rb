@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 feature 'employee manages gym' do
+  # before do 
+  #   DatabaseCleaner.clean 
+  # end
   scenario 'successfully' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')

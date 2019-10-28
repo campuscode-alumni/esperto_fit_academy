@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'database_cleaner'
 
 feature 'Admin delete plans' do
   scenario 'successfully' do
@@ -19,7 +20,5 @@ feature 'Admin delete plans' do
     expect(page).to have_content('Premium')
     expect(page).not_to have_content('Básico')  
   end
-  
-
 
 end
