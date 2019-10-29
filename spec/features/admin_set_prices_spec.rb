@@ -3,12 +3,11 @@ require 'rails_helper'
 feature 'Admin set prices' do
   scenario 'successfully' do
     load_plan_mock
-
     # arrange
     admin = create(:employee, admin: true)
     plan = create(:plan)
     gym = create(:gym, name: 'Academia X')
-
+    
     # act
     login_as admin
     visit root_path
@@ -32,6 +31,7 @@ feature 'Admin set prices' do
     # act
     login_as admin
     visit root_path
+    save_page
     click_on 'Cadastros'
     click_on 'Cadastrar Preços'
     select gym.name, from: 'Unidades'

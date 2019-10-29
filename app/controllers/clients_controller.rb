@@ -40,6 +40,7 @@ class ClientsController < ApplicationController
 
   def banishe_client
     BanisheService.new(@client).call
+
     redirect_to @client, notice: t(:client_banished, 
     scope: [:notice])
   end

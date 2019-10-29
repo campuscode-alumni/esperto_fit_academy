@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   before_action :authenticate_employee! 
-  before_action :verify_admin 
+  before_action :authorize_admin
   before_action :find_id, only: %i[show edit update destroy]
 
   def new 
@@ -46,10 +46,6 @@ class PlansController < ApplicationController
   
   def plan_params
     params.require(:plan).permit(:name, :minimum_permanence)
-  end
-
-  def verify_admin
-    redirect_to new_employee_session_path unless current_employee.admin?
   end
 
   def find_id

@@ -4,8 +4,9 @@ class BanisheService < ApplicationService
   def initialize(client)
     @client = client
   end
+  
   def call
     client.banished!
-    BanWorker.perform_async(client)
+    BanWorker.perform_async(client.id)
   end
 end

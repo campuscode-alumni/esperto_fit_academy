@@ -1,6 +1,6 @@
 class PricesController < ApplicationController
   before_action :authenticate_employee!
-  before_action :verify_admin
+  before_action :authorize_admin, only: %i[new create]
   before_action :load_data
 
 
@@ -31,9 +31,5 @@ class PricesController < ApplicationController
   def load_data
     @gyms = Gym.all
     @plans = Plan.all
-  end
-
-  def verify_admin
-    redirect_to root_path unless current_employee.admin?
   end
 end

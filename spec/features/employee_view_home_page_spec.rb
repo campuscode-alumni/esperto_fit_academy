@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'employee view home page' do
   scenario 'sucessfully' do
     employee = create(:employee)
-    login_as(employee, scope: :employee)
+    login_as employee
 
     visit root_path
 
@@ -12,7 +12,7 @@ feature 'employee view home page' do
 
   scenario 'and register a new gym' do
     employee = create(:employee)
-    login_as(employee, scope: :employee)
+    login_as employee
 
     visit root_path
 
@@ -39,11 +39,12 @@ feature 'employee view home page' do
   scenario 'and fields must be unique' do
     employee = create(:employee)
     create(:gym, name: 'Academia Paulista', cod: '001')
-    login_as(employee, scope: :employee)
+    login_as employee
 
     visit root_path
 
     click_on 'Cadastrar Academia'
+    save_page
 
     fill_in 'Nome', with: 'Academia Paulista'
     fill_in 'Código', with: '001'
@@ -61,7 +62,7 @@ feature 'employee view home page' do
   scenario 'and fields must be fill' do
     employee = create(:employee)
     build(:gym, name: '', cod: '')
-    login_as(employee, scope: :employee)
+    login_as employee
 
     visit root_path
 

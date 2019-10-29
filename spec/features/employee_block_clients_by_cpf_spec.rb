@@ -9,7 +9,7 @@ feature 'Employee block clients by CPF' do
     # arrange
     employee = create(:employee)
     client = create(:client, cpf: '12345678900')
-
+    
     # act
     login_as employee
     visit root_path
