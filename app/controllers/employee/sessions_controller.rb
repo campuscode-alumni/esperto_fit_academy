@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-module Employee
-  class SessionsController < Devise::SessionsController
+  class Employee::SessionsController < Devise::SessionsController
     # before_action :configure_sign_in_params, only: [:create]
     respond_to :html
     # GET /resource/sign_in
@@ -26,4 +25,3 @@ module Employee
     #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
     # end
   end
-end
