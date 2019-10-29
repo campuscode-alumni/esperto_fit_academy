@@ -31,7 +31,6 @@ feature 'Admin set prices' do
     # act
     login_as admin
     visit root_path
-    save_page
     click_on 'Cadastros'
     click_on 'Cadastrar Preços'
     select gym.name, from: 'Unidades'

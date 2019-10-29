@@ -19,7 +19,6 @@ Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 
 require 'webmock/rspec'
-require 'database_cleaner'
 
 
 # Checks for pending migrations and applies them before tests are run.
@@ -39,7 +38,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
   
   WebMock.disable_net_connect!(allowlocalhost: true)
   
@@ -66,26 +65,19 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
 
   config.include Devise::Test::IntegrationHelpers, type: :request
-  # config.before(:each, type: :feature) do
-  #   # :rack_test driver's Rack app under test shares database connection
-  #   # with the specs, so continue to use transaction strategy for speed.
-  #   driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
 
-  #   unless driver_shares_db_connection_with_specs
-  #     # Driver is probably for an external browser with an app
-  #     # under test that does *not* share a database connection with the
-  #     # specs, so use truncation strategy.
-  #     DatabaseCleaner.strategy = :truncation
-  #   end
-  # end
   # config.before(:each) do
+  #   DatabaseCleaner.strategy = :transaction
+  #   DatabaseCleaner.clean_with(:truncation)
   #   DatabaseCleaner.start
+  #   # DatabaseCleaner.clean
   # end
-  # config.before(:each) do
+  # config.after(:each) do
   #   DatabaseCleaner.clean 
   # end 
-  config.order =:random
-  config.before(:each) do 
-    DatabaseCleaner.clean_with(:deletion) 
-  end
+  # # config.before(:each) do 
+  # #   DatabaseCleaner.clean_with(:delet ion) 
+  # # end
+  config.order = :random
+
 end
