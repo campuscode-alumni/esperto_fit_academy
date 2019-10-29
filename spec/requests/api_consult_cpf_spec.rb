@@ -7,7 +7,7 @@ describe 'API consult CPF' do
 
     # act
     get "/api/v1/clients/consult_cpf/#{client.cpf}"
-
+    
     # assert
     expect(response.status).to eq 302
     expect(response.body).to include(client.cpf)

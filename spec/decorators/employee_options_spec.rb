@@ -10,7 +10,7 @@ describe EmployeeDecorator do
       let (:employee) { create(:employee, :admin) }
 
       it 'returns sim' do
-        expect(subject).to eq("Admin: Sim")
+        is_expected.to eq("Admin: Sim")
       end
     end
     #comportamentos do metodo
