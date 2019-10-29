@@ -3,7 +3,6 @@ class PricesController < ApplicationController
   before_action :authorize_admin, only: %i[new create]
   before_action :load_data
 
-
   def new
     @price = Price.new
   end
@@ -12,13 +11,13 @@ class PricesController < ApplicationController
     @price = Price.new(price_params)
     if @price.save
       NotifyCreatedPlan.call(@price)
-      flash[:notice] = t(:price_create, scope:[:notice], 
-      price_name: @price.plan.name, price_gym_name: @price.gym.name, 
-      price_format: @price.price_format)
+      flash[:notice] = t(:price_create, scope: [:notice], 
+                                        price_name: @price.plan.name, price_gym_name: @price.gym.name, 
+                                        price_format: @price.price_format)
       redirect_to new_price_path
     else
       redirect_to new_price_path, alert: t(:price_fail_create, 
-      scope:[:alert])
+                                           scope: [:alert])
     end
   end
 

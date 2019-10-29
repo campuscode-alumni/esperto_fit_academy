@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'employee view home page' do
   scenario 'sucessfully' do
     employee = create(:employee)

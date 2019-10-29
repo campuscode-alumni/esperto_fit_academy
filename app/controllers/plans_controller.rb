@@ -11,25 +11,25 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params) 
     if @plan.save
       redirect_to @plan, notice: t(:success_create, 
-      scope: [:notice], models: Plan.model_name.human)
+                                   scope: [:notice], models: Plan.model_name.human)
     else
       flash.now[:message] = @plan.errors.full_messages
       render :new
     end
   end
 
-  def show;  end
+  def show; end
 
   def index
     @plans = Plan.all
   end
 
-  def edit;  end
+  def edit; end
 
   def update
     if @plan.update(plan_params)
       redirect_to @plan, notice: t(:success_update, 
-      scope: [:notice], models: Plan.model_name.human)
+                                   scope: [:notice], models: Plan.model_name.human)
     else
       flash.now[:message] = @plan.errors.full_messages
       render :edit
@@ -51,5 +51,4 @@ class PlansController < ApplicationController
   def find_id
     @plan = Plan.find(params[:id])
   end
-
 end

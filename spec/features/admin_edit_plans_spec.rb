@@ -20,7 +20,7 @@ feature 'Admin edit plans' do
     fill_in 'Permanência mínima', with: '5'
     click_on 'Salvar'
 
-      # asssert
+    # asssert
     expect(current_path).to eq plan_path(plan_basic)
     expect(page).to have_content('Básico')
     expect(page).to have_content('Permanência mínima: 5 meses')
@@ -44,7 +44,7 @@ feature 'Admin edit plans' do
     fill_in 'Nome', with: ''
     click_on 'Salvar'
 
-      # asssert
+    # asssert
     expect(page).to have_content('Nome Todos os campos devem ser preenchidos')
     expect(page).not_to have_content('Alterações realizadas com sucesso')    
   end
@@ -59,7 +59,7 @@ feature 'Admin edit plans' do
 
     visit edit_plan_path(plan_basic)
 
-      # asssert
+    # asssert
     expect(current_path).to eq(root_path)   
   end
 
@@ -73,7 +73,6 @@ feature 'Admin edit plans' do
     visit root_path
 
     # asssert
-    expect(page).not_to have_content("Gerenciar Planos")
+    expect(page).not_to have_content('Gerenciar Planos')
   end
-
 end

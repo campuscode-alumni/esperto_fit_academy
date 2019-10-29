@@ -5,7 +5,7 @@ class Client < ApplicationRecord
   validates :name, :cpf, :email, :gym_id, :plan_id, presence: true
   validates :cpf, uniqueness: true
 
-  enum status: {active: 0, inactive: 1, suspended: 2, indebted: 6, banished: 9}
+  enum status: { active: 0, inactive: 1, suspended: 2, indebted: 6, banished: 9 }
 
   def last_payment_status
     Payment.find(cpf).first.status
@@ -14,6 +14,4 @@ class Client < ApplicationRecord
   def profile  
     @profile ||= Profile.find(cpf)
   end
-
-
 end

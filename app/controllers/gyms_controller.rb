@@ -18,7 +18,7 @@ class GymsController < ApplicationController
     @gym = Gym.new(gym_params)
     if @gym.save
       redirect_to @gym, notice: t(:success_create, 
-      scope: [:notice], models: Gym.model_name.human)
+                                  scope: [:notice], models: Gym.model_name.human)
     else
       render :new
     end
@@ -29,10 +29,10 @@ class GymsController < ApplicationController
   def update
     if @gym.update(gym_params)
       redirect_to @gym, notice: t(:success_update, 
-      scope: [:notice], models: Gym.model_name.human)
+                                  scope: [:notice], models: Gym.model_name.human)
     else
       flash.now[:alert] = t(:fail_update, 
-      scope: [:alert], models: Gym.model_name.human)
+                            scope: [:alert], models: Gym.model_name.human)
       render :edit
     end
   end
@@ -40,7 +40,7 @@ class GymsController < ApplicationController
   def destroy
     @gym.destroy
     redirect_to root_path, notice: t(:success_destroy, 
-    scope: [:notice], models: Gym.model_name.human)
+                                     scope: [:notice], models: Gym.model_name.human)
   end
 
   private

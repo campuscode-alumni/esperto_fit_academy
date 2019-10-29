@@ -78,6 +78,5 @@ RSpec.configure do |config|
   # # config.before(:each) do 
   # #   DatabaseCleaner.clean_with(:delet ion) 
   # # end
-  config.order = :random
 
 end

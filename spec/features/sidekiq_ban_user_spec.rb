@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'sidekiq/testing'
 Sidekiq::Testing.inline! 
 
-feature 'test sidekiq'do 
+feature 'test sidekiq' do 
   scenario 'successfully' do
     client = create(:client, cpf: '12345678900')
     load_ban_mock

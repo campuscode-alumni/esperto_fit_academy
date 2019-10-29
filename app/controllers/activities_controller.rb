@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all
   end
 
-  def show ; end
+  def show; end
 
   def new
     @activity = Activity.new
@@ -16,19 +16,19 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     if @activity.save
       redirect_to @activity, notice: t(:success_create, 
-      scope: [:notice], models: Activity.model_name.human)
+                                       scope: [:notice], models: Activity.model_name.human)
     else
       render :new
       find_all
     end
   end
 
-  def edit ; end
+  def edit; end
 
   def update
     if @activity.update(activity_params)
       redirect_to @activity, notice: t(:success_update, 
-      scope: [:notice])
+                                       scope: [:notice])
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name, :status, :price, :duration, :capacity,
-                   :difficulty, :equipments, :rules, :gym_id, :trainer_id)
+                                     :difficulty, :equipments, :rules, :gym_id, :trainer_id)
   end
 
   def find_all

@@ -24,3 +24,6 @@ Metrics/BlockLength:
 
 AsciiComments:
   Enabled: false
+
+Layout/EndOfLine:
+  EnforcedStyle: lf

@@ -1,5 +1,4 @@
 class GymTrainersController < ApplicationController 
-
   def create 
     @gym_trainer = GymTrainer.new(gym_id: params[:gym_id], trainer_id: params[:trainer_id])
     @gym_trainer.save

@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   
   before_action :set_current_employee, if: :json_request?
 
-
   private  
   
   def json_request?
@@ -15,14 +14,16 @@ class ApplicationController < ActionController::Base
   end 
   
   def authenticate_employee!(*args)
-    super and return unless args.blank?
+    super && return if args.present?
     json_request? ? authenticate_api_employee! : super
   end
 
   def invalid_auth_token
     respond_to do |format|
-      format.html { redirect_to sign_in_path, 
-                    error: 'Login invalid or expired' }
+      format.html do 
+        redirect_to sign_in_path, 
+                    error: 'Login invalid or expired'
+      end      
       format.json { head 401 }
     end
   end 

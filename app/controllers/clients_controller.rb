@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   before_action :authenticate_employee!
   before_action :find_all, only: %i[create update]
-  before_action :find_client_by_id, only: %i[show edit update verify_payments banishe_client suspend_client inactive_client ]
+  before_action :find_client_by_id, only: %i[show edit update verify_payments banishe_client suspend_client inactive_client]
   rescue_from ActiveRecord::RecordNotFound, with: :client_not_found
   
   def index
@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
 
     if @client.save
       redirect_to @client, notice: t(:success_create, 
-      scope: [:notice], models: Client.model_name.human)
+                                     scope: [:notice], models: Client.model_name.human)
     else
       find_all
       render :new
@@ -31,7 +31,7 @@ class ClientsController < ApplicationController
   def update
     if @client.update(client_params)
       redirect_to @client, notice: t(:success_update, 
-      scope: [:notice])
+                                     scope: [:notice])
     else
       find_all
       render :edit
@@ -42,23 +42,23 @@ class ClientsController < ApplicationController
     BanisheService.new(@client).call
 
     redirect_to @client, notice: t(:client_banished, 
-    scope: [:notice])
+                                   scope: [:notice])
   end
 
   def suspend_client
     @client.suspended!
     redirect_to @client, notice: t(:client_suspend, 
-    scope: [:notice])
+                                   scope: [:notice])
   end
   
   def inactive_client
     InactiveService.new(@client).call
     if @client.inactive?
-     redirect_to @client, notice: t(:client_inactive, 
-     scope: [:notice])
+      redirect_to @client, notice: t(:client_inactive, 
+                                     scope: [:notice])
     else
       redirect_to @client, alert: t(:fail_inactive, 
-      scope: [:alert, :client])
+                                    scope: %i[alert client])
     end
   end
 
@@ -86,6 +86,6 @@ class ClientsController < ApplicationController
 
   def client_not_found
     redirect_to clients_path, alert: t(:not_found, 
-    scope: [:alert, :client])
+                                       scope: %i[alert client])
   end
 end

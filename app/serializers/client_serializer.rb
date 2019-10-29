@@ -1,5 +1,5 @@
 class ClientSerializer
-    include FastJsonapi::ObjectSerializer
+  include FastJsonapi::ObjectSerializer
 
-    attributes :name, :email, :cpf, :gym_id, :plan_id, :status
+  attributes :name, :email, :cpf, :gym_id, :plan_id, :status
 end

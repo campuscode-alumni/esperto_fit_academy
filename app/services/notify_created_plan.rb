@@ -11,7 +11,7 @@ class NotifyCreatedPlan < ApplicationService
   end
 
   def notify_payments_api(price)
-    response = PaymentsApi.client.post do |req|
+    PaymentsApi.client.post do |req|
       req.url "plans?plan[name]=#{price.plan.name}&plan[value]=#{price.value}"
     end
   end

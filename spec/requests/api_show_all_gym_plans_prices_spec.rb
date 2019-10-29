@@ -15,14 +15,12 @@ describe 'api show all gym plans prices' do
     # act
     sign_in admin
     get "/api/v1/gyms/#{gym.id}/plans"
-    json_response = JSON.parse(response.body, symbolize_names:true)
     # assert
     expect(response.status).to eq 200
-    expect(response.body).to include plan.name
-    expect(response.body).to include price.value.to_s
     expect(response.body).to include other_plan.name
     expect(response.body).to include other_price.value.to_s
-    # expect(response.body).to include 2
+    expect(response.body).to include plan.name
+    expect(response.body).to include price.value.to_s
   end
   it 'fails' do
     admin = create(:employee, admin: true)

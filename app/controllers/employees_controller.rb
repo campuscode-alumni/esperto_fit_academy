@@ -15,10 +15,10 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     if @employee.save
       redirect_to @employee, notice: t(:success_create,
-      scope:[:notice], models: Employee.model_name.human)
+                                       scope: [:notice], models: Employee.model_name.human)
     else
-      flash.now[:alert] = t(:fail_create, scope:[:alert],
-      models: Employee.model_name.human)
+      flash.now[:alert] = t(:fail_create, scope: [:alert],
+                                          models: Employee.model_name.human)
       render :new
     end
   end
@@ -31,11 +31,11 @@ class EmployeesController < ApplicationController
 
   def update
     if @employee.update(employee_params)
-      redirect_to @employee, notice:  t(:success_update,
-      scope:[:notice], models: Employee.model_name.human)
+      redirect_to @employee, notice: t(:success_update,
+                                       scope: [:notice], models: Employee.model_name.human)
     else
-      flash.now[:alert] = t(:fail_update, scope:[:alert],
-      models: Employee.model_name.human)
+      flash.now[:alert] = t(:fail_update, scope: [:alert],
+                                          models: Employee.model_name.human)
       render :edit
     end
   end
@@ -44,11 +44,11 @@ class EmployeesController < ApplicationController
     if @employee.status == 'active'
       @employee.unactive!
       flash[:notice] = t(:employee_unactive,
-      scope: [:notice], models: Employee.model_name.human)
+                         scope: [:notice], models: Employee.model_name.human)
     else
       @employee.active!
       flash[:notice] = t(:employee_active,
-      scope: [:notice], models: Employee.model_name.human)
+                         scope: [:notice], models: Employee.model_name.human)
     end
     redirect_to @employee
   end
@@ -58,6 +58,7 @@ class EmployeesController < ApplicationController
   end
 
   private
+
   def employee_params
     params.require(:employee).permit(:name, :gym_id, :status, :email, :admin, :password)
   end

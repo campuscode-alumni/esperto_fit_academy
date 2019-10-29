@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'api shoe plans' do
   it 'successfully show all' do
-    admin = create(:employee, admin:true)
+    admin = create(:employee, admin: true)
     plan_basic = create(:plan, name: 'Básico', minimum_permanence: 12)
     plan_plus = create(:plan, name: 'Plus', minimum_permanence: 3)
   
