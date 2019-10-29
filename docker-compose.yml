@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    volumes: 
+     - .:/espertofit_academy
+    command: ["rails", "s", "-b", "0.0.0.0"]
+
+  db:
+    image: postgres
+    volumes:
+      - esperto_academy:/var/lib/postgresql/data
+
+volumes:
+  esperto_academy:
+
+networks:
+  default:
+    external:
+      name: ponte
+

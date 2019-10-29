@@ -1,0 +1,20 @@
+
+class demployee
+
+  def admin_option
+    admin? ? "Admin:Sim" : "Admin: não"
+  end
+end
+
+
+
+<% if @employee.admin? %>
+  <p><%= "Admin: Sim" %></p>
+<% else %>
+  <p><%= "Admin: Nao" %></p>
+<% end %>
+
+
+<p><%= @demployee.admin_option %> </p>
+
+rspec ./spec/features/employee_register_another_employee_spec.rb:4 # Admin register another employee successfully

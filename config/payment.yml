@@ -1,6 +1,6 @@
 test:
-  base_url: http://payment.com.br
+  base_url: espertofitpayments_web_1:80
 development:
-  base_url: http://localhost:4000 
+  base_url: espertofitpayments_web_1:80
 production:
   base_url:

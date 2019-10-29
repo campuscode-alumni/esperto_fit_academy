@@ -36,11 +36,11 @@ Price.create(value: 12999, gym_id: spare_gym.id, plan: premium_plan)
 Price.create(value: 7999, gym_id: spare_gym.id, plan: basic_plan)
 Price.create(value: 19999, gym_id: spare_gym.id, plan: vip_plan)
 
-trainer = Trainer.create(name: 'Caio Rodrigues', cpf: 69208223850, status: 0, email: 'professor@email.com')
-other_trainer = Trainer.create(name: 'Rebecca Garcia', cpf: 28212325865, status: 0, email: 'rebecca.garcia@email.com')
-another_trainer = Trainer.create(name: 'Rodrigo Menezes', cpf: 69090202862, status: 10, email: 'johnny.souza@email.com')
-Trainer.create(name: 'Carla Ferrari', cpf: 69090202862, status: 10, email: 'carla.ferrari@email.com')
-Trainer.create(name: 'Lucas Skywalker', cpf: 69090202862, status: 0, email: 'lucas.skywalker@email.com')
+trainer = Trainer.create(name: 'Caio Rodrigues', cpf: 6920, status: 0, email: 'professor@email.com')
+other_trainer = Trainer.create(name: 'Rebecca Garcia', cpf: 2821, status: 0, email: 'rebecca.garcia@email.com')
+another_trainer = Trainer.create(name: 'Rodrigo Menezes', cpf: 6909, status: 10, email: 'johnny.souza@email.com')
+Trainer.create(name: 'Carla Ferrari', cpf: 6909 ,status: 10, email: 'carla.ferrari@email.com')
+Trainer.create(name: 'Lucas Skywalker', cpf: 6909 ,status: 0, email: 'lucas.skywalker@email.com')
 
 
 Activity.create!(name:'Zumba',price: 50.00, duration: 45, difficulty: 'Médio', equipments: 'Nenhum', rules: 'Seguir cuidadosamente as instruções', gym_id:gym.id, trainer_id:trainer.id, status: 0, capacity:50)

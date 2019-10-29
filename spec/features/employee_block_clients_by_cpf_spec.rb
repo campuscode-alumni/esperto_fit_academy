@@ -5,7 +5,7 @@ feature 'Employee block clients by CPF' do
     # arrange stubs
     load_profile_mock
     
-    expect(Faraday).to receive(:post).with('http://payment.com.br/api/v1/payments/ban?cpf=12345678900')       
+    expect(Faraday).to receive(:post).with('http://espertofitpayments_web_1:80/api/v1/payments/ban?cpf=222222222')       
     # arrange
     employee = create(:employee)
     client = create(:client, cpf: '12345678900')

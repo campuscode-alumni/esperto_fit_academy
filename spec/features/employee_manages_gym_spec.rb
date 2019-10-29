@@ -5,8 +5,8 @@ feature 'employee manages gym' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')
     create(:gym, name: 'Academia Consolação')
-    create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
+    last_gym = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, gym: last_gym)
     login_as(employee)
 
     visit root_path
@@ -34,8 +34,8 @@ feature 'employee manages gym' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')
     create(:gym, name: 'Academia Consolação')
-    create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
+    last_gym = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, gym: last_gym)
     login_as(employee)
 
     visit root_path
@@ -49,8 +49,8 @@ feature 'employee manages gym' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')
     create(:gym, name: 'Academia Consolação')
-    create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
+    last_gym = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, gym: last_gym)
     login_as(employee)
 
     visit root_path
@@ -68,8 +68,8 @@ feature 'employee manages gym' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')
     create(:gym, name: 'Academia Consolação')
-    create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
+    last_gym = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, gym: last_gym)
     login_as(employee)
 
     visit root_path

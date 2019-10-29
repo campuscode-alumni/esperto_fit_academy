@@ -5,5 +5,13 @@ FactoryBot.define do
     email {'batata@espertofit.com.br'}
     password {'123456'}
     gym
+
+    trait :admin do
+      admin { true }
+    end
+
+    trait :trainer do
+      admin { false }
+    end
   end
 end

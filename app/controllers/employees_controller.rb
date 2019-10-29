@@ -24,6 +24,9 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
+
+    @demployee = EmployeeDecorator.new(@employee)
+
     redirect_to root_path unless current_employee == @employee || current_employee.admin?
   end
 
