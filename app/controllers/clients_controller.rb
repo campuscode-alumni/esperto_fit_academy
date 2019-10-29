@@ -1,7 +1,8 @@
 class ClientsController < ApplicationController
   before_action :authenticate_employee!
   before_action :find_all, only: %i[create update]
-  before_action :find_id, only: %i[show edit update verify_payments ]
+  before_action :find_client_by_id, only: %i[show edit update verify_payments banishe_client suspend_client inactive_client]
+  rescue_from ActiveRecord::RecordNotFound, with: :client_not_found
   
   def index
     @clients = Client.all 
@@ -15,8 +16,8 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
 
     if @client.save
-      flash[:notice] = 'Matriculado com sucesso!'
-      redirect_to @client
+      redirect_to @client, notice: t(:success_create, 
+                                     scope: [:notice], models: Client.model_name.human)
     else
       find_all
       render :new
@@ -29,45 +30,36 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
-      redirect_to @client, notice: 'Atualizado com sucesso!'
+      redirect_to @client, notice: t(:success_update, 
+                                     scope: [:notice])
     else
       find_all
       render :edit
     end
   end
 
-  def ban
-    @client = Client.find(params[:id])
-    @client.banished!
-    BanWorker.perform_async(@client.id)
-    redirect_to @client, notice: 'CPF banido com sucesso!'
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = 'Não existe esse aluno!'
-    redirect_to clients_path
+  def banishe_client
+    BanisheService.new(@client).call
+
+    redirect_to @client, notice: t(:client_banished, 
+                                   scope: [:notice])
   end
 
-  def suspend
-    @client = Client.find(params[:id])
+  def suspend_client
     @client.suspended!
-    flash[:notice] = 'CPF suspenso com sucesso!'
-    redirect_to @client
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = 'Não existe esse aluno!'
-    redirect_to clients_path
+    redirect_to @client, notice: t(:client_suspend, 
+                                   scope: [:notice])
   end
   
-  def inactivate
-    @client = Client.find(params[:id])
-    if @client.active?
-      @client.inactive!
-      flash[:notice] = 'Cliente desvinculado com sucesso!'
-    else 
-      flash[:alert] = 'Cliente deve estar com status ativo para desvincular.'
+  def inactive_client
+    InactiveService.new(@client).call
+    if @client.inactive?
+      redirect_to @client, notice: t(:client_inactive, 
+                                     scope: [:notice])
+    else
+      redirect_to @client, alert: t(:fail_inactive, 
+                                    scope: %i[alert client])
     end
-    redirect_to @client
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = 'Não existe esse aluno!'
-    redirect_to clients_path
   end
 
   def verify_payments
@@ -88,7 +80,12 @@ class ClientsController < ApplicationController
     @plan = Plan.all
   end
 
-  def find_id
-    @client = Client.find(params[:id])
+  def find_client_by_id
+    @client ||= Client.find(params[:id])
+  end
+
+  def client_not_found
+    redirect_to clients_path, alert: t(:not_found, 
+                                       scope: %i[alert client])
   end
 end

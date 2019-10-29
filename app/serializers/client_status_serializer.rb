@@ -1,5 +1,5 @@
 class ClientStatusSerializer
-    include FastJsonapi::ObjectSerializer
+  include FastJsonapi::ObjectSerializer
 
-    attributes :cpf, :status
+  attributes :cpf, :status
 end

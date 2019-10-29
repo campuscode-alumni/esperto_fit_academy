@@ -2,22 +2,12 @@ require 'rails_helper'
 
 feature 'Admin set prices' do
   scenario 'successfully' do
-    stub_request(:post, "http://esperto_fit_payments_web_run_1:3000/api/v1/plans?plan%5Bname%5D=Premium&plan%5Bvalue%5D=9999").
-            with(
-              headers: {
-              'Accept'=>'*/*',
-              'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-              'Content-Length'=>'0',
-              'Content-Type'=>'application/json',
-              'User-Agent'=>'Faraday v0.15.4'
-              }).
-            to_return(status: 200, body: "", headers: {})
-
+    load_plan_mock
     # arrange
     admin = create(:employee, admin: true)
     plan = create(:plan)
     gym = create(:gym, name: 'Academia X')
-
+    
     # act
     login_as admin
     visit root_path

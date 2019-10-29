@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'Employees edit trainers ' do
   scenario 'Successfully' do
     gym = create(:gym)

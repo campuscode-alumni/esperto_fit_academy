@@ -57,20 +57,20 @@ feature 'Admin register plans' do
     # arrange
     user = create(:employee, admin: false)
     
-    #act
+    # act
     login_as user
     visit root_path
     click_on 'Cadastros'
 
-    #assert
+    # assert
     expect(page).not_to have_content('Cadastrar planos')
   end
 
   scenario 'and must be unable to access the register plan route' do
-    #act
+    # act
     visit new_plan_path
 
-    #assert
+    # assert
     expect(current_path).to eq new_employee_session_path
   end
   
@@ -78,12 +78,12 @@ feature 'Admin register plans' do
     # arrange
     user = create(:employee, admin: false)
     
-    #act
+    # act
     login_as user
     visit root_path
     visit new_plan_path
 
-    #assert
+    # assert
     expect(current_path).to eq root_path
   end
 end

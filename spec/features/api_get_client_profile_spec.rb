@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'API get client profile' do
   scenario 'successfully' do
     load_profile_mock
@@ -18,15 +16,16 @@ feature 'API get client profile' do
   end
 
   scenario 'and fails' do
-    stub_request(:get, 'http://0.0.0.0:5000/api/v1/search/customer?document=123456789').
-          with(
-            headers: {
-            'Accept'=>'*/*',
-            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Content-Type'=>'application/json',
-            'User-Agent'=>'Faraday v0.15.4'
-            }).
-          to_return(status: 404, body: 'Não encontrado', headers: {})
+    stub_request(:get, 'http://0.0.0.0:5000/api/v1/search/customer?document=123456789')
+      .with(
+        headers: {
+          'Accept' => '*/*',
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Content-Type' => 'application/json',
+          'User-Agent' => 'Faraday v0.15.4'
+        }
+      )
+      .to_return(status: 404, body: 'Não encontrado', headers: {})
     employee = create(:employee)
     create(:client, name: 'Customer Smith', cpf: '123456789')
 

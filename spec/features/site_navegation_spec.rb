@@ -11,7 +11,6 @@ feature 'only employee can create gyms' do
   end
 
   scenario 'and not logged user cant see button' do
-
     visit root_path
 
     expect(page).not_to have_link 'Cadastrar Academia'

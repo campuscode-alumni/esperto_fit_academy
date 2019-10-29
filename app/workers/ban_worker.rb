@@ -10,7 +10,7 @@ class BanWorker
 
   def notify_payments_api(client_id)
     client = Client.find(client_id)
-    response = PaymentsApi.client.post do |req|
+    PaymentsApi.client.post do |req|
       req.url "payments/ban?cpf=#{client.cpf}"
     end
   end

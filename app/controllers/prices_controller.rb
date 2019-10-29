@@ -1,8 +1,7 @@
 class PricesController < ApplicationController
   before_action :authenticate_employee!
-  before_action :verify_admin
+  before_action :authorize_admin, only: %i[new create]
   before_action :load_data
-
 
   def new
     @price = Price.new
@@ -12,11 +11,13 @@ class PricesController < ApplicationController
     @price = Price.new(price_params)
     if @price.save
       NotifyCreatedPlan.call(@price)
-      flash[:notice] = "O plano #{@price.plan.name} na unidade #{@price.gym.name} foi dado o valor de #{@price.price_format} com sucesso!"
+      flash[:notice] = t(:price_create, scope: [:notice], 
+                                        price_name: @price.plan.name, price_gym_name: @price.gym.name, 
+                                        price_format: @price.price_format)
       redirect_to new_price_path
     else
-      flash[:alert] = 'Você deve preencher todos os campos'
-      redirect_to new_price_path
+      redirect_to new_price_path, alert: t(:price_fail_create, 
+                                           scope: [:alert])
     end
   end
 
@@ -29,9 +30,5 @@ class PricesController < ApplicationController
   def load_data
     @gyms = Gym.all
     @plans = Plan.all
-  end
-
-  def verify_admin
-    redirect_to root_path unless current_employee.admin?
   end
 end

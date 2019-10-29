@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'Admin change employee status' do
   scenario 'successfully deactivate him' do
     # arrange
@@ -33,14 +31,13 @@ feature 'Admin change employee status' do
     click_on 'Editar'
     click_on 'Alterar status'
 
-
     expect(current_path).to eq(employee_path(user))
     expect(page).to have_css('h1', text: 'Roberto da Silva')
     expect(page).to have_css('p', text: 'Ativo')
   end
 
   scenario 'and only admin can access the routes' do
-    #arrange
+    # arrange
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'active')
 
     # act
@@ -87,7 +84,7 @@ feature 'Admin change employee status' do
 
   scenario 'and only admins can access the unactive employees list' do
     # arrange
-    user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'active' , admin: false)
+    user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'active', admin: false)
 
     # act
     login_as user

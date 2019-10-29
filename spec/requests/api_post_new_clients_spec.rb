@@ -17,7 +17,7 @@ describe 'api post new clients' do
 
   it 'and all fields must be fill' do
     gym = create(:gym)
-    admin = create(:employee, admin:true)
+    admin = create(:employee, admin: true)
     sign_in admin
     post api_v1_clients_path, params: { client: { name: 'Mario', cpf: '', email: 'teste@espertofit.com.br', gym_id: gym.id, plan_id: '' } }
 

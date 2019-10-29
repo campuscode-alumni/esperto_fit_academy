@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_employee!
-  before_action :verify_admin, only: %i[new create edit update index change_status unactives]
+  before_action :authorize_admin, only: %i[new create edit update index change_status unactives]
+  before_action :find_employee_by_id, only: %i[show edit update change_status]
 
   def index
     @employees = Employee.where(status: 'active')
@@ -12,44 +13,42 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-  
     if @employee.save
-      flash[:success] = 'Funcionario cadastrado com sucesso!'
-      redirect_to @employee
+      redirect_to @employee, notice: t(:success_create,
+                                       scope: [:notice], models: Employee.model_name.human)
     else
-      flash.now[:alert] = 'Funcionario não cadastrado'
+      flash.now[:alert] = t(:fail_create, scope: [:alert],
+                                          models: Employee.model_name.human)
       render :new
     end
   end
 
   def show
-    @employee = Employee.find(params[:id])
     redirect_to root_path unless current_employee == @employee || current_employee.admin?
   end
 
-  def edit
-    @employee = Employee.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @employee = Employee.find(params[:id])
     if @employee.update(employee_params)
-      flash[:success] = 'Funcionario alterado com sucesso!'
-      redirect_to @employee
+      redirect_to @employee, notice: t(:success_update,
+                                       scope: [:notice], models: Employee.model_name.human)
     else
-      flash.now[:alert] = 'Funcionario não alterado'
+      flash.now[:alert] = t(:fail_update, scope: [:alert],
+                                          models: Employee.model_name.human)
       render :edit
     end
   end
 
   def change_status
-    @employee = Employee.find(params[:id])
     if @employee.status == 'active'
       @employee.unactive!
-      flash[:success] = 'Funcionario inativado com sucesso!'
+      flash[:notice] = t(:employee_unactive,
+                         scope: [:notice], models: Employee.model_name.human)
     else
       @employee.active!
-      flash[:success] = 'Funcionario ativado com sucesso!'
+      flash[:notice] = t(:employee_active,
+                         scope: [:notice], models: Employee.model_name.human)
     end
     redirect_to @employee
   end
@@ -59,11 +58,12 @@ class EmployeesController < ApplicationController
   end
 
   private
+
   def employee_params
     params.require(:employee).permit(:name, :gym_id, :status, :email, :admin, :password)
   end
 
-  def verify_admin
-    redirect_to root_path unless current_employee.admin?
+  def find_employee_by_id
+    @employee ||= Employee.find(params[:id])
   end
 end

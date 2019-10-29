@@ -1,42 +1,31 @@
 class TrainersController < ApplicationController 
-before_action :authenticate_employee!, only: %i[ new create edit update show]
-before_action :params_find, only: %i[ show edit update add_units]
-before_action :authorize_admin, only: [:add_units]
-
+  before_action :authenticate_employee!, only: %i[new create edit update show]
+  before_action :params_find, only: %i[show edit update add_units]
+  before_action :authorize_admin, only: [:add_units]
 
   def new
     @trainer = Trainer.new
   end
 
   def create
-    @trainer = Trainer.new(set_trainer)
-    
-    if @trainer.save
-      flash[:message] = 'Professor cadastrado com sucesso' 
-      if !current_employee.admin
-        @gym = Gym.where()
-        
-        @gym_trainer = GymTrainer.create!(trainer: @trainer, gym: current_employee.gym)
-        
-      end
-      redirect_to @trainer
+    @trainer = Trainer.new(set_trainer)  
+    if @trainer.save       
+      @gym_trainer = GymTrainer.create(trainer: @trainer, gym: current_employee.gym) unless current_employee.admin
+      redirect_to @trainer, notice: t(:success_create, 
+                                      scope: [:notice], models: Trainer.model_name.human)
     else
       flash.now[:message] = @trainer.errors.full_messages.first
       render :new
     end    
   end
 
+  def show;  end
 
-  def show
-  end
-
-  def edit
-    
-  end
+  def edit;  end
 
   def update
     if @trainer.update(set_trainer)
-      flash[:message] = "Alterações realizadas com sucesso"
+      flash[:message] = t(:success_update, scope: [:notice])
       redirect_to @trainer
     else
       flash.now[:message] = @trainer.errors.full_messages
@@ -44,27 +33,22 @@ before_action :authorize_admin, only: [:add_units]
     end
   end
 
-  def management
+  def index
     @trainers = Trainer.all
   end
 
   def add_units
     @gyms = Gym.all
-    @gym_trainer = GymTrainer.new()
-    
+    @gym_trainer = GymTrainer.new
   end
 
   private 
 
   def set_trainer
-    params.require(:trainer).permit(:name ,:cpf, :email, :status)
+    params.require(:trainer).permit(:name, :cpf, :email, :status)
   end
 
   def params_find
     @trainer = Trainer.find(params[:id])
-  end
-
-  def authorize_admin
-    redirect_to root_path unless current_employee.admin
   end
 end

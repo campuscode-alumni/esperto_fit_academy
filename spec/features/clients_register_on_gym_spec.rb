@@ -28,7 +28,7 @@ feature 'clients register on gym ' do
     expect(page).to have_css('p', text: 'vini@gmail.com')
     expect(page).to have_css('p', text: plan.name)
     expect(page).to have_css('p', text: other_gym.name)
-    expect(page).to have_content('Matriculado com sucesso!')
+    expect(page).to have_content('Matrícula cadastrado com sucesso!')
   end
 
   scenario 'and edit his register' do
@@ -63,7 +63,7 @@ feature 'clients register on gym ' do
     expect(page).to have_css('p', text: 'vini@gmail.com')
     expect(page).to have_css('p', text: other_plan.name)
     expect(page).to have_css('p', text: other_gym.name)
-    expect(page).to have_content('Atualizado com sucesso!')
+    expect(page).to have_content('Alterações realizadas com sucesso!')
   end
 
   scenario 'and cpf must be unique' do

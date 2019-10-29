@@ -11,7 +11,7 @@ describe 'api show all gyms' do
     sign_in admin
     get api_v1_gyms_path
 
-    #json_gyms = JSON.parse(response.body, symbolize_names: true)
+    # json_gyms = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq 200
     expect(response.body).to include gym.name
