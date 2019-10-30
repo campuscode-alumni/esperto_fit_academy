@@ -23,7 +23,9 @@ class ClientsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @dclients = ClientDecorator.new(@client) 
+  end
 
   def edit; end
 

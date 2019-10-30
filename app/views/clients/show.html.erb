@@ -6,18 +6,8 @@
 <p><%= @client.gym.name %></p>
 <p><%= @client.plan.name %></p>
 <p>Status: <%= @client.status %></p>
-<% if @client.profile %>
-  <p>Endereço: <%= @client.profile.address %></p>
-  <p>Data de nascimento: <%= @client.profile.date_of_birth %></p>
-  <p>Gênero: <%= @client.profile.gender %></p>
-  <p>Contato: <%= @client.profile.contact %></p>
-  <p>Apelido: <%= @client.profile.nickname %></p>
-  <p>Método de pagamento: <%= @client.profile.payment_method %></p>
-<% else%>
-  <p> Perfil não encontrado </p>
-<% end %>
 
-
+<%=render @dclients.have_profile(@client) %>
 
 <%= link_to 'Editar', edit_client_path %>
 <%= link_to 'Atualizar status de pagamentos', verify_payments_client_path %>

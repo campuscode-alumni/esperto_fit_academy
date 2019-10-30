@@ -2,8 +2,8 @@ require 'rails_helper'
 describe ClientDecorator do
 
   describe '.have_profile' do
-    subject { described_class.new(client).have_profile(client) }
     context 'when client have a profile' do
+      subject { described_class.new(client).have_profile(client) }
       let (:client) { create(:client) }
 
       it 'returns string partial with profile' do
@@ -12,10 +12,10 @@ describe ClientDecorator do
     end
     
     context 'when client dont have a profile' do
+      subject { described_class.new(client).have_profile(nil) }
       let(:client) { create(:client) }
-
       it 'returns partial message dont have profile' do
-        expect(subject).to eq("clients/partial2")
+        expect(subject.profile).to eq("clients/partial2")
       end
     end
   end

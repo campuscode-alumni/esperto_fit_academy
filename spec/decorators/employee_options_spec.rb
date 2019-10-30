@@ -21,6 +21,5 @@ describe EmployeeDecorator do
         expect(subject).to eq("Admin: Nao")
       end
     end
-
   end
 end

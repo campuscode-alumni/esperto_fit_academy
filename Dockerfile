@@ -5,4 +5,3 @@ WORKDIR /espertofit_academy
 ADD Gemfile /espertofit_academy/Gemfile
 ADD Gemfile.lock /espertofit_academy/Gemfile.lock
 RUN bundle install
-RUN rm tmp/pids/server.pid

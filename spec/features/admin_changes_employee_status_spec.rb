@@ -5,9 +5,10 @@ feature 'Admin change employee status' do
     # arrange
     admin = create(:employee, admin: true)
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'active')
-
+    
     # act
     login_as admin
+    
     visit root_path
     click_on 'Listas'
     click_on 'Lista de Funcionários Ativos'
@@ -24,9 +25,10 @@ feature 'Admin change employee status' do
     # arrange
     admin = create(:employee, admin: true)
     user = create(:employee, name: 'Roberto da Silva', email: 'cenoura@espertofit.com.br', status: 'unactive')
-
+    
     # act
     login_as admin
+    
     visit root_path
     click_on 'Lista de Funcionários Inativos'
     click_on 'Roberto da Silva'

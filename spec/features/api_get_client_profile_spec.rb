@@ -13,7 +13,7 @@ feature 'API get client profile' do
     click_on 'Listas'
     click_on 'Lista de Alunos'
     click_on 'Customer Smith'
-
+    
     expect(page).to have_content 'Customer Street'
   end
 
