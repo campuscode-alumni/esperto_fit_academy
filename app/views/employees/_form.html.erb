@@ -9,12 +9,4 @@
 <% end %>
 <%= flash[:alert] %>
 
-<% if @employee.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-    <% @employee.errors.full_messages.each do |message| %>
-      <li> <%= message %>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'errors' %>

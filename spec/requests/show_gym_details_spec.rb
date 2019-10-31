@@ -6,14 +6,14 @@ describe 'show gym details ' do
 
     get "/api/v1/gyms/#{gym.id}"
     json_gym = JSON.parse(response.body, symbolize_names: true)
-
+    
     expect(response.status).to eq 200
-    expect(json_gym[:gym][:cod]).to eq gym.cod
-    expect(json_gym[:gym][:open_hour]).to eq gym.open_hour
-    expect(json_gym[:gym][:close_hour]).to eq gym.close_hour
-    expect(json_gym[:gym][:working_days]).to eq gym.working_days
-    expect(json_gym[:gym][:address]).to eq gym.address
-    expect(json_gym[:gym][:images].first).to include '/academia_01.jpeg'
+    expect(json_gym[:cod]).to eq gym.cod
+    expect(json_gym[:open_hour]).to eq gym.open_hour
+    expect(json_gym[:close_hour]).to eq gym.close_hour
+    expect(json_gym[:working_days]).to eq gym.working_days
+    expect(json_gym[:address]).to eq gym.address
+    expect(json_gym[:images].first).to include '/academia_02.jpeg'
   end
 
   it 'returns an error if the gym is not found' do

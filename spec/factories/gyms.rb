@@ -6,6 +6,6 @@ FactoryBot.define do
     open_hour {"09:00"}
     close_hour {"22:00"}
     working_days {"segunda à sexta"}
-    gallery { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/academia_01.jpeg'), 'image/jpeg')}
+    gallery { Rack::Test::UploadedFile.new('spec/support/academia_02.jpeg', 'image/jpeg')}
   end
 end

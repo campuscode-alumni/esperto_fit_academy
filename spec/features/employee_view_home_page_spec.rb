@@ -24,7 +24,7 @@ feature 'employee view home page' do
     fill_in 'Horário de abertura', with: '09:00'
     fill_in 'Horário de fechamento', with: '23:00'
     fill_in 'Dias de funcionamento', with: 'Segunda à Sexta'
-    attach_file 'Galeria', [Rails.root.join('spec', 'support', 'academia_01.jpeg'), Rails.root.join('spec', 'support', 'academia_02.jpg')]
+    attach_file 'Galeria', [Rails.root.join('spec', 'support', 'academia_01.jpeg'), Rails.root.join('spec', 'support', 'academia_02.jpeg')]
 
     click_on 'Criar Academia'
 
@@ -32,7 +32,7 @@ feature 'employee view home page' do
     expect(page).to have_css('h3', text: 'Academia Paulista')
     expect(page).to have_css('p', text: 'Av Paulista, 123')
     expect(page).to have_css('img[src*="academia_01.jpeg"]')
-    expect(page).to have_css('img[src*="academia_02.jpg"]')
+    expect(page).to have_css('img[src*="academia_02.jpeg"]')
     expect(page).not_to have_link('Criar Academia')
   end
 

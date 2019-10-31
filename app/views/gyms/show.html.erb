@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<% if employee_signed_in? && current_employee.gym?(@gym) || current_employee.admin?%>
+<% if employee_signed_in? && current_employee.gym?(@gym) || current_employee.admin? %>
   <%= link_to 'Editar', edit_gym_path %>
 <% end %>
 

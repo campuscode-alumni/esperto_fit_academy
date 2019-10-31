@@ -9,9 +9,8 @@ class Api::V1::GymsController < Api::V1::ApiController
   end
 
   def show
-    @gym = Gym.find(params[:id])
-
-    render json: {gym: @gym.as_json.merge(images: build_images)}, status: 200
+    @gym = Gym.find(params[:id])    
+    render json: @gym, serializer: SimpleGymSerializer, status:200
   rescue ActiveRecord::RecordNotFound
     render json: { message: 'Academia não encontrada'}, status: 404
   end
@@ -25,11 +24,4 @@ class Api::V1::GymsController < Api::V1::ApiController
       render json: { msg: 'Você não tem essa permissão' }, status: :precondition_failed
     end
   end
-
-  private
-
-  def build_images
-    @gym.gallery.map {|image| url_for(image)}
-  end
-
 end
