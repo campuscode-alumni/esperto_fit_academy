@@ -8,8 +8,11 @@ class PlansController < ApplicationController
   end
 
   def create
-    @plan = Plan.new(plan_params) 
+    @plan = Plan.new(plan_params)
+    logger.info("@plan should be new #{@plan.attributes.inspect}") 
+    logger.info("@plan should be valid #{@plan.valid?}") 
     if @plan.save
+      logger.info("@plan has been saved successfully.")
       redirect_to @plan, notice: t(:success_create, 
                                    scope: [:notice], models: Plan.model_name.human)
     else
@@ -50,5 +53,7 @@ class PlansController < ApplicationController
 
   def find_id
     @plan = Plan.find(params[:id])
+    logger.info 'mensagem 321123'
+    # logger.debug "@plan should have an ID: #{@plan.attributes.inspect}"
   end
 end
