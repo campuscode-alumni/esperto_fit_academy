@@ -9,12 +9,14 @@ services:
     build: .
     env_file:
       - jwt.env
+      - database_info.env
     ports:
       - "4000:3000"
     depends_on:
       - db
       - sidekiq
       - redis
+      - nginx
     volumes:
        - .:/espertofit_academy
 
@@ -34,6 +36,20 @@ services:
       - db
     depends_on:
       - redis
+
+  nginx:
+    image: nginx
+    build:
+      context: .
+      dockerfile: Dockerfile_nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/nginx/nginx.conf
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_HOST=foobar.com
+      - NGINX_PORT=80
+    command: /bin/bash -c " exec nginx -g 'daemon off;'"
 
 volumes:
   Academy:

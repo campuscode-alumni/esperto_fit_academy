@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-  belongs_to :gym, optional: true
+  belongs_to :gym
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :registerable,
