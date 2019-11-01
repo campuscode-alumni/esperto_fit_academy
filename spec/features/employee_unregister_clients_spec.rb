@@ -43,9 +43,9 @@ feature 'Employee unregister clients' do
     client = create(:client, status: 0, cpf: '12345678900')
 
     # act
-    visit inactivate_client_path(client)
+    visit inactive_client_path(client)
 
-    #assert 
+    # assert 
     expect(current_path).to eq new_employee_session_path
   end
   scenario 'and client must exist' do
@@ -54,7 +54,7 @@ feature 'Employee unregister clients' do
 
     # act
     login_as employee
-    visit inactivate_client_path(1)
+    visit inactive_client_path(1)
 
     # assert
     expect(current_path).to eq clients_path
@@ -85,7 +85,7 @@ feature 'Employee unregister clients' do
 
     # act
     login_as employee
-    visit inactivate_client_path(client)
+    visit inactive_client_path(client)
 
     # assert
     expect(current_path).to eq client_path(client.id) 

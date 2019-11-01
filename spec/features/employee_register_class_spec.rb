@@ -33,7 +33,7 @@ feature 'Employee register class' do
     expect(page).to have_css('p', text: trainer.name)
     expect(page).to have_css('p', text: gym.name)
     expect(page).not_to have_link('Criar Aula')
-    expect(page).to have_content('Aula cadastrada com sucesso!')
+    expect(page).to have_content('Aula cadastrado com sucesso!')
   end
 
   scenario 'but must fill all fields' do

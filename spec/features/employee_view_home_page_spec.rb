@@ -1,9 +1,7 @@
-require 'rails_helper'
-
 feature 'employee view home page' do
   scenario 'sucessfully' do
     employee = create(:employee)
-    login_as(employee, scope: :employee)
+    login_as employee
 
     visit root_path
 
@@ -12,7 +10,7 @@ feature 'employee view home page' do
 
   scenario 'and register a new gym' do
     employee = create(:employee)
-    login_as(employee, scope: :employee)
+    login_as employee
 
     visit root_path
 
@@ -28,7 +26,7 @@ feature 'employee view home page' do
 
     click_on 'Criar Academia'
 
-    expect(page).to have_content('Academia cadastrada')
+    expect(page).to have_content('Academia cadastrado com sucesso!')
     expect(page).to have_css('h3', text: 'Academia Paulista')
     expect(page).to have_css('p', text: 'Av Paulista, 123')
     expect(page).to have_css('img[src*="academia_01.jpeg"]')
@@ -39,7 +37,7 @@ feature 'employee view home page' do
   scenario 'and fields must be unique' do
     employee = create(:employee)
     create(:gym, name: 'Academia Paulista', cod: '001')
-    login_as(employee, scope: :employee)
+    login_as employee
 
     visit root_path
 
@@ -61,7 +59,7 @@ feature 'employee view home page' do
   scenario 'and fields must be fill' do
     employee = create(:employee)
     build(:gym, name: '', cod: '')
-    login_as(employee, scope: :employee)
+    login_as employee
 
     visit root_path
 

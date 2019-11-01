@@ -23,5 +23,5 @@
 <%= link_to 'Atualizar status de pagamentos', verify_payments_client_path %>
 <%= link_to 'Voltar', clients_path %>
 <%= link_to('SUSPENDER ALUNO', suspend_client_path) unless @client.banished? || @client.suspended? %>
-<%= link_to('BANIR ALUNO', ban_client_path, data: { confirm: 'Ação permanente. Tem certeza?' }) unless @client.banished? %>
-<%= link_to('DESVINCULAR ALUNO', inactivate_client_path, data: { confirm: 'Ação permanente. Tem certeza?' }) if @client.active? %>
+<%= link_to('BANIR ALUNO', banishe_client_path, data: { confirm: 'Ação permanente. Tem certeza?' }) unless @client.banished? %>
+<%= link_to('DESVINCULAR ALUNO', inactive_client_path, data: { confirm: 'Ação permanente. Tem certeza?' }) if @client.active? %>

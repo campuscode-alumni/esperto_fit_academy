@@ -2,11 +2,12 @@ require 'rails_helper'
 
 feature 'Admin set prices' do
   scenario 'successfully' do
+    load_plan_mock
     # arrange
     admin = create(:employee, admin: true)
     plan = create(:plan)
     gym = create(:gym, name: 'Academia X')
-
+    
     # act
     login_as admin
     visit root_path

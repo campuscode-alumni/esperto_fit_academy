@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'api show all gym plans prices' do
   it 'successfully' do
     # arrange all gyms
+    admin = create(:employee, admin: true)
     gym = create(:gym)
     other_gym = create(:gym, name: 'Academia CampusCode')
     plan = create(:plan)
@@ -12,18 +13,19 @@ describe 'api show all gym plans prices' do
     create(:price, gym_id: other_gym.id, plan_id: plan.id)
 
     # act
+    sign_in admin
     get "/api/v1/gyms/#{gym.id}/plans"
-    json_prices = JSON.parse(response.body, symbolize_names: true)
-
     # assert
     expect(response.status).to eq 200
-    expect(json_prices[:plans][0][:name]).to eq plan.name
-    expect(json_prices[:plans][0][:price]).to eq price.value
-    expect(json_prices[:plans][1][:name]).to eq other_plan.name
-    expect(json_prices[:plans][1][:price]).to eq other_price.value
-    expect(json_prices[:plans].count).to eq 2
+    expect(response.body).to include other_plan.name
+    expect(response.body).to include other_price.value.to_s
+    expect(response.body).to include plan.name
+    expect(response.body).to include price.value.to_s
   end
   it 'fails' do
+    admin = create(:employee, admin: true)
+
+    sign_in admin
     get '/api/v1/gyms/100/plans'
 
     json_prices = JSON.parse(response.body, symbolize_names: true)

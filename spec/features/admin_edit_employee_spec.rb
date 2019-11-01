@@ -86,6 +86,6 @@ feature 'Admin edit employee' do
     click_on 'Enviar'
 
     expect(current_path).to eq(employee_path(user))
-    expect(page).to have_content('Funcionario não alterado')
+    expect(page).to have_content('Funcionário não alterado')
   end
 end

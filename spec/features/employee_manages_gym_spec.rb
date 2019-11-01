@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 feature 'employee manages gym' do
+  # before do 
+  #   DatabaseCleaner.clean 
+  # end
   scenario 'successfully' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')
     create(:gym, name: 'Academia Consolação')
-    create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
+    gym = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, gym: gym)
     login_as(employee)
 
     visit root_path
@@ -17,7 +20,7 @@ feature 'employee manages gym' do
     fill_in 'Endereço', with: 'Rua Oscar Freire, 1439'
     click_on 'Atualizar Academia'
 
-    expect(page).to have_content('Academia atualizada com sucesso!')
+    expect(page).to have_content('Alterações realizadas com sucesso!')
     expect(page).to have_css('h3', text: 'Academia Oscar Freire')
     expect(page).to have_css('p', text: 'Rua Oscar Freire, 1439')
   end
@@ -34,8 +37,8 @@ feature 'employee manages gym' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')
     create(:gym, name: 'Academia Consolação')
-    create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
+    gym = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, gym: gym)
     login_as(employee)
 
     visit root_path
@@ -49,8 +52,8 @@ feature 'employee manages gym' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')
     create(:gym, name: 'Academia Consolação')
-    create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
+    gym = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, gym: gym)
     login_as(employee)
 
     visit root_path
@@ -60,7 +63,7 @@ feature 'employee manages gym' do
     fill_in 'Endereço', with: ''
     click_on 'Atualizar Academia'
 
-    expect(page).not_to have_content('Academia atualizada com sucesso!')
+    expect(page).not_to have_content('Alterações realizadas com sucesso!')
     expect(page).to have_content('Endereço não pode ficar em branco')
   end
 
@@ -68,8 +71,8 @@ feature 'employee manages gym' do
     create(:gym, name: 'Academia Paulista')
     create(:gym, name: 'Academia Madalena')
     create(:gym, name: 'Academia Consolação')
-    create(:gym, name: 'Academia Oscar Freire')
-    employee = create(:employee, gym_id: 4)
+    gym = create(:gym, name: 'Academia Oscar Freire')
+    employee = create(:employee, gym: gym)
     login_as(employee)
 
     visit root_path
@@ -79,7 +82,7 @@ feature 'employee manages gym' do
     fill_in 'Nome', with: 'Academia Paulista'
     click_on 'Atualizar Academia'
 
-    expect(page).not_to have_content('Academia atualizada com sucesso!')
+    expect(page).not_to have_content('Alterações realizadas com sucesso!')
     expect(page).to have_content('Nome já está em uso')
   end
 
@@ -99,7 +102,7 @@ feature 'employee manages gym' do
     fill_in 'Endereço', with: 'Rua Oscar Freire, 1439'
     click_on 'Atualizar Academia'
 
-    expect(page).to have_content('Academia atualizada com sucesso!')
+    expect(page).to have_content('Alterações realizadas com sucesso!')
     expect(page).to have_css('h3', text: 'Academia Oscar Freire')
     expect(page).to have_css('p', text: 'Rua Oscar Freire, 1439')
   end

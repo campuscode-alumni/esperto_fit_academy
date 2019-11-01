@@ -3,9 +3,11 @@ require 'rails_helper'
 describe 'API consult CPF' do
   it 'successfully' do
     # arrange
+    admin = create(:employee, admin: true)    
     client = create(:client, cpf: '12312312300', status: :banished)
 
     # act
+    sign_in admin
     get "/api/v1/clients/consult_cpf/#{client.cpf}"
 
     # assert
@@ -16,7 +18,10 @@ describe 'API consult CPF' do
   end
 
   it 'and CPF must exit' do
+    admin = create(:employee, admin: true)
+
     # act
+    sign_in admin
     get '/api/v1/clients/consult_cpf/000'
 
     # assert

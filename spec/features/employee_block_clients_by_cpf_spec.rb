@@ -4,18 +4,20 @@ feature 'Employee block clients by CPF' do
   scenario 'successfully' do
     # arrange stubs
     load_profile_mock
-    
-    expect(Faraday).to receive(:post).with('http://payment.com.br/api/v1/payments/ban?cpf=12345678900')       
+    load_ban_mock
+      
     # arrange
     employee = create(:employee)
     client = create(:client, cpf: '12345678900')
-
+    
     # act
     login_as employee
     visit root_path
     click_on 'Lista de Alunos'
     click_on client.name
     click_on 'BANIR ALUNO'
+    # save_page
+    # expect(BanWorker).to receive(:perform_async(client.id))
 
     # assert
     expect(current_path).to eq client_path(client.id)
@@ -47,7 +49,7 @@ feature 'Employee block clients by CPF' do
     client = create(:client, status: 0, cpf: '12345678900')
 
     # act
-    visit ban_client_path(client)
+    visit banishe_client_path(client)
 
     # assert
     expect(current_path).to eq new_employee_session_path
@@ -59,7 +61,7 @@ feature 'Employee block clients by CPF' do
 
     # act
     login_as employee
-    visit ban_client_path(1)
+    visit banishe_client_path(1)
 
     # assert
     expect(current_path).to eq clients_path
