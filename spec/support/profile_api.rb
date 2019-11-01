@@ -12,8 +12,8 @@ module ProfileApi
                      headers: { 'Content-Type' => 'aplication/json' })
   end
 
-  def load_profile_junior_mock
-    stub_request(:get, "http://0.0.0.0:4000/api/v1/search/customer?document=385.093.321-01").
+  def load_profile_junior_mock(cpf)
+    stub_request(:get, "http://0.0.0.0:4000/api/v1/search/customer?document=#{cpf}").
     with(
       headers: {
       'Accept'=>'*/*',

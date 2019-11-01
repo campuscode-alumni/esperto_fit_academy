@@ -1,3 +1,3 @@
 class SimpleClientSerializer < ActiveModel::Serializer
-    attributes :cpf, :status
+  attributes :cpf, :status
 end

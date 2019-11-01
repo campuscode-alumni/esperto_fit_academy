@@ -31,7 +31,7 @@ describe 'api shoe plans' do
     get api_v1_plan_path(plan_basic.id)
 
     JSON.parse(response.body, symbolize_names: true)
-
+    
     expect(response.status).to eq 200
     expect(response.body).to include(plan_basic.name)
     expect(response.body).to include('12')

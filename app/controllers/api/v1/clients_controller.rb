@@ -2,6 +2,7 @@ class Api::V1::ClientsController < Api::V1::ApiController
   def consult_cpf
     @client = Client.find_by(cpf: params[:cpf])
     return render json: { message: 'CPF não encontrado' }, status: :not_found unless @client
+
     render json: @client, serializer: SimpleClientSerializer, status: :found
   end
 
@@ -26,7 +27,7 @@ class Api::V1::ClientsController < Api::V1::ApiController
     return render json: { message: 'CPF não encontrado' }, status: :not_found unless @client
 
     @client.inactive! if @client.active?
-    render json: @client,serializer: SimpleClientSerializer , status: :accepted
+    render json: @client, serializer: SimpleClientSerializer, status: :accepted
   end
 
   private

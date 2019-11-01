@@ -7,7 +7,7 @@
 <p><%= @client.plan.name %></p>
 <p>Status: <%= @client.status %></p>
 
-<%=render @dclients.have_profile(@client) %>
+<%=render @dclients.profile?(@client) %>
 
 <%= link_to 'Editar', edit_client_path %>
 <%= link_to 'Atualizar status de pagamentos', verify_payments_client_path %>

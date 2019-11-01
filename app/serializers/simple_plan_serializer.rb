@@ -1,3 +1,3 @@
-class SimpleClientSerializer < ActiveModel::Serializer
-  attributes :cpf, :status
+class SimplePlanSerializer < ActiveModel::Serializer
+  attributes :name, :minimum_permanence
 end
