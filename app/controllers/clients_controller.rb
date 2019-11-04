@@ -24,7 +24,9 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @dclients = ClientDecorator.new(@client) 
+    @client = Client.find(params[:id]).decorate
+    
+    #@dclients = ClientDecorator.new(@client) 
   end
 
   def edit; end

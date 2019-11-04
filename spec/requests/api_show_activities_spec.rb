@@ -12,7 +12,7 @@ describe 'api show all gyms' do
     get "/api/v1/gyms/#{gym.id}/activities"
 
     json_activities = JSON.parse(response.body, symbolize_names: true)
-
+    
     expect(response.status).to eq 200
     expect(json_activities[0][:name]).to eq activity.name
     expect(json_activities[1][:name]).to eq another_activity.name

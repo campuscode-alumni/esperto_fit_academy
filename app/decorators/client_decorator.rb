@@ -1,7 +1,11 @@
-class ClientDecorator < SimpleDelegator
-  def profile?(client)
-    return 'clients/partial2' if client.nil? || client.profile.nil?
+class ClientDecorator < Draper::Decorator
+  include Draper::LazyHelpers
 
-    'clients/partial1'
+  delegate_all
+
+  def has_profile
+    return h.render('clients/dont_have_profile') if object.nil? || object.profile.nil?
+    
+    h.render(partial: 'clients/client_have_profile', locals: { client: client } ) 
   end
 end

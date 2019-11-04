@@ -6,5 +6,7 @@ FactoryBot.define do
     status { 0 }
     gym 
     plan 
+
+    
   end
 end

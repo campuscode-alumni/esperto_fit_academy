@@ -1,0 +1,18 @@
+class EmployeeDecorator
+
+  attr_reader :name, :status, :admin, :email, :gym_id
+
+  def initialize(name, status, admin, email, gym_id)
+    @name = name
+    @status = status
+    @admin = admin
+    @email = email
+    @gym_id = gym_id
+  end
+
+  def admin_option
+    admin ? 'Admin: Sim' : 'Admin: Nao'
+  end
+end
+
+    subject { described_class.new(name=employee.name, status=employee.status, admin=employee.admin, email=employee.email, gym_id=employee.gym_id).admin_option }

@@ -7,6 +7,7 @@ gem 'rails', '~> 5.2.3'
 #Use postgreSQL
 gem 'active_model_serializers'
 gem 'pg'
+gem 'draper'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use Puma as the app server
