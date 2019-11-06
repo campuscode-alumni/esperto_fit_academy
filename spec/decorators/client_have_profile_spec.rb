@@ -9,18 +9,22 @@ describe ClientDecorator do
       subject { client.decorate.has_profile }
       let (:client) { create(:client) }
       it 'returns partial html with profile' do        
-       is_expected.to eq(h.render(partial: 'clients/client_have_profile',locals: { client: client }))
+       
+       expect(subject).not_to have_content('Perfil não encontrado')
+       expect(subject).to have_content(client.profile.address)
+
       end
     end
     
     context 'when client dont have a profile' do
       before do 
-        null_profile_junior_mock
+        null_profile_junior_mock(client.cpf)
       end
       subject { client.decorate.has_profile }
       let(:client) { create(:client) }
       it 'returns partial message dont have profile' do
-        expect(subject).to eq(h.render('clients/dont_have_profile'))
+        expect(subject).to have_css('p', text:   'Perfil não encontrado')
+        expect(subject).not_to have_css('p', text: 'Endereço')
       end
     end
   end

@@ -1,5 +1,5 @@
 require 'simplecov'
-
+require 'database_cleaner'
 SimpleCov.start 'rails' do
   add_filter 'app/channels'
   add_filter 'app/jobs'
@@ -27,8 +27,11 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
+  Randomized with seed 54617
 end
-RSpec.configure do |config|
+RSpec.configure do |config| 
+  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.clean
   config.include Warden::Test::Helpers
   config.include ProfileApi
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

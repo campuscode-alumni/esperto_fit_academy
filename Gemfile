@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'mini_racer', platforms: :ruby
 
 gem 'faraday'
-gem 'faraday_middleware'
+gem 'faraday_middleware' 
 
 gem 'devise'
 gem "bootstrap_form"
@@ -73,6 +73,7 @@ end
 
 group :test do
   gem 'simplecov', require: false
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

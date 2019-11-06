@@ -3,7 +3,8 @@ class Api::V1::PlansController < Api::V1::ApiController
   def index
     @gym = Gym.find(params[:gym_id])
     render json: @gym, serializer: PlanGymSerializer, status: 200
-  rescue ActiveRecord::RecordNotFound  
+  rescue StandardError => e
+    Rails.logger.error(e.message)
     render json:  {messages:'Nenhum plano cadastrado'}, status: :not_found
   end
 
@@ -16,7 +17,8 @@ class Api::V1::PlansController < Api::V1::ApiController
   def show 
     @plan = Plan.find(params[:id])
     render json: @plan, serializer: SimplePlanSerializer
-  rescue ActiveRecord::RecordNotFound
+  rescue StandardError => e
+    Rails.logger.error(e.message)
     render json: {menssages: 'Nenhum plano encontrado'}, status: :not_found
   end
 end

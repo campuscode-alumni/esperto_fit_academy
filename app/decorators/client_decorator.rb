@@ -1,5 +1,4 @@
-class ClientDecorator < Draper::Decorator
-  include Draper::LazyHelpers
+class ClientDecorator < ApplicationDecorator
 
   delegate_all
 
