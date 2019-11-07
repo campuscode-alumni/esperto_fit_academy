@@ -17,6 +17,7 @@ class GymsController < ApplicationController
   def create
     @gym = Gym.new(gym_params)
     if @gym.save
+      logger.warn("#{@gym} created")
       redirect_to @gym, notice: t(:successfully_creating, scope: [:notice, :gym])
     else
       render :new
@@ -27,6 +28,7 @@ class GymsController < ApplicationController
 
   def update
     if @gym.update(gym_params)
+      logger.warn("#{@gym} updated")
       redirect_to @gym, notice: t(:successfully_editing, scope: [:notice, :gym])
     else
       flash.now[:notice] = t(:fails_editing, scope: [:notice, :gym])
@@ -36,6 +38,7 @@ class GymsController < ApplicationController
 
   def destroy
     @gym.destroy
+    logger.warn("#{@gym} deleted")
     redirect_to root_path, notice: t(:successfully_destroying, scope: [:notice, :gym])
   end
 

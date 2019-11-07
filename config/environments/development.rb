@@ -1,3 +1,5 @@
+require 'syslog/logger'
+require 'custom_formatter'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -61,5 +63,10 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-
+  logger = Syslog::Logger.new('esperto_fit_academy')
+  logger.formatter = CustomFormatter.new
+  config.log_level = :debug
+  config.log_tags = [:request_id]
+  config.logger = ActiveSupport::TaggedLogging.new(logger)
 end
+

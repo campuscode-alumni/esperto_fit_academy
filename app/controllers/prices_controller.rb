@@ -10,6 +10,7 @@ class PricesController < ApplicationController
   def create
     @price = Price.new(price_params)
     if @price.save
+      logger.warn("#{@price} created")
       flash[:notice] = "O plano #{@price.plan.name} na unidade #{@price.gym.name} foi dado o valor de #{@price.price_format} com sucesso!"
       redirect_to new_price_path
     else

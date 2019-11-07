@@ -1,5 +1,5 @@
 require 'syslog/logger'
-  
+require 'custom_formatter'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -44,9 +44,10 @@ Rails.application.configure do
   config.active_support.deprecation = :stderr
 
   # Raises error for missing translations
-
   # config.action_view.raise_on_missing_translations = true
-  config.log_level = :error
-  config.log_tags = [ :request_id ]
-  config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'academy')
+  logger = Syslog::Logger.new('academy teste')
+  logger.formatter = CustomFormatter.new
+  config.log_level = :warn
+  config.log_tags = [:request_id]
+  config.logger = ActiveSupport::TaggedLogging.new(logger)
 end

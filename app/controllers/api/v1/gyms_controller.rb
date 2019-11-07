@@ -7,12 +7,12 @@ class Api::V1::GymsController < Api::V1::ApiController
       render json: @gyms, status: 200
     end
   end
-
+  
   def show
     @gym = Gym.find(params[:id])    
     render json: @gym, serializer: SimpleGymSerializer, status:200
   rescue StandardError => e
-    Rails.logger.error(e.message)
+    logger.error(e.message)
     render json: { message: 'Academia não encontrada'}, status: 404
   end
 

@@ -17,6 +17,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to @activity
       flash[:notice] = 'Aula cadastrada com sucesso!'
+      logger.warn("#{@activity} created ")
     else
       render :new
       find_all
@@ -28,6 +29,7 @@ class ActivitiesController < ApplicationController
   def update
     if @activity.update(activity_params)
       redirect_to @activity, notice: 'Aula atualizada com sucesso!'
+      logger.warn("#{@activity} updated ")
     else
       render :edit
     end

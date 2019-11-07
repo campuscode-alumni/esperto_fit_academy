@@ -16,6 +16,7 @@ class ClientsController < ApplicationController
 
     if @client.save
       flash[:notice] = 'Matriculado com sucesso!'
+      logger.warn("#{@activity} saved")
       redirect_to @client
     else
       find_all
@@ -34,6 +35,7 @@ class ClientsController < ApplicationController
   def update
     if @client.update(client_params)
       redirect_to @client, notice: 'Atualizado com sucesso!'
+      logger.warn("#{@client} updated")
     else
       find_all
       render :edit
@@ -43,6 +45,7 @@ class ClientsController < ApplicationController
   def ban
     @client = Client.find(params[:id])
     @client.ban 
+    logger.warn("#{@client.cpf} banned")
     redirect_to @client, notice: 'CPF banido com sucesso!'
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'Não existe esse aluno!'
@@ -52,6 +55,7 @@ class ClientsController < ApplicationController
   def suspend
     @client = Client.find(params[:id])
     @client.suspended!
+    logger.warn("#{@client.cpf} suspend")
     flash[:notice] = 'CPF suspenso com sucesso!'
     redirect_to @client
   rescue ActiveRecord::RecordNotFound
@@ -64,6 +68,7 @@ class ClientsController < ApplicationController
     if @client.active?
       @client.inactive!
       flash[:notice] = 'Cliente desvinculado com sucesso!'
+      logger.warn("#{@client.cpf} inactivate")
     else 
       flash[:alert] = 'Cliente deve estar com status ativo para desvincular.'
     end

@@ -16,6 +16,7 @@ class Client < ApplicationRecord
   end
 
   def ban
+    logger.debug("#{self} baned ")
     banished!
     notify_payments_api
   end
@@ -23,6 +24,8 @@ class Client < ApplicationRecord
   private
 
   def notify_payments_api
+    logger.debug("notification realized with success")
+
     Faraday.post('http://espertofitpayments_web_1:80/api/v1/payments/ban?cpf=222222222')
   end
 end

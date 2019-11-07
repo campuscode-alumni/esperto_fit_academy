@@ -12,6 +12,7 @@ before_action :authorize_admin, only: [:add_units]
     @trainer = Trainer.new(set_trainer)
     
     if @trainer.save
+      logger.warn("#{@trainer} created")
       flash[:message] = 'Professor cadastrado com sucesso' 
       if !current_employee.admin
         @gym = Gym.where()
@@ -40,6 +41,7 @@ before_action :authorize_admin, only: [:add_units]
 
   def update
     if @trainer.update(set_trainer)
+      logger.warn("#{@trainer} updated")
       flash[:message] = "Alterações realizadas com sucesso"
       redirect_to @trainer
     else

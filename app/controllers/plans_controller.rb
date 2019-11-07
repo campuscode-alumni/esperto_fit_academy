@@ -10,6 +10,7 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params) 
     if @plan.save
+      logger.warn("#{@plan} created")
       flash[:notice] = 'Plano cadastrado com sucesso!'
       redirect_to @plan 
     else
@@ -30,6 +31,7 @@ class PlansController < ApplicationController
 
   def update
     if @plan.update(plan_params)
+      logger.warn("#{@plan} updated")
       flash[:success] = "Alterações realizadas com sucesso"
       redirect_to @plan
     else
@@ -41,6 +43,7 @@ class PlansController < ApplicationController
 
   def destroy
     @plan.destroy
+    logger.warn("#{@plan} deleted")
     redirect_to plans_path
   end
 

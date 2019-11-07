@@ -15,6 +15,7 @@ class EmployeesController < ApplicationController
   
     if @employee.save
       flash[:success] = 'Funcionario cadastrado com sucesso!'
+      logger.warn("#{@employee} created")
       redirect_to @employee
     else
       flash.now[:alert] = 'Funcionario não cadastrado'
@@ -35,6 +36,7 @@ class EmployeesController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     if @employee.update(employee_params)
+      logger.warn("#{@employee} update")
       flash[:success] = 'Funcionario alterado com sucesso!'
       redirect_to @employee
     else
@@ -47,9 +49,11 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     if @employee.status == 'active'
       @employee.unactive!
+      logger.warn("#{@employee} unactivate")
       flash[:success] = 'Funcionario inativado com sucesso!'
     else
       @employee.active!
+      logger.warn("#{@employee} activate")
       flash[:success] = 'Funcionario ativado com sucesso!'
     end
     redirect_to @employee
